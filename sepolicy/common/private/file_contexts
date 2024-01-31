@@ -1,1 +1,4 @@
-/system/bin/folio_daemon          u:object_r:folio_daemon_exec:s0
+/system/bin/folio_daemon          		u:object_r:folio_daemon_exec:s0
+
+# Teecd
+/system/bin/tee_auth_daemon                     u:object_r:system_teecd_exec:s0
