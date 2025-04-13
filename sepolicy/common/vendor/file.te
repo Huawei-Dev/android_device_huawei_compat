@@ -10,10 +10,12 @@ type hisecd_socket, file_type;
 type vendor_bt_data_file, file_type, data_file_type;
 type vendor_camera_data_file, file_type, data_file_type;
 type hi110x_data_file, file_type, data_file_type;
-type vendor_log_file, file_type, data_file_type;
+type vendor_log_file, file_type, data_file_type, core_data_file_type;
+type data_vendor_log_file, file_type, data_file_type;
 type mediadrm_vendor_data_file, file_type, data_file_type;
 type nfc_vendor_data_file, file_type, data_file_type;
-type teecd_data_file, file_type, data_file_type;
+type teecd_data_file, file_type, data_file_type, core_data_file_type;
+type teecd_vendor_data_file, file_type, data_file_type;
 type wifi_vendor_data_file, file_type, data_file_type;
 type wifi_vendor_wpa_socket, file_type, data_file_type;
 
@@ -34,3 +36,5 @@ type hwemerffu_fw_file, file_type, vendor_file_type;
 type isp_vendor_file, file_type, vendor_file_type;
 type hifi_vendor_file, file_type, vendor_file_type;
 type ncfg_nv_file, file_type, vendor_file_type;
+
+type audio_vendor_data_file, file_type, vendor_file_type;
