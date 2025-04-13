@@ -126,12 +126,12 @@
 /data/vendor/camera(/.*)?							u:object_r:vendor_camera_data_file:s0
 /data/vendor/cust_conn(/.*)?							u:object_r:hi110x_data_file:s0
 /data/vendor/gnss(/.*)?								u:object_r:hi110x_data_file:s0
-/data/vendor/log(/.*)?								u:object_r:vendor_log_file:s0
+/data/vendor/log(/.*)?								u:object_r:data_vendor_log_file:s0
 /data/vendor/mediadrm(/.*)?							u:object_r:mediadrm_vendor_data_file:s0
 /data/vendor/nfc(/.*)?								u:object_r:nfc_vendor_data_file:s0
-/data/vendor/perflog								u:object_r:vendor_log_file:s0
-/data/vendor/sec_storage_data(/.*)?             				u:object_r:teecd_data_file:s0
-/data/vendor/sec_storage_data_users(/.*)?       				u:object_r:teecd_data_file:s0
+/data/vendor/perflog								u:object_r:data_vendor_log_file:s0
+/data/vendor/sec_storage_data(/.*)?             				u:object_r:teecd_vendor_data_file:s0
+/data/vendor/sec_storage_data_users(/.*)?       				u:object_r:teecd_vendor_data_file:s0
 /data/vendor/wifi(/.*)?								u:object_r:wifi_vendor_data_file:s0
 /data/vendor/wifi/wpa/sockets(/.*)?						u:object_r:wifi_vendor_wpa_socket:s0
 
@@ -215,7 +215,7 @@
 /hw_odm/ncfg(/.*)?								u:object_r:ncfg_nv_file:s0
 /odm/hw_odm/[^/]+/ncfg(/.*)?							u:object_r:ncfg_nv_file:s0
 /odm/etc/ncfg_def(/.*)?								u:object_r:ncfg_nv_file:s0
-/odm/etc/audio/volume/volume_point.xml						u:object_r:audio_data_file:s0
+/odm/etc/audio/volume/volume_point.xml						u:object_r:audio_vendor_data_file:s0
 
 /vendor/firmware/.*_emer_fw.bin							u:object_r:hwemerffu_fw_file:s0
 /vendor/firmware/Total.wdk							u:object_r:hi110x_vendor_file:s0
