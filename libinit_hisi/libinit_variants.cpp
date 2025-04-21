@@ -30,20 +30,20 @@
 
 struct ProductInfo {
     // From oeminfo
-    std::string infostr;
-    std::string HWRegion;
-    std::string HWVersion;
+    std::string devicehw;
+    std::string infostr = "";
+    std::string region;
+    std::string model;
+    std::string marketname;
 
     // result of the parse
-    std::string device;
-    std::string model;
-    std::string version;    
+    std::string version;
     std::string baseband;
+    std::string device;
     std::string board;
-       
+
     // TODO
     std::string brand;
-    std::string marketname;
 };
 
 constexpr const char* kOemInfoPath = "/dev/block/by-name/oeminfo";
@@ -77,7 +77,6 @@ ProductInfo ParseProductInfo(const std::string& product_info_str) {
     return product_info;
 }
 
-
 std::map<int, std::map<int, std::string>> elements = {
     {6, {
         {0x12, "Region"},
@@ -106,6 +105,9 @@ std::map<int, std::map<int, std::string>> elements = {
         {0x96, "Unknown SHA256 3"},
         {0xa6, "Update Token"},
         {0xa9, "Some kind of json changelog"},
+        {0xb4, "cust version"},
+        {0xb6, "preload version"},
+        {0xba, "system version"},
         {0x15f, "Logo Boot"}, // Can be overridden in product, version, vendor or system partitions
         {0x160, "Logo Battery Empty"},
         {0x161, "Logo Battery Charge"},
@@ -135,6 +137,8 @@ ProductInfo ReadProductInfo() {
     std::vector<char> HW_Version(8);
     std::vector<char> HW_Region(6);
     std::vector<char> SW_Version(128);
+    std::vector<char> MarketingName(19);
+    std::vector<char> Model(128);
     ProductInfo product_info = {};
 
 
@@ -187,6 +191,12 @@ ProductInfo ReadProductInfo() {
             if (id == 0x4e) {
                 std::memcpy(SW_Version.data(), binary.data() + content_startbyte + 0x200, data_len);
             }
+            if (id == 0x81) {
+                std::memcpy(MarketingName.data(), binary.data() + content_startbyte + 0x200, data_len);
+            }
+            if (id == 0x5b) {
+                std::memcpy(Model.data(), binary.data() + content_startbyte + 0x200, data_len);
+            }
 
             //std::string fileout = std::to_string(id) + "-" + std::to_string(type) + "-" + std::to_string(age) + "-" + std::to_string(content_startbyte);
             //std::cout << "hdr:" << std::string(header, 8) << " age:" << std::hex << age << " id:" << std::hex << id << " " << elements[version][id] << std::endl;
@@ -194,16 +204,28 @@ ProductInfo ReadProductInfo() {
         content_startbyte += 0x400; // Move to the next header
     }
 
-    std::string versionfull = std::string(SW_Version.begin(), SW_Version.end());
+    std::string temp;
 
-    product_info.infostr = versionfull.substr(0, versionfull.find('\0'));
-    product_info.HWRegion = std::string(HW_Region.begin(), HW_Region.end());
-    product_info.HWVersion = std::string(HW_Version.begin(), HW_Version.end());
-    
+    temp = std::string(SW_Version.begin(), SW_Version.end());
+    product_info.infostr = temp.substr(0, temp.find('\0'));
+    temp = std::string(HW_Region.begin(), HW_Region.end());
+    product_info.region = temp.substr(0, temp.find('\0'));
+
+    // Extract the board (i.e. "POT-L21")
+    temp = std::string(HW_Version.begin(), HW_Version.end());
+    product_info.board = temp.substr(0, temp.find('\0'));
+
+    // Extract the model (POT-LX1)
+    temp = std::string(Model.begin(), Model.end());
+    product_info.model = temp.substr(0, temp.find('\0'));
+
+    temp = std::string(MarketingName.begin(), MarketingName.end());
+    product_info.marketname = temp.substr(0, temp.find('\0'));
+
+    // Extract the full description
+    std::string tempm;
     std::istringstream iss(product_info.infostr);
-
-    // Extract the model (i.e. "PRA-LX1").
-    std::getline(iss, product_info.model, ' ');
+    std::getline(iss, tempm, ' ');
 
     // Extract the version (i.e. "9.1.0.311").
     std::getline(iss, product_info.version, '(');
@@ -213,24 +235,18 @@ ProductInfo ReadProductInfo() {
         product_info.version.pop_back();
     }
 
-    // Extract the baseband (i.e. "C185E3R2P1").
+    // Extract the baseband (i.e. "C432E3R4P1")
     std::getline(iss, product_info.baseband, ')');
-    
+
     // Extract the brand
     product_info.brand = "HUAWEI";
-    
-    // Extract the board
-    product_info.board = product_info.HWVersion;
-    
-    // Extract the device (i.e. "HWPOT")
-    std::istringstream iss1(product_info.infostr);
+
+
+    // Extract the device (i.e. "HWPOT-H")
+    std::istringstream iss1(product_info.model);
     std::string tempmodel;
-    
     std::getline(iss1, tempmodel, '-');
     product_info.device = "HW" + tempmodel + "-H";
-    
-    // TODO    
-    product_info.marketname =  "";
 
 
     return product_info;
@@ -242,14 +258,20 @@ void load_variants() {
 
     ProductInfo product_info = ReadProductInfo();
 
+
+    // TODO
+    std::string brand;
+    
     // Load the phone model dynamically from the oeminfo partition.
     if (!product_info.model.empty()) {
-        LOG(INFO) << "Found HW product info: " << product_info.HWVersion << " - " << product_info.HWRegion << " - " << product_info.infostr;
-        LOG(INFO) << "Extract product info: " << product_info.device << " - " << product_info.model << " - "  << product_info.board << " - " << product_info.baseband;
+        LOG(INFO) << "Found HW product info (1/2): " << product_info.devicehw << " - " << product_info.region << " - " << product_info.model;
+        LOG(INFO) << "Found HW product info (2/2): " << product_info.infostr  << " - " << product_info.marketname;
+        LOG(INFO) << "Extract product info: " << product_info.device << " - " << product_info.version << " - "  << product_info.board << " - " << product_info.baseband;
 
 	set_ro_build_prop("brand", product_info.brand, true);
 	set_ro_build_prop("device", product_info.device, true);
 	set_ro_build_prop("model", product_info.model, true);
+	set_ro_build_prop("name", product_info.model, true);
 	
 	property_override("ro.product.board", product_info.board, true);
 
@@ -257,3 +279,4 @@ void load_variants() {
         LOG(ERROR) << "Unable to parse product information!";
     }
 }
+
