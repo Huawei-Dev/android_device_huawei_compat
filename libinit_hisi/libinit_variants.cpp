@@ -41,6 +41,7 @@ struct ProductInfo {
     std::string baseband;
     std::string device;
     std::string board;
+    std::string camera;
 
     // TODO
     std::string brand;
@@ -247,6 +248,8 @@ ProductInfo ReadProductInfo() {
     std::string tempmodel;
     std::getline(iss1, tempmodel, '-');
     product_info.device = "HW" + tempmodel + "-H";
+    
+    product_info.camera = tempmodel;
 
 
     return product_info;
@@ -274,6 +277,7 @@ void load_variants() {
 	set_ro_build_prop("name", product_info.model, true);
 	
 	property_override("ro.product.board", product_info.board, true);
+	property_override("ro.product.camera_product", product_info.camera, true);
 
     } else {
         LOG(ERROR) << "Unable to parse product information!";
