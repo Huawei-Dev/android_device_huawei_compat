@@ -2,6 +2,7 @@
 type modem_file, file_type;
 type modem_vendor_file, file_type, vendor_file_type;
 type splash_data_file, file_type;
+type hisee_data_file, file_type;
 
 type hisecd_socket, file_type;
 
