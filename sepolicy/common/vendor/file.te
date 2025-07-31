@@ -6,16 +6,19 @@ type hisee_data_file, file_type;
 
 type hisecd_socket, file_type;
 
-# data/vendor/*
+# /data/vendor/*
 type vendor_bt_data_file, file_type, data_file_type;
 type vendor_camera_data_file, file_type, data_file_type;
 type hi110x_data_file, file_type, data_file_type;
 type vendor_log_file, file_type, data_file_type;
 type mediadrm_vendor_data_file, file_type, data_file_type;
 type nfc_vendor_data_file, file_type, data_file_type;
-type teecd_data_file, file_type, data_file_type;
+type teecd_data_file_vendor, file_type, data_file_type;
 type wifi_vendor_data_file, file_type, data_file_type;
 type wifi_vendor_wpa_socket, file_type, data_file_type;
+
+# /sec_storage
+type teecd_data_file, file_type, data_file_type;
 
 type sysfs_sensors, sysfs_type, fs_type;
 type sysfs_pg, sysfs_type, fs_type;

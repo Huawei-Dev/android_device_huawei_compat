@@ -127,8 +127,8 @@
 
 # data
 /data/hisi_logs									u:object_r:vendor_log_file:s0
-/data/sec_storage_data(/.*)?                    				u:object_r:teecd_data_file:s0
-/data/sec_storage_data_users(/.*)?              				u:object_r:teecd_data_file:s0
+/data/sec_storage_data(/.*)?                    				u:object_r:system_data_file:s0
+/data/sec_storage_data_users(/.*)?              				u:object_r:system_data_file:s0
 
 # /data/vendor/*
 /data/vendor/bluedroid(/.*)?							u:object_r:vendor_bt_data_file:s0
@@ -139,8 +139,8 @@
 /data/vendor/mediadrm(/.*)?							u:object_r:mediadrm_vendor_data_file:s0
 /data/vendor/nfc(/.*)?								u:object_r:nfc_vendor_data_file:s0
 /data/vendor/perflog								u:object_r:vendor_log_file:s0
-/data/vendor/sec_storage_data(/.*)?             				u:object_r:teecd_data_file:s0
-/data/vendor/sec_storage_data_users(/.*)?       				u:object_r:teecd_data_file:s0
+/data/vendor/sec_storage_data(/.*)?             				u:object_r:teecd_data_file_vendor:s0
+/data/vendor/sec_storage_data_users(/.*)?       				u:object_r:teecd_data_file_vendor:s0
 /data/vendor/wifi(/.*)?								u:object_r:wifi_vendor_data_file:s0
 /data/vendor/wifi/wpa/sockets(/.*)?						u:object_r:wifi_vendor_wpa_socket:s0
 
