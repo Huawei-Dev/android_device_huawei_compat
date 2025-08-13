@@ -122,28 +122,36 @@
 /dev/v4l-subdev.*								u:object_r:video_device:s0
 /dev/v4l-subdev[0-9]								u:object_r:camera_device:s0
 /dev/video[0-9]{1,2}$								u:object_r:camera_device:s0
-/dev/voice_proxy_vowifi								u:object_r:vowifi_proxy_device:s0
+/dev/voice_proxy_vowifi							u:object_r:vowifi_proxy_device:s0
 /dev/wlanfty_status								u:object_r:wlanfty_device:s0
 /dev/wlanfty_ver								u:object_r:wlanfty_device:s0
 
 # data
-/data/hisi_logs									u:object_r:vendor_log_file:s0
-/data/sec_storage_data(/.*)?                    				u:object_r:system_data_file:s0
-/data/sec_storage_data_users(/.*)?              				u:object_r:system_data_file:s0
+/data/hisi_logs								u:object_r:vendor_log_file:s0
 
 # /data/vendor/*
 /data/vendor/bluedroid(/.*)?							u:object_r:vendor_bt_data_file:s0
 /data/vendor/camera(/.*)?							u:object_r:vendor_camera_data_file:s0
 /data/vendor/cust_conn(/.*)?							u:object_r:hi110x_data_file:s0
-/data/vendor/gnss(/.*)?								u:object_r:hi110x_data_file:s0
+/data/vendor/gnss(/.*)?							u:object_r:hi110x_data_file:s0
 /data/vendor/log(/.*)?								u:object_r:vendor_log_file:s0
 /data/vendor/mediadrm(/.*)?							u:object_r:mediadrm_vendor_data_file:s0
 /data/vendor/nfc(/.*)?								u:object_r:nfc_vendor_data_file:s0
 /data/vendor/perflog								u:object_r:vendor_log_file:s0
-/data/vendor/sec_storage_data(/.*)?             				u:object_r:teecd_data_file_vendor:s0
-/data/vendor/sec_storage_data_users(/.*)?       				u:object_r:teecd_data_file_vendor:s0
-/data/vendor/wifi(/.*)?								u:object_r:wifi_vendor_data_file:s0
+/data/vendor/wifi(/.*)?							u:object_r:wifi_vendor_data_file:s0
 /data/vendor/wifi/wpa/sockets(/.*)?						u:object_r:wifi_vendor_wpa_socket:s0
+
+# data for tee
+/data/vendor_ce/[0-9]+/sec_storage_data(/.*)?                                u:object_r:teecd_data_file_vendor:s0
+/data/vendor/sec_storage_data                                                u:object_r:teecd_data_file_vendor:s0
+/data/vendor/sec_storage_data(/.*)?                                          u:object_r:teecd_data_file_vendor:s0
+/data/vendor/sec_storage_data_users                                          u:object_r:teecd_data_file_vendor:s0
+/data/vendor/sec_storage_data_users(/.*)?                                    u:object_r:teecd_data_file_vendor:s0
+
+/data/sec_storage_data                                                       u:object_r:teecd_data_file_system:s0
+/data/sec_storage_data(/.*)?                    				u:object_r:teecd_data_file_system:s0
+/data/sec_storage_data_users                                                 u:object_r:teecd_data_file_system:s0
+/data/sec_storage_data_users(/.*)?              				u:object_r:teecd_data_file_system:s0
 
 # Block devices
 /dev/block/by-name/cust          						u:object_r:system_block_device:s0
@@ -157,19 +165,19 @@
 /dev/block/by-name/patch         						u:object_r:metadata_block_device:s0
 
 /dev/block/by-name/cache							u:object_r:cache_block_device:s0
-/dev/block/by-name/nvme								u:object_r:nve_block_device:s0
+/dev/block/by-name/nvme							u:object_r:nve_block_device:s0
 /dev/block/by-name/splash2							u:object_r:splash_block_device:s0
-/dev/block/by-name/modem_secure							u:object_r:modem_secure_device:s0
+/dev/block/by-name/modem_secure						u:object_r:modem_secure_device:s0
 /dev/block/by-name/modemnvm_cust						u:object_r:modemnvm_block_device:s0
 /dev/block/by-name/modemnvm_system						u:object_r:modemnvm_block_device:s0
 /dev/block/by-name/modemnvm_backup						u:object_r:modemnvm_block_device:s0
 /dev/block/by-name/modemnvm_update						u:object_r:modemnvm_block_device:s0
 /dev/block/by-name/modemnvm_factory						u:object_r:modemnvm_block_device:s0
-/dev/block/by-name/misc								u:object_r:misc_block_device:s0
+/dev/block/by-name/misc							u:object_r:misc_block_device:s0
 /dev/block/by-name/oeminfo							u:object_r:oeminfo_nvm_block_device:s0
 /dev/block/by-name/userdata							u:object_r:userdata_block_device:s0
 /dev/block/by-name/kernel                  					u:object_r:boot_block_device:s0
-/dev/block/by-name/recovery_ramdisk            					u:object_r:recovery_block_device:s0
+/dev/block/by-name/recovery_ramdisk            				u:object_r:recovery_block_device:s0
 /dev/block/zram0                                				u:object_r:swap_block_device:s0
 /dev/block/mmcblk0                                              		u:object_r:root_block_device:s0
 
