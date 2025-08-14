@@ -57,6 +57,7 @@
 /sec_storage(/.*)?                              				u:object_r:teecd_data_file:s0
 /splash2(/.*)?                                  				u:object_r:splash_data_file:s0
 /mnt/hisee_fs(/.*)?								u:object_r:hisee_data_file:s0
+/preavs(/.*)?                                                                u:object_r:vendor_file:s0
 
 # /dev
 /dev/acpuddr_link_governor_level						u:object_r:governor_device:s0
