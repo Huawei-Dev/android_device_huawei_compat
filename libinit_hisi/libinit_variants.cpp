@@ -279,6 +279,13 @@ void load_variants() {
 	property_override("ro.product.board", product_info.board, true);
 	property_override("ro.product.camera_product", product_info.camera, true);
 
+	//env CUST_POLICY_DIRS not set
+	if (getenv("CUST_POLICY_DIRS") == nullptr) {
+	    std::string s = "/vendor/etc:/odm/etc:/product/etc:/data/cota:/odm/hw_odm/";
+            std::string policy = s + product_info.model;
+            setenv("CUST_POLICY_DIRS", policy.c_str(), 0 /*override*/);
+            LOG(INFO) << "New CUST_POLICY_DIRS=" << getenv("CUST_POLICY_DIRS");
+        }
     } else {
         LOG(ERROR) << "Unable to parse product information!";
     }
