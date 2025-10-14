@@ -7,9 +7,9 @@ LOCAL_C_INCLUDES := \
 
 LOCAL_SHARED_LIBRARIES := \
     liblog \
-    libril-hisi
+    libril4-hisi
 
-LOCAL_CFLAGS := -DLOG_TAG=\"libril-wrapper\"
+LOCAL_CFLAGS := -DLOG_TAG=\"libril4-wrapper\"
 
 LOCAL_SRC_FILES := \
     ril.cpp
