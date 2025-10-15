@@ -7,8 +7,8 @@
 #include <telephony/ril_mnc.h>
 #include <inttypes.h>
 
-#include "RilConstHW.h"
-#include "Ril.h"
+#include "ril-HW.h"
+#include "ril.h"
 
 /*
 #pragma once
@@ -402,18 +402,19 @@ LAB_00172cc8:
 
     // Fix GSM
 //    *(int32_t *)((long)response + 0x00) = signalStrength.gsm.signalStrength;
-//    *(int32_t *)((long)response + 0x00) = -105;
-//    *(int32_t *)((long)response + 0x00) = -60;
-
+   if (signalStrength.gsm.signalStrength >= -70) {
+        signalStrength.gsm.signalStrength = 30;
+   } else if (signalStrength.gsm.signalStrength>= -80) {
+        signalStrength.gsm.signalStrength = 20;
+   } else if (signalStrength.gsm.signalStrength >= -90) {
+        signalStrength.gsm.signalStrength = 10;
+   } else if (signalStrength.gsm.signalStrength >= -110) {
+        signalStrength.gsm.signalStrength = 5;
+   }
+   *(int32_t *)((long)response + 0x00) = signalStrength.gsm.signalStrength;
 
     /* -------------------------------- WCDMA -------------------------------------------------------------------------------*/
    // WCDMA
-   /*
-   10-10 11:55:05.000   833   902 D libril4-wrapper: RIL SignalStrength LTE signalStrength -105, rssnr 2147483647, rsrp 2147483647, rsrq 2147483647, cqi 2147483647, timingAdvance 2147483647
-10-10 11:55:05.000   833   902 D libril4-wrapper: RIL SignalStrength TDSCDMA signalStrength 2147483647, biterror-rate 2147483647, rscp 2147483647
-10-10 11:55:05.000   833   902 D libril4-wrapper: RIL SignalStrength WCDMA signalStrength 2147483647, biterror-rate 2147483647, rscp -140, ecno -26
-*/
-
    signalStrength.wcdma.signalStrength = *(int32_t *)((long)response + 0xc);  // signalStrength=rssi (not use)
    signalStrength.wcdma.bitErrorRate = *(int32_t *)((long)response + 0x10);
    signalStrength.wcdma.rscp = *(int32_t *)((long)response + 0x14);
@@ -426,33 +427,22 @@ LAB_00172cc8:
 	0        -113 dBm or less  (low)
 	1        -111 dBm  
 	2...30   -109... -53 dBm  
-	31       -51 dBm or greater 
-  */
-   /*if (signalStrength.wcdma.rscp <= -140) {
-        signalStrength.wcdma.signalStrength = 0x7FFFFFFF;
-   } else {
-        signalStrength.wcdma.signalStrength = signalStrength.wcdma.rscp - signalStrength.wcdma.ecno + 113;
-   }*/
+	31       -51 dBm or greater
+	
+	*(int32_t *)((long)response + 0xc) = 5; // 20=-73db (tres fort) --- 10=-93db   	
+   */
    
    signalStrength.wcdma.signalStrength = 0x7FFFFFFF;
-    if (signalStrength.wcdma.rscp >= -70) {
+   if (signalStrength.wcdma.rscp >= -70) {
         signalStrength.wcdma.signalStrength = 30;
-    } else if (signalStrength.wcdma.rscp >= -80) {
+   } else if (signalStrength.wcdma.rscp >= -80) {
         signalStrength.wcdma.signalStrength = 20;
-    } else if (signalStrength.wcdma.rscp >= -90) {
+   } else if (signalStrength.wcdma.rscp >= -90) {
         signalStrength.wcdma.signalStrength = 10;
-    } else if (signalStrength.wcdma.rscp >= -110) {
-        signalStrength.lte.signalStrength = 5;
-    }
+   } else if (signalStrength.wcdma.rscp >= -110) {
+        signalStrength.wcdma.signalStrength = 5;
+   }
    *(int32_t *)((long)response + 0xc) = signalStrength.wcdma.signalStrength;
-   
-   
-   // Valid values are (0-31, 99) as defined in TS 27.007 8.5
-   // Ec/No=RSCP−RSSI
-   // RSSI=RSCP-Ec/No
-   //*(int32_t *)((long)response + 0xc) = signalStrength.wcdma.signalStrength;
-   //signalStrength.wcdma.signalStrength = 0x7FFFFFFF;
-   //*(int32_t *)((long)response + 0xc) = 5; // 20=-73db (tres fort) --- 10=-93db
    
 
     /* -------------------------------- CDMA -------------------------------------------------------------------------------*/
@@ -473,60 +463,25 @@ LAB_00172cc8:
     signalStrength.lte.cqi = *(int32_t *)((long)response + 0x40);
     signalStrength.lte.timingAdvance = *(int32_t *)((long)response + 0x44);
     
-    // Fix LTE  - signalStrength Valid values are (0-31, 99) as defined in TS 27.007 8.5 */
-    /* <boolean name="use_only_rsrp_for_lte_signal_bar_bool" value="true" />
-    <carrier_config>
-        <int-array name="lte_rsrp_thresholds_int_array" num="4">
-            <item value="-140" />
-            <item value="-120" />
-            <item value="-113" />
-            <item value="-105" />
-        </int-array>
-    </carrier_config>*/
-        
-    if (signalStrength.lte.rsrp >= -97) {
-        signalStrength.lte.signalStrength = 63;
-    } else if (signalStrength.lte.rsrp >= -105) {
-        signalStrength.lte.signalStrength = 10;
-    } else if (signalStrength.lte.rsrp >= -113) {
-        signalStrength.lte.signalStrength = 5;
-    } else if (signalStrength.lte.rsrp >= -125) {
-        signalStrength.lte.signalStrength = 3;
-    } else if (signalStrength.lte.rsrp >= -44) {  // Invalid
-        signalStrength.lte.signalStrength = 0x7FFFFFFF;
-    }
-    //*(int32_t *)((long)response + 0x30) = signalStrength.lte.signalStrength;
-
    /* -------------------------------- TD-SCDMA --------------------------------------------------------------------*/   
    signalStrength.tdscdma.signalStrength = *(int32_t *)((long)response + 0x48); // signalStrength=rssi (not use)
    signalStrength.tdscdma.bitErrorRate = *(int32_t *)((long)response + 0x4c);
    signalStrength.tdscdma.rscp = *(int32_t *)((long)response + 0x50);
 
-    /*  Fix TD-SCDMA - rscp Range : -25 to -120
-            <item value="-115" />
-            <item value="-105" />
-            <item value="-95" />
-            <item value="-85" />
-            */
-            
-    if (signalStrength.tdscdma.rscp >= -49) {
+   signalStrength.tdscdma.signalStrength = 0x7FFFFFFF;
+   if (signalStrength.tdscdma.rscp >= -70) {
         signalStrength.tdscdma.signalStrength = 30;
-    } else if (signalStrength.tdscdma.rscp >= -85) {
+   } else if (signalStrength.tdscdma.rscp >= -80) {
         signalStrength.tdscdma.signalStrength = 20;
-    } else if (signalStrength.tdscdma.rscp >= -95) {
+   } else if (signalStrength.tdscdma.rscp >= -90) {
         signalStrength.tdscdma.signalStrength = 10;
-    } else if (signalStrength.tdscdma.rscp >= -105) {
+   } else if (signalStrength.tdscdma.rscp >= -110) {
         signalStrength.tdscdma.signalStrength = 5;
-    } else if (signalStrength.tdscdma.rscp >= -115) {
-        signalStrength.tdscdma.signalStrength = 3;        
-    } else if (signalStrength.tdscdma.rscp >= -24) {
-        signalStrength.tdscdma.signalStrength = 0x7FFFFFFF;
-    }
-    *(int32_t *)((long)response + 0x48) = signalStrength.tdscdma.signalStrength;
-    //*(int32_t *)((long)response + 0x48) = -97;
+   }
+   *(int32_t *)((long)response + 0x48) = signalStrength.tdscdma.signalStrength;
 
 
-       
+
    RLOGD("RIL SignalStrength GSM signalStrength %d, bitErrorRate %d, timingAdvance %d", signalStrength.gsm.signalStrength,
    signalStrength.gsm.bitErrorRate,
    signalStrength.gsm.timingAdvance);
@@ -558,10 +513,6 @@ LAB_00172cc8:
    signalStrength.wcdma.bitErrorRate,
    signalStrength.wcdma.rscp,
    signalStrength.wcdma.ecno);
-
-   dump_hash_auth((unsigned char *)response);
-   dump_hash_auth((unsigned char *)response+0x20);
-   dump_hash_auth((unsigned char *)response+0x40);
    
    return responseLen;
 }
@@ -615,9 +566,6 @@ extern "C" void RIL_onRequestComplete(RIL_Token t, RIL_Errno e, void* response,
             case RIL_REQUEST_SIGNAL_STRENGTH:    // 19
                 ALOGD("%s: RIL request RIL_REQUEST_SIGNAL_STRENGTH", __func__); // convertRilSignalStrengthToHal_1_4 : responseLen 104
                 responselen = convertRilSignalStrengthToHal_1_4(response, responselen);
-               dump_hash_auth((unsigned char *)response);
-		dump_hash_auth((unsigned char *)response+0x20);
-		dump_hash_auth((unsigned char *)response+0x40);
                 break;
         }
     }
@@ -666,9 +614,6 @@ extern "C" void RIL_onUnsolicitedResponse(int unsolResponse, const void* data, s
         case RIL_UNSOL_SIGNAL_STRENGTH:             //1009 - RIL_UNSOL_SIGNAL_STRENGTH - datalen 104
             ALOGD("%s: RIL_UNSOL_SIGNAL_STRENGTH - datalen %lu", __func__, (unsigned long)datalen);
             datalen = convertRilSignalStrengthToHal_1_4(data, datalen);
-		dump_hash_auth((unsigned char *)data);
-		dump_hash_auth((unsigned char *)data+0x20);
-		dump_hash_auth((unsigned char *)data+0x40);
             break;
         case RIL_UNSOL_RESPONSE_SIM_STATUS_CHANGED: //1019 - RIL_UNSOL_RESPONSE_SIM_STATUS_CHANGED
             ALOGD("%s: RIL_UNSOL_SIGNAL_STRENGTH - datalen %lu", __func__, (unsigned long)datalen);
