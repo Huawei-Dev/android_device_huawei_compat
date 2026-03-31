@@ -21,3 +21,13 @@ int perfRelease(unsigned long hdl) {
     LOG(INFO) << __func__ << ": hdl: " << hdl;
     return 0;
 }
+
+int perfEvent(uint32_t dur,
+              [[maybe_unused]] const std::string& pkgName,
+              [[maybe_unused]] const std::vector<uint32_t>& eventList) {
+    LOG(INFO) << __func__
+              << ": dur: " << dur
+              << ", pkgName: " << pkgName
+              << ", eventList size: " << eventList.size();
+    return 0;
+}
