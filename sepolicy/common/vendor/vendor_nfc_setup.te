@@ -12,10 +12,10 @@ allow vendor_nfc_setup vendor_file:dir search;
 allow vendor_nfc_setup vendor_configs_file:dir search;
 allow vendor_nfc_setup vendor_configs_file:file r_file_perms;
 
-allow vendor_nfc_setup vendor_file:file { create open getattr setattr read write };
-allow vendor_nfc_setup vendor_file:dir { search write add_name };
+#allow vendor_nfc_setup vendor_file:file { create open getattr setattr read write };
+#allow vendor_nfc_setup vendor_file:dir { search write add_name };
 
 allow vendor_nfc_setup self:capability sys_admin;
 allow vendor_nfc_setup self:filesystem mount;
 
-allow vendor_nfc_setup vendor_file:file mounton;
+#allow vendor_nfc_setup vendor_file:file mounton;
