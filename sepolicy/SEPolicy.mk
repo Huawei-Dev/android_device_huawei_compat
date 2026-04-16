@@ -10,6 +10,11 @@ SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS += \
 BOARD_VENDOR_SEPOLICY_DIRS += \
     $(SEPOLICY_PATH)/common/vendor
 
+# kirin710
+ifneq ($(filter kirin710,$(TARGET_BOARD_PLATFORM)),)
+include device/huawei/compat/sepolicy/kirin710/sepolicy.mk
+endif
+
 # kirin970
 ifneq ($(filter kirin970,$(TARGET_BOARD_PLATFORM)),)
 include device/huawei/compat/sepolicy/kirin970/sepolicy.mk
