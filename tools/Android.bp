@@ -1,0 +1,9 @@
+cc_binary {
+    name: "dio_test",
+    srcs: ["dio_test.c"],
+    vendor: true,
+    cflags: [
+        "-Wall",
+        "-Werror",
+    ],
+}
