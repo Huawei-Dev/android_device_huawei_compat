@@ -1,7 +1,8 @@
 # file contexts kirin970
 
-/vendor/bin/hw/android.hardware.nfc@1.2-service.sn100x				u:object_r:hal_nfc_default_exec:s0
+/vendor/bin/hw/android.hardware.nfc@1.2-service.sn100x			u:object_r:hal_nfc_default_exec:s0
 /vendor/bin/hw/android.hardware.nfc@1.2-service.st				u:object_r:hal_nfc_default_exec:s0
+/vendor/bin/hw/android.hardware.radio@1.4-service.huawei                     u:object_r:hal_radio_default_exec:s0
 
 /vendor/bin/bms_auth								u:object_r:hal_bms_default_exec:s0
 /vendor/bin/bms_behavior							u:object_r:hal_bms_default_exec:s0

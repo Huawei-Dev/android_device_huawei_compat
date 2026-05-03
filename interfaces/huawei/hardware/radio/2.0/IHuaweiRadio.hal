@@ -1,0 +1,44 @@
+/*
+ * Copyright (C) 2024 The LineageOS Project
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+package vendor.huawei.hardware.radio@2.0;
+
+import IHuaweiRadioIndicationV2;
+import IHuaweiRadioResponseV2;
+
+
+interface IHuaweiRadio {
+    oneway dataConnectionAttach(int32_t i, int32_t i2);
+    oneway dataConnectionDeatch(int32_t i, int32_t i2);
+    oneway getCdmaGsmImsi(int32_t i);
+    oneway getCdmaModeSide(int32_t i);
+    oneway getEccNum(int32_t i);
+    oneway getHwSignalStrength(int32_t serial);
+    oneway getImsSwitch(int32_t i);
+    oneway getPolCapability(int32_t i);
+    oneway getPolList(int32_t i);
+    oneway getSimATR(int32_t i);
+    oneway getSimMatchedFileFromRilCache(int32_t i, int32_t i2);
+    oneway impactAntDevstate(int32_t i, string str, string str2, string str3);
+    oneway notifyCModemStatus(int32_t i, int32_t i2);
+    oneway openChannelWithP2(int32_t i, string str, string str2);
+    oneway resetAllConnections(int32_t i);
+    oneway responseAcknowledgement();
+    oneway restartRILD(int32_t i);
+    oneway sendSimMatchedOperatorInfo(int32_t i, string str, string str2, int32_t i2, string str3);
+    oneway setCdmaModeSide(int32_t i, int32_t i2);
+    oneway setEccNum(int32_t i, string str, string str2);
+    oneway setImsSwitch(int32_t serial, int32_t status);
+    oneway setLongMessage(int32_t i, int32_t i2);
+    oneway setPolEntry(int32_t i, string str, string str2, string str3);
+    oneway setPowerGrade(int32_t i, string str);
+    oneway setResponseFunctionsHuawei(IHuaweiRadioResponseV2 response, IHuaweiRadioIndicationV2 indication);
+    oneway setVoicePreferStatus(int32_t i, int32_t i2);
+    oneway setWifiPowerGrade(int32_t i, string str);
+    oneway supplyDepersonalization(int32_t i, string str, int32_t i2);
+};
+
+

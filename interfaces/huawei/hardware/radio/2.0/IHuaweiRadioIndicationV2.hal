@@ -1,0 +1,14 @@
+/*
+ * Copyright (C) 2024 The LineageOS Project
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+package vendor.huawei.hardware.radio@2.0;
+
+import android.hardware.radio@1.0::RadioIndicationType;
+
+interface IHuaweiRadioIndicationV2 {
+
+       oneway UnsolMsg(int32_t type, int32_t MsgId, RILUnsolMsgPayload payload);
+};
