@@ -1,28 +1,48 @@
-# NFC
-vendor.nxp.nxpnfc::INxpNfc                                          				u:object_r:hal_nfc_hwservice:s0
+# ==========================================
+# Biometrics (Fingerprint & Face)
+# ==========================================
+vendor.huawei.hardware.biometrics.fingerprint::IExtBiometricsFingerprint        u:object_r:hal_fingerprint_hwservice:s0
+vendor.huawei.hardware.biometrics.hwfacerecognize::IBiometricsFaceRecognize     u:object_r:hal_face_hwservice:s0
+vendor.huawei.hardware.biometrics.hwsecurefacerecognize::ISecureBiometricsFaceRecognize u:object_r:hal_face_hwservice:s0
 
-# Huawei
-vendor.huawei.hardware.biometrics.fingerprint::IExtBiometricsFingerprint    			u:object_r:hal_fingerprint_hwservice:s0
-vendor.huawei.hardware.biometrics.hwfacerecognize::IBiometricsFaceRecognize 			u:object_r:hal_face_hwservice:s0
-vendor.huawei.hardware.biometrics.hwsecurefacerecognize::ISecureBiometricsFaceRecognize 	u:object_r:hal_face_hwservice:s0
-vendor.huawei.hardware.fm::IFmControl                                       			u:object_r:hal_fm_hwservice:s0
-vendor.huawei.hardware.camera.cfgsvr::IHwCamCfgSvr                          			u:object_r:hal_camera_hwservice:s0
-vendor.huawei.hardware.camera.factory::ICameraFactory                           		u:object_r:hal_camera_hwservice:s0
-vendor.huawei.hardware.camera.camResource::IHwCameraResourceService             		u:object_r:hal_camera_hwservice:s0
-vendor.huawei.hardware.gnss::IHWGnss                                        			u:object_r:hal_gnss_hwservice:s0
-vendor.huawei.hardware.graphics.displayeffect::IEffect                          		u:object_r:hal_graphics_composer_hwservice:s0
-vendor.huawei.hardware.graphics.displayeffect::IDisplayEffectClient             		u:object_r:hal_graphics_composer_hwservice:s0
-vendor.huawei.hardware.graphics.gpucommon::IGpuCommon                           		u:object_r:hal_graphics_composer_hwservice:s0
-vendor.huawei.hardware.graphics.mediacomm::IMediaComm                       			u:object_r:hal_graphics_composer_hwservice:s0
-vendor.huawei.hardware.hisupl::ISuplclienttoserverInterface                 			u:object_r:hal_hisupl_hwservice:s0
-vendor.huawei.hardware.hisiradio::IHisiRadio                                    		u:object_r:hal_telephony_hwservice:s0
-vendor.huawei.hardware.hwfactoryinterface::IHwFactoryInterface                  		u:object_r:hal_hwfactoryinterface_hwservice:s0
-vendor.huawei.hardware.libteec::ILibteecGlobal                              			u:object_r:hal_libteec_hwservice:s0
-vendor.huawei.hardware.perfgenius::IPerfGenius                                  		u:object_r:hal_perfgenius_hwservice:s0
-vendor.huawei.hardware.radio::IRadio                                            		u:object_r:hal_telephony_hwservice:s0
-vendor.huawei.hardware.radio.ims::IRadioIms                                     		u:object_r:hal_telephony_hwservice:s0
-vendor.huawei.hardware.radio.chr::IRadioChr                                     		u:object_r:hal_telephony_hwservice:s0
-vendor.huawei.hardware.radio.deprecated::IOemHook                               		u:object_r:hal_telephony_hwservice:s0
-vendor.huawei.hardware.tp::ITouchscreen                                     			u:object_r:hal_lineage_touch_hwservice:s0
-vendor.huawei.hardware.wifi::IHwWifiExt                                         		u:object_r:hal_wifi_hwservice:s0
-vendor.huawei.hardware.wifi.supplicant::ISupplicant 						u:object_r:hal_wifi_supplicant_hwservice:s0
+# ==========================================
+# Camera
+# ==========================================
+vendor.huawei.hardware.camera.camResource::IHwCameraResourceService             u:object_r:hal_camera_hwservice:s0
+vendor.huawei.hardware.camera.cfgsvr::IHwCamCfgSvr                              u:object_r:hal_camera_hwservice:s0
+vendor.huawei.hardware.camera.factory::ICameraFactory                           u:object_r:hal_camera_hwservice:s0
+
+# ==========================================
+# Graphics & Display
+# ==========================================
+vendor.huawei.hardware.hwdisplay::IDisplay                                      u:object_r:hal_huawei_display_hwservice:s0
+vendor.huawei.hardware.graphics.displayeffect::IEffect                          u:object_r:hal_graphics_composer_hwservice:s0
+vendor.huawei.hardware.graphics.displayeffect::IDisplayEffectClient             u:object_r:hal_graphics_composer_hwservice:s0
+vendor.huawei.hardware.graphics.gpucommon::IGpuCommon                           u:object_r:hal_graphics_composer_hwservice:s0
+vendor.huawei.hardware.graphics.mediacomm::IMediaComm                           u:object_r:hal_graphics_composer_hwservice:s0
+vendor.huawei.hardware.tp::ITouchscreen                                         u:object_r:hal_lineage_touch_hwservice:s0
+vendor.huawei.hardware.hwdisplay.displayengine::IDisplayEngineWrapper           u:object_r:hal_huawei_displayengine_hwservice:s0
+
+vendor.huawei.hardware.sensors::ISensors                                        u:object_r:hal_sensors_hwservice:s0
+
+# ==========================================
+# Connectivity (Radio, Wi-Fi, NFC, GNSS)
+# ==========================================
+vendor.huawei.hardware.gnss::IHWGnss                                            u:object_r:hal_gnss_hwservice:s0
+vendor.huawei.hardware.hisiradio::IHisiRadio                                    u:object_r:hal_telephony_hwservice:s0
+vendor.huawei.hardware.radio::IRadio                                            u:object_r:hal_telephony_hwservice:s0
+vendor.huawei.hardware.radio.ims::IRadioIms                                     u:object_r:hal_telephony_hwservice:s0
+vendor.huawei.hardware.radio.chr::IRadioChr                                     u:object_r:hal_telephony_hwservice:s0
+vendor.huawei.hardware.radio.deprecated::IOemHook                               u:object_r:hal_telephony_hwservice:s0
+vendor.huawei.hardware.wifi::IHwWifiExt                                         u:object_r:hal_wifi_hwservice:s0
+vendor.huawei.hardware.wifi.supplicant::ISupplicant                             u:object_r:hal_wifi_supplicant_hwservice:s0
+vendor.huawei.hardware.hisupl::ISuplclienttoserverInterface                     u:object_r:hal_hisupl_hwservice:s0
+vendor.nxp.nxpnfc::INxpNfc                                                      u:object_r:hal_nfc_hwservice:s0
+
+# ==========================================
+# Misc Systems (TEE, FM, Perf)
+# ==========================================
+vendor.huawei.hardware.libteec::ILibteecGlobal                                  u:object_r:hal_libteec_hwservice:s0
+vendor.huawei.hardware.fm::IFmControl                                           u:object_r:hal_fm_hwservice:s0
+vendor.huawei.hardware.hwfactoryinterface::IHwFactoryInterface                  u:object_r:hal_hwfactoryinterface_hwservice:s0
+vendor.huawei.hardware.perfgenius::IPerfGenius                                  u:object_r:hal_perfgenius_hwservice:s0
