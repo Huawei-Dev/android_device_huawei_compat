@@ -1,274 +1,194 @@
-# file contexts
+###########################################
+# EXECUTABLES (HAL Services & Daemons)
+###########################################
 
-/vendor/bin/hw/android.hardware.drm@1.1-service.clearkey			u:object_r:hal_drm_default_exec:s0
-/vendor/bin/hw/android.hardware.drm@1.2-service.clearkey			u:object_r:hal_drm_default_exec:s0
-/vendor/bin/hw/android.hardware.drm@1.1-service.widevine			u:object_r:hal_drm_widevine_exec:s0
-/vendor/bin/hw/android.hardware.drm@1.2-service.widevine			u:object_r:hal_drm_widevine_exec:s0
-/vendor/bin/hw/android.hardware.ir-service.huawei				u:object_r:hal_ir_default_exec:s0
-/vendor/bin/hw/android.hardware.light-service.huawei				u:object_r:hal_light_default_exec:s0
-/vendor/bin/hw/android.hardware.power-service.pixel-libperfmgr			u:object_r:hal_power_default_exec:s0
-/vendor/bin/hw/android.hardware.secure_element@1.0-service.hisi			u:object_r:hal_secure_element_default_exec:s0
-/vendor/bin/hw/vendor.huawei.hardware.biometrics.fingerprint@2.1-service	u:object_r:hal_fingerprint_default_exec:s0
-/vendor/bin/hw/vendor.huawei.hardware.biometrics.fingerprint@2.2-service	u:object_r:hal_fingerprint_default_exec:s0
-/vendor/bin/hw/vendor.huawei.hardware.dolby.dms@1.0-service			u:object_r:hal_audio_default_exec:s0
-/vendor/bin/hw/vendor.huawei.hardware.fm@1.0-service				u:object_r:hal_fm_default_exec:s0
-/vendor/bin/hw/vendor.huawei.hardware.gnss@1.0-service				u:object_r:hal_gnss_default_exec:s0
-/vendor/bin/hw/vendor.huawei.hardware.gnss@1.2-service				u:object_r:hal_gnss_default_exec:s0
-/vendor/bin/hw/vendor.huawei.hardware.graphics.mediacomm@2.0-service		u:object_r:hal_graphics_composer_default_exec:s0
-/vendor/bin/hw/vendor.huawei.hardware.graphics.mediacomm@2.1-service		u:object_r:hal_graphics_composer_default_exec:s0
-/vendor/bin/hw/vendor.huawei.hardware.hisupl@1.0-service			u:object_r:hal_hisupl_default_exec:s0
-/vendor/bin/hw/vendor.huawei.hardware.libteec@2.0-service			u:object_r:hal_libteec_default_exec:s0
-/vendor/bin/hw/vendor.huawei.hardware.libteec@3.0-service			u:object_r:hal_libteec_default_exec:s0
-/vendor/bin/hw/vendor.huawei.hardware.nfc@1.0-service				u:object_r:hal_nfc_default_exec:s0
-/vendor/bin/hw/vendor.lineage.livedisplay@2.1-service.huawei			u:object_r:hal_lineage_livedisplay_sysfs_exec:s0
-/vendor/bin/hw/vendor.lineage.touch@1.0-service.huawei				u:object_r:hal_lineage_touch_default_exec:s0
+# Standard HIDL/AIDL Services
+/vendor/bin/hw/android\.hardware\.drm@1\.[12]-service\.widevine            u:object_r:hal_drm_default_exec:s0
+/vendor/bin/hw/android\.hardware\.drm@1\.[12]-service\.clearkey            u:object_r:hal_drm_default_exec:s0
+/vendor/bin/hw/android\.hardware\.ir-service\.huawei                       u:object_r:hal_ir_default_exec:s0
+/vendor/bin/hw/android\.hardware\.light-service\.huawei                    u:object_r:hal_light_default_exec:s0
+/vendor/bin/hw/android\.hardware\.power-service\.pixel-libperfmgr          u:object_r:hal_power_default_exec:s0
+/vendor/bin/hw/android\.hardware\.secure_element@1\.0-service\.hisi        u:object_r:hal_secure_element_default_exec:s0
+/vendor/bin/hw/vendor\.huawei\.hardware\.biometrics\.fingerprint@2\.[12]-service u:object_r:hal_fingerprint_default_exec:s0
+/vendor/bin/hw/vendor\.huawei\.hardware\.dolby\.dms@1\.0-service           u:object_r:hal_audio_default_exec:s0
+/vendor/bin/hw/vendor\.huawei\.hardware\.fm@1\.0-service                   u:object_r:hal_fm_default_exec:s0
+/vendor/bin/hw/vendor\.huawei\.hardware\.gnss@1\.[02]-service              u:object_r:hal_gnss_default_exec:s0
+/vendor/bin/hw/vendor\.huawei\.hardware\.graphics\.displayeffect@1\.2-service u:object_r:hal_graphics_composer_default_exec:s0
+/vendor/bin/hw/vendor\.huawei\.hardware\.graphics\.mediacomm@2\.[01]-service u:object_r:hal_graphics_composer_default_exec:s0
+/vendor/bin/hw/vendor\.huawei\.hardware\.hisupl@1\.0-service               u:object_r:hal_hisupl_default_exec:s0
+/vendor/bin/hw/vendor\.huawei\.hardware\.hwdisplay@1\.0-service            u:object_r:hal_display_hwdisplay_exec:s0
+/vendor/bin/hw/vendor\.huawei\.hardware\.libteec@[23]\.0-service           u:object_r:hal_libteec_default_exec:s0
+/vendor/bin/hw/vendor\.huawei\.hardware\.nfc@1\.0-service                  u:object_r:hal_nfc_default_exec:s0
+/vendor/bin/hw/vendor\.huawei\.hardware\.tp@1\.0-service                   u:object_r:hal_touchscreen_default_exec:s0
+/vendor/bin/hw/vendor\.lineage\.livedisplay@2\.1-service\.huawei           u:object_r:hal_lineage_livedisplay_sysfs_exec:s0
+/vendor/bin/hw/vendor\.lineage\.touch@1\.0-service\.huawei                 u:object_r:hal_lineage_touch_default_exec:s0
+/(vendor|system/vendor)/bin/hw/vendor\.huawei\.hardware\.hwdisplay\.displayengine@1\.2-service u:object_r:hal_display_hwdisplay_exec:s0
 
-/vendor/bin/bsoh								u:object_r:hal_bsoh_default_exec:s0
-/vendor/bin/CameraDaemon							u:object_r:hal_camera_default_exec:s0
-/vendor/bin/fusion_daemon							u:object_r:hal_gnss_default_exec:s0
-/vendor/bin/gnss_control_hisi							u:object_r:hi110x_daemon_exec:s0
-/vendor/bin/gnss_engine_hisi							u:object_r:hi110x_daemon_exec:s0
-/vendor/bin/gnss_supl20clientd_hisi						u:object_r:hi110x_daemon_exec:s0
-/vendor/bin/gnss_watchlssd_thirdparty						u:object_r:hi110x_daemon_exec:s0
-/vendor/bin/gpsdaemon								u:object_r:hal_gnss_default_exec:s0
-/vendor/bin/hisecd								u:object_r:oeminfo_nvm_exec:s0
-/vendor/bin/hisi_init                           				u:object_r:vendor_hisi_init_exec:s0
-/vendor/bin/hostapd_hisi							u:object_r:hal_wifi_hostapd_default_exec:s0
-/vendor/bin/oam_hisi								u:object_r:hi110x_daemon_exec:s0
-/vendor/bin/octty								u:object_r:hi110x_daemon_exec:s0
-/vendor/bin/oeminfo_nvm_server							u:object_r:oeminfo_nvm_exec:s0
-/vendor/bin/start_connectivity_hisi						u:object_r:hi110x_daemon_exec:s0
-/vendor/bin/teecd								u:object_r:tee_exec:s0
-/vendor/bin/wpa_supplicant_hisi							u:object_r:hal_wifi_supplicant_default_exec:s0
+# Custom Huawei/Vendor Daemons
+/vendor/bin/bsoh                                                           u:object_r:hal_bsoh_default_exec:s0
+/vendor/bin/CameraDaemon                                                   u:object_r:hal_camera_default_exec:s0
+/vendor/bin/fusion_daemon                                                  u:object_r:hal_gnss_default_exec:s0
+/vendor/bin/gnss_(control|engine|supl20clientd)_hisi                       u:object_r:hi110x_daemon_exec:s0
+/vendor/bin/gnss_watchlssd_thirdparty                                      u:object_r:hi110x_daemon_exec:s0
+/vendor/bin/gpsdaemon                                                      u:object_r:hal_gnss_default_exec:s0
+/vendor/bin/hisecd                                                         u:object_r:oeminfo_nvm_exec:s0
+/vendor/bin/hisi_init                                                      u:object_r:vendor_hisi_init_exec:s0
+/vendor/bin/hostapd_hisi                                                   u:object_r:hal_wifi_hostapd_default_exec:s0
+/vendor/bin/oam_hisi                                                       u:object_r:hi110x_daemon_exec:s0
+/vendor/bin/octty                                                          u:object_r:hi110x_daemon_exec:s0
+/vendor/bin/oeminfo_nvm_server                                             u:object_r:oeminfo_nvm_exec:s0
+/vendor/bin/start_connectivity_hisi                                        u:object_r:hi110x_daemon_exec:s0
+/vendor/bin/teecd                                                          u:object_r:tee_exec:s0
+/vendor/bin/wpa_supplicant_hisi                                            u:object_r:hal_wifi_supplicant_default_exec:s0
+/vendor/bin/aptouch_daemon                                                 u:object_r:hisi_touchscreen_exec:s0
 
-# Touchscreen
-/vendor/bin/hw/vendor.huawei.hardware.tp@1.0-service     			u:object_r:hal_touchscreen_default_exec:s0
-/vendor/bin/aptouch_daemon                               			u:object_r:hisi_touchscreen_exec:s0
+###########################################
+# DEVICE NODES (/dev)
+###########################################
 
-# Mount points
-/3rdmodem(/.*)?                                 				u:object_r:modem_file:s0
-/3rdmodemnvm(/.*)?                              				u:object_r:modem_file:s0
-/3rdmodemnvmbkp(/.*)?                           				u:object_r:modem_file:s0
-/modem_log(/.*)?                                				u:object_r:modem_file:s0
-/mnt/modem/mnvm2:0(/.*)?                        				u:object_r:modem_file:s0
-/mnt/modem/modem_secure(/.*)?                   				u:object_r:modem_file:s0
-/mnvm2:0(/.*)?									u:object_r:modem_file:s0
-/vendor/modem/modem_fw(/.*)?                    				u:object_r:modem_vendor_file:s0
-/sec_storage(/.*)?                              				u:object_r:teecd_data_file:s0
-/splash2(/.*)?                                  				u:object_r:splash_data_file:s0
-/mnt/hisee_fs(/.*)?								u:object_r:hisee_data_file:s0
-/preavs(/.*)?                                                                u:object_r:vendor_file:s0
+# Fingerprint hardware
+/dev/fingerprint                                                           u:object_r:fps_device:s0
+/dev/fingerprinthub                                                        u:object_r:fpshub_device:s0
 
-# /dev
-/dev/acpuddr_link_governor_level						u:object_r:governor_device:s0
-/dev/appvcom.*									u:object_r:radio_device:s0
-/dev/appvcom2									u:object_r:modem_device:s0
-/dev/appvcom8									u:object_r:modem_device:s0
-/dev/appvcom17									u:object_r:modem_device:s0
-/dev/appvcom18									u:object_r:modem_device:s0
-/dev/appvcom34									u:object_r:modem_device:s0
-/dev/ar										u:object_r:ar_device:s0
-/dev/block/mmcblk1								u:object_r:sd_device:s0
-/dev/block/mmcblk1p1								u:object_r:sd_device:s0
-/dev/block/mmcblk0rpmb								u:object_r:teecd_blkdev:s0
-/dev/chrKmsgPlat								u:object_r:hi110x_dev:s0
-/dev/cpu_dma_latency								u:object_r:device_latency:s0
-/dev/efuse									u:object_r:efuse_blkdev:s0
-/dev/fingerprint								u:object_r:fps_device:s0
-/dev/fingerprinthub								u:object_r:fpshub_device:s0
-/dev/flp									u:object_r:flp_device:s0
-/dev/hi_vdec									u:object_r:video_device:s0
-/dev/hi_venc									u:object_r:video_device:s0
-/dev/hicam_buf									u:object_r:cambuf_device:s0
-/dev/hifi_misc									u:object_r:audio_device:s0
-/dev/hisi-ivp									u:object_r:ivp_device:s0
-/dev/hisi_perf_ctrl								u:object_r:hisi_perf_ctrl_device:s0
-/dev/hwbfgdbg									u:object_r:hi110x_dev:s0
-/dev/hwbfgexcp									u:object_r:hi110x_dev:s0
-/dev/hwbt									u:object_r:hi110x_dev:s0
-/dev/hwfm									u:object_r:hi110x_dev:s0
-/dev/hwgnss									u:object_r:hi110x_dev:s0
-/dev/hwwifiexcp									u:object_r:hi110x_dev:s0
-/dev/ivp-ipc									u:object_r:ivp_device:s0
-/dev/madapt									u:object_r:madapt_device:s0
-/dev/mali0									u:object_r:gpu_device:s0
-/dev/media[0-9]{1,2}$								u:object_r:video_device:s0
-/dev/memory_latency								u:object_r:gpu_device:s0
-/dev/memory_throughput								u:object_r:gpu_device:s0
-/dev/memory_throughput_up_threshold						u:object_r:hwsched_device:s0
-/dev/motionhub									u:object_r:sensors_device:s0
-/dev/nmctrlvcom									u:object_r:nmctrlvcom_device:s0
-/dev/oinv(/.*)?									u:object_r:oeminfo_nvm_device:s0
-/dev/sensorhub									u:object_r:sensors_device:s0
+# Secure World & Trusted Execution (TEE)
+/dev/tc_ns_client                                                          u:object_r:teecd_device:s0
+/dev/oinv(/.*)?                                                            u:object_r:oeminfo_nvm_device:s0
+/dev/efuse                                                                 u:object_r:efuse_blkdev:s0
+/dev/dsm                                                                   u:object_r:dsm_device:s0
 
-/dev/socket/hisecd								u:object_r:hisecd_socket:s0
-/dev/socket/oeminfo_nvm								u:object_r:oeminfo_nvm_socket:s0
+# Multimedia (Video, Camera, Audio)
+/dev/hi_vdec                                                               u:object_r:video_device:s0
+/dev/hi_venc                                                               u:object_r:video_device:s0
+/dev/hicam_buf                                                             u:object_r:cambuf_device:s0
+/dev/(.*)hifi_misc                                                         u:object_r:audio_device:s0
+/dev/media[0-9]{1,2}$                                                      u:object_r:video_device:s0
+/dev/v4l-subdev.* u:object_r:video_device:s0
+/dev/v4l-subdev[0-9]                                                       u:object_r:camera_device:s0
+/dev/video[0-9]{1,2}$                                                      u:object_r:camera_device:s0
+/dev/deviceboxID                                                           u:object_r:extra_audio_device:s0
 
-/dev/stune/schedtune.boost							u:object_r:eas_dev:s0
-/dev/stune/background/schedtune.boost						u:object_r:eas_dev:s0
-/dev/stune/boost/schedtune.boost						u:object_r:eas_dev:s0
-/dev/stune/foreground/schedtune.boost						u:object_r:eas_dev:s0
-/dev/stune/key-background/schedtune.boost					u:object_r:eas_dev:s0
-/dev/stune/system-background/schedtune.boost					u:object_r:eas_dev:s0
-/dev/stune/top-app/schedtune.boost						u:object_r:eas_dev:s0
-/dev/stune/vip/schedtune.boost							u:object_r:eas_dev:s0
+# Graphics & Media
+/dev/mali0                                                                 u:object_r:gpu_device:s0
+/dev/hwlog_exception                                                       u:object_r:hwlog_device:s0
 
-/dev/tc_ns_client                 						u:object_r:teecd_device:s0
-/dev/ts_aft_get_info								u:object_r:imw_device:s0
-/dev/ts_aft_set_info								u:object_r:imw_device:s0
-/dev/ttyAMA1									u:object_r:radio_device:s0
-/dev/ttyAMA3									u:object_r:gps_device:s0
-/dev/ttyAMA4									u:object_r:hci_attach_dev:s0
-/dev/ttyHwGS1									u:object_r:atcmdserver_blkdev:s0
-/dev/ttySPI.*									u:object_r:radio_device:s0
-/dev/v4l-subdev.*								u:object_r:video_device:s0
-/dev/v4l-subdev[0-9]								u:object_r:camera_device:s0
-/dev/video[0-9]{1,2}$								u:object_r:camera_device:s0
-/dev/voice_proxy_vowifi							u:object_r:vowifi_proxy_device:s0
-/dev/wlanfty_status								u:object_r:wlanfty_device:s0
-/dev/wlanfty_ver								u:object_r:wlanfty_device:s0
+# Huawei Performance / Camera
+/dev/memory_latency                                                        u:object_r:device_latency:s0
+/dev/memory_throughput                                                     u:object_r:device_latency:s0
 
-# data
-/data/hisi_logs								u:object_r:vendor_log_file:s0
+# Audio & Sensors
+/dev/smartpakit                                                            u:object_r:smartpakit_device:s0
+/dev/sensorhub                                                             u:object_r:sensors_device:s0
+/dev/chrKmsgPlat                                                           u:object_r:kmsg_device:s0
 
-# /data/vendor/*
-/data/vendor/bluedroid(/.*)?							u:object_r:vendor_bt_data_file:s0
-/data/vendor/camera(/.*)?							u:object_r:vendor_camera_data_file:s0
-/data/vendor/cust_conn(/.*)?							u:object_r:hi110x_data_file:s0
-/data/vendor/gnss(/.*)?							u:object_r:hi110x_data_file:s0
-/data/vendor/log(/.*)?								u:object_r:vendor_log_file:s0
-/data/vendor/mediadrm(/.*)?							u:object_r:mediadrm_vendor_data_file:s0
-/data/vendor/nfc(/.*)?								u:object_r:nfc_vendor_data_file:s0
-/data/vendor/perflog								u:object_r:vendor_log_file:s0
-/data/vendor/wifi(/.*)?							u:object_r:wifi_vendor_data_file:s0
-/data/vendor/wifi/wpa/sockets(/.*)?						u:object_r:wifi_vendor_wpa_socket:s0
+# Connectivity & Radio
+/dev/appvcom.* u:object_r:radio_device:s0
+/dev/appvcom(2|8|17|18|34)                                                 u:object_r:modem_device:s0
+/dev/hw(bfgdbg|bfgexcp|bt|fm|gnss)                                         u:object_r:hi110x_dev:s0
+/dev/hwwifiexcp                                                            u:object_r:hi110x_dev:s0
+/dev/ttyAMA1                                                               u:object_r:radio_device:s0
+/dev/ttyAMA3                                                               u:object_r:gps_device:s0
+/dev/ttyAMA4                                                               u:object_r:hci_attach_dev:s0
+/dev/ttyHwGS1                                                              u:object_r:atcmdserver_blkdev:s0
+/dev/ttySPI.* u:object_r:radio_device:s0
+
+# Input & Misc
+/dev/mouse0                                                                u:object_r:extra_input_device:s0
+/dev/input/event.* u:object_r:extra_input_device:s0
+/dev/nve0                                                                  u:object_r:nve_device:s0
+
+
+###########################################
+# DATA DIRECTORIES (/data)
+###########################################
+/data/hisi_logs(/.*)?                                                      u:object_r:huawei_data_file:s0
+/data/share(/.*)?                                                          u:object_r:huawei_data_file:s0
+/data/vendor/camera(/.*)?                                                  u:object_r:vendor_camera_data_file:s0
+/data/vendor/gnss(/.*)?                                                    u:object_r:hi110x_data_file:s0
+/data/vendor/wifi(/.*)?                                                    u:object_r:wifi_vendor_data_file:s0
+/data/vendor/hisi_file(/.*)?                                               u:object_r:vendor_hisi_data_file:s0
+
+###########################################
+# BLOCK DEVICES & MOUNT POINTS
+###########################################
+
+/dev/block/by-name/(cust|odm|preas|product|system|vendor)                  u:object_r:system_block_device:s0
+/dev/block/by-name/kernel                                                  u:object_r:boot_block_device:s0
+/dev/block/by-name/misc                                                    u:object_r:misc_block_device:s0
+/dev/block/by-name/nvme                                                    u:object_r:nve_block_device:s0
+/dev/block/by-name/(patch|version)                                         u:object_r:metadata_block_device:s0
+/dev/block/by-name/oeminfo                                                 u:object_r:oeminfo_nvm_block_device:s0
+# Label the partitions explicitly so fsck and init can access them
+/dev/block/mmcblk0p8                                                       u:object_r:nve_block_device:s0
+/dev/block/mmcblk0p10                                                      u:object_r:teecd_block_device:s0
+/dev/block/mmcblk0p17                                                      u:object_r:cache_block_device:s0
+/dev/block/mmcblk0p20                                                      u:object_r:misc_block_device:s0
+/dev/block/mmcblk0p39                                                      u:object_r:boot_block_device:s0
+/dev/block/mmcblk0p66                                                      u:object_r:userdata_block_device:s0
+# Block devices (mmc)
+/dev/block/platform/hi_mci\.0/by-name/cust                                 u:object_r:system_block_device:s0
+/dev/block/platform/hi_mci\.0/by-name/odm                                  u:object_r:system_block_device:s0
+/dev/block/platform/hi_mci\.0/by-name/preas                                u:object_r:system_block_device:s0
+/dev/block/platform/hi_mci\.0/by-name/product                              u:object_r:system_block_device:s0
+/dev/block/platform/hi_mci\.0/by-name/system                               u:object_r:system_block_device:s0
+/dev/block/platform/hi_mci\.0/by-name/vendor                               u:object_r:system_block_device:s0
+/dev/block/platform/hi_mci\.0/by-name/patch                                u:object_r:metadata_block_device:s0
+# Block devices (ufs)
+/dev/block/platform/ff3c0000\.ufs/by-name/cust                             u:object_r:system_block_device:s0
+/dev/block/platform/ff3c0000\.ufs/by-name/odm                              u:object_r:system_block_device:s0
+/dev/block/platform/ff3c0000\.ufs/by-name/preas                            u:object_r:system_block_device:s0
+/dev/block/platform/ff3c0000\.ufs/by-name/product                          u:object_r:system_block_device:s0
+/dev/block/platform/ff3c0000\.ufs/by-name/system                           u:object_r:system_block_device:s0
+/dev/block/platform/ff3c0000\.ufs/by-name/vendor                           u:object_r:system_block_device:s0
+/dev/block/platform/ff3c0000\.ufs/by-name/patch                            u:object_r:metadata_block_device:s0
+
+# log devices
+/dev/hwlog_jank                                                            u:object_r:hwlog_device:s0
+/dev/hwlog_dubai                                                           u:object_r:hwlog_device:s0
+/3rdmodem(/.*)?                                                            u:object_r:modem_file:s0
+/3rdmodem(nvm|nvmbkp)?(/.*)?                                               u:object_r:modem_file:s0       
+/modem_log(/.*)?                                                           u:object_r:modem_file:s0
+/mnt/modem/mnvm2:0(/.*)?                                                   u:object_r:modem_file:s0
+/mnt/modem/modem_secure(/.*)?                   			   u:object_r:modem_file:s0
+/mnvm2:0(/.*)?								   u:object_r:modem_file:s0
+/splash2(/.*)?                                  			   u:object_r:splash_data_file:s0
+
+# Tee
+/sec_storage(/.*)?                                                         u:object_r:teecd_data_file:s0
 
 # data for tee
-/data/vendor_ce/[0-9]+/sec_storage_data(/.*)?                                u:object_r:teecd_data_file_vendor:s0
-/data/vendor/sec_storage_data                                                u:object_r:teecd_data_file_vendor:s0
-/data/vendor/sec_storage_data(/.*)?                                          u:object_r:teecd_data_file_vendor:s0
-/data/vendor/sec_storage_data_users                                          u:object_r:teecd_data_file_vendor:s0
-/data/vendor/sec_storage_data_users(/.*)?                                    u:object_r:teecd_data_file_vendor:s0
+/data/vendor_ce/[0-9]+/sec_storage_data(/.*)?                              u:object_r:teecd_data_file_vendor:s0
+/data/vendor/sec_storage_data                                              u:object_r:teecd_data_file_vendor:s0
+/data/vendor/sec_storage_data(/.*)?                                        u:object_r:teecd_data_file_vendor:s0
+/data/vendor/sec_storage_data_users                                        u:object_r:teecd_data_file_vendor:s0
+/data/vendor/sec_storage_data_users(/.*)?                                  u:object_r:teecd_data_file_vendor:s0
 
-/data/sec_storage_data                                                       u:object_r:teecd_data_file_system:s0
-/data/sec_storage_data(/.*)?                    				u:object_r:teecd_data_file_system:s0
-/data/sec_storage_data_users                                                 u:object_r:teecd_data_file_system:s0
-/data/sec_storage_data_users(/.*)?              				u:object_r:teecd_data_file_system:s0
+/data/sec_storage_data                                                     u:object_r:teecd_data_file:s0
+/data/sec_storage_data(/.*)?                    			   u:object_r:teecd_data_file:s0
+/data/sec_storage_data_users                                               u:object_r:teecd_data_file:s0
+/data/sec_storage_data_users(/.*)?              			   u:object_r:teecd_data_file:s0
 
-# Block devices
-/dev/block/by-name/cust          						u:object_r:system_block_device:s0
-/dev/block/by-name/odm           						u:object_r:system_block_device:s0
-/dev/block/by-name/preas         						u:object_r:system_block_device:s0
-/dev/block/by-name/preavs         						u:object_r:system_block_device:s0
-/dev/block/by-name/product       						u:object_r:system_block_device:s0
-/dev/block/by-name/system        						u:object_r:system_block_device:s0
-/dev/block/by-name/vendor        						u:object_r:system_block_device:s0
-/dev/block/by-name/version       						u:object_r:metadata_block_device:s0
-/dev/block/by-name/patch         						u:object_r:metadata_block_device:s0
+###########################################
+# LIBRARIES (Same Process HALs)
+###########################################
 
-/dev/block/by-name/cache							u:object_r:cache_block_device:s0
-/dev/block/by-name/nvme							u:object_r:nve_block_device:s0
-/dev/block/by-name/splash2							u:object_r:splash_block_device:s0
-/dev/block/by-name/modem_secure						u:object_r:modem_secure_device:s0
-/dev/block/by-name/modemnvm_cust						u:object_r:modemnvm_block_device:s0
-/dev/block/by-name/modemnvm_system						u:object_r:modemnvm_block_device:s0
-/dev/block/by-name/modemnvm_backup						u:object_r:modemnvm_block_device:s0
-/dev/block/by-name/modemnvm_update						u:object_r:modemnvm_block_device:s0
-/dev/block/by-name/modemnvm_factory						u:object_r:modemnvm_block_device:s0
-/dev/block/by-name/misc							u:object_r:misc_block_device:s0
-/dev/block/by-name/oeminfo							u:object_r:oeminfo_nvm_block_device:s0
-/dev/block/by-name/userdata							u:object_r:userdata_block_device:s0
-/dev/block/by-name/kernel                  					u:object_r:boot_block_device:s0
-/dev/block/by-name/recovery_ramdisk            				u:object_r:recovery_block_device:s0
-/dev/block/zram0                                				u:object_r:swap_block_device:s0
-/dev/block/mmcblk0                                              		u:object_r:root_block_device:s0
+/vendor/lib(64)?/libteec(_vendor)?\.so                                     u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/vendor\.huawei\.hardware\.libteec@.*\.so                  u:object_r:same_process_hal_file:s0
 
-# same_process_hal
-/vendor/lib(64)?/libipu.so							u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libcnml.so							u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libmmpa.so							u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libcnrt.so							u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libteec.so							u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libc_sec.so							u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libhiion.so							u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libhilog.so							u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libclcore.bc							u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libOpenCL.so							u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libstdc.*.so							u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/hw/gralloc\..*							u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libmalicore.bc							u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libhiai_hcs.so							u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libtf_cngen.so							u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libipu_smmu.so							u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libhiai_hidl.so						u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libai_client.so						u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libc.*_shared.so						u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libRSDriverArm.so						u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libhiai_server.so						u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libteec_vendor.so						u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libhiai_client.so						u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libc_secshared.so						u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libhiai_common.so						u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libcaffe_cngen.so						u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libgnustl_shared.so						u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libiawareperf_client.so					u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libprotobuf-cpp-lite.so					u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libprotobuf-cpp-full.so					u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libmediacomm@2.0-client.so					u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/libgpucommon_vendor_client.so					u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/vendor.huawei.hardware.ai@1.0.so				u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/vendor.huawei.hardware.ai@1.1.so				u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/vendor.huawei.hardware.ai@1.2.so				u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/vendor.huawei.hardware.ai@2.0.so				u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/vendor.huawei.hardware.libteec@2.0.so				u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/vendor.huawei.hardware.libteec@1.0.so				u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/vendor.huawei.hardware.libteec@3.0.so				u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/hw/vendor.huawei.hardware.libteec@1.0-impl.so			u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/hw/vendor.huawei.hardware.libteec@2.0-impl.so			u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/hw/vendor.huawei.hardware.libteec@3.0-impl.so			u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/vendor.huawei.hardware.graphics.mediacomm@2.0.so		u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/vendor.huawei.hardware.graphics.mediacomm@2.1.so		u:object_r:same_process_hal_file:s0
-/vendor/lib(64)?/vendor.huawei.hardware.graphics.gpucommon@1.0.so		u:object_r:same_process_hal_file:s0
+# 1. The SP-HAL Hack for UI libraries
+/vendor/lib(64)?/libc_secshared\.so                                        u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/hw/gralloc\.hi3660\.so                                    u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/hw/gralloc\.kirin710\.so                                  u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/hw/gralloc\.kirin970\.so                                  u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libhiion\.so                                              u:object_r:same_process_hal_file:s0
 
-# odm / firmware
-/hw_odm(/.*)?									u:object_r:ncfg_nv_file:s0
-/hw_odm/ncfg(/.*)?								u:object_r:ncfg_nv_file:s0
-/odm/hw_odm/[^/]+/ncfg(/.*)?							u:object_r:ncfg_nv_file:s0
-/odm/etc/ncfg_def(/.*)?								u:object_r:ncfg_nv_file:s0
-/odm/etc/audio/volume/volume_point.xml						u:object_r:audio_data_file:s0
+# 2. The System Spoof Hack for wificond firmware
+/vendor/firmware(/.*)?                                                     u:object_r:same_process_hal_file:s0
 
-/vendor/firmware/.*_emer_fw.bin							u:object_r:hwemerffu_fw_file:s0
-/vendor/firmware/Total.wdk							u:object_r:hi110x_vendor_file:s0
-/vendor/firmware/isp_bw.elf							u:object_r:isp_vendor_file:s0
-/vendor/firmware/isp_fw.elf							u:object_r:isp_vendor_file:s0
-/vendor/firmware/hi1103(/.*)?							u:object_r:hi110x_vendor_file:s0
-/vendor/firmware/isp_dts.img							u:object_r:isp_vendor_file:s0
-/vendor/firmware/hi1102a(/.*)?							u:object_r:hi110x_vendor_file:s0
-/vendor/firmware/cr4_asic.bin							u:object_r:hi110x_vendor_file:s0
-/vendor/firmware/hifi_6403.img							u:object_r:hifi_vendor_file:s0
-/vendor/firmware/cr4_regmem.bin							u:object_r:hi110x_vendor_file:s0
-/vendor/firmware/CPU_RAM_WBS.bin						u:object_r:hi110x_vendor_file:s0
-/vendor/firmware/cr4_regmem_u1.bin						u:object_r:hi110x_vendor_file:s0
-/vendor/firmware/CPU_RAM_SCHED.bin						u:object_r:hi110x_vendor_file:s0
-/vendor/firmware/wifi_cfg							u:object_r:hi110x_vendor_file:s0
-/vendor/firmware/bfgx_cfg							u:object_r:hi110x_vendor_file:s0
-/vendor/firmware/ram_reg_test_cfg						u:object_r:hi110x_vendor_file:s0
-/vendor/firmware/bfgx_and_wifi_cfg						u:object_r:hi110x_vendor_file:s0
+# Firmware files
+/vendor/firmware/ts(/.*)?                                                  u:object_r:vendor_firmware_file:s0
+/system/vendor/firmware/ts(/.*)?                                           u:object_r:vendor_firmware_file:s0
+/odm/etc/firmware/ts/                                                      u:object_r:vendor_firmware_file:s0
 
-# Block devices (ufs)
-/dev/block/platform/ff3c0000\.ufs/by-name/cust          			u:object_r:system_block_device:s0
-/dev/block/platform/ff3c0000\.ufs/by-name/odm           			u:object_r:system_block_device:s0
-/dev/block/platform/ff3c0000\.ufs/by-name/preas         			u:object_r:system_block_device:s0
-/dev/block/platform/ff3c0000\.ufs/by-name/product       			u:object_r:system_block_device:s0
-/dev/block/platform/ff3c0000\.ufs/by-name/system        			u:object_r:system_block_device:s0
-/dev/block/platform/ff3c0000\.ufs/by-name/vendor        			u:object_r:system_block_device:s0
-/dev/block/platform/ff3c0000\.ufs/by-name/patch         			u:object_r:metadata_block_device:s0
-
-# Block devices (mmc)
-/dev/block/platform/hi_mci\.0/by-name/cust          				u:object_r:system_block_device:s0
-/dev/block/platform/hi_mci\.0/by-name/odm           				u:object_r:system_block_device:s0
-/dev/block/platform/hi_mci\.0/by-name/preas         				u:object_r:system_block_device:s0
-/dev/block/platform/hi_mci\.0/by-name/product       				u:object_r:system_block_device:s0
-/dev/block/platform/hi_mci\.0/by-name/system        				u:object_r:system_block_device:s0
-/dev/block/platform/hi_mci\.0/by-name/vendor        				u:object_r:system_block_device:s0
-/dev/block/platform/hi_mci\.0/by-name/patch         				u:object_r:metadata_block_device:s0
+/sys/devices/platform/hi_mci\.0/mmc_host/mmc0/mmc0:0001/block/mmcblk0/queue/discard_max_bytes u:object_r:sysfs_fs_ext4_features:s0
+/sys/devices/platform/hi_mci\.1/mmc_host/mmc1/mmc1:0001/block/mmcblk1/mmcblk1p1/start    u:object_r:sysfs_mmc_start:s0
+/sys/devices/platform/hisi_vibrator@fff34000/leds/vibrator(/.*)?            u:object_r:sysfs_vibrator:s0
