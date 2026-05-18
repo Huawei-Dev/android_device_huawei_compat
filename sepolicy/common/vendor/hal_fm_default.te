@@ -1,3 +1,6 @@
+# ==========================================
+# hal_fm_default.te (FM Radio)
+# ==========================================
 type hal_fm_default, domain;
 hal_server_domain(hal_fm_default, hal_fm)
 
@@ -7,5 +10,4 @@ init_daemon_domain(hal_fm_default)
 # HwBinder IPC from client to server
 binder_call(hal_fm_client, hal_fm_server)
 binder_call(hal_fm_server, hal_fm_client)
-
 hal_attribute_hwservice(hal_fm, hal_fm_hwservice)
