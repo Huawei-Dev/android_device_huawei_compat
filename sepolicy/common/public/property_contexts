@@ -1,13 +1,21 @@
-# Fastbootd
-ro.fastbootd.available         		u:object_r:exported_default_prop:s0
-
+init.svc.console                        u:object_r:init_service_status_prop:s0
 is_hisi_connectivity_chip		u:object_r:vendor_default_prop:s0
-persist.kirin.media.usbvoice.enable	u:object_r:vendor_default_prop:s0
 persist.kirin.media.lowlatency.enable	u:object_r:vendor_default_prop:s0
+persist.kirin.media.usbvoice.enable	u:object_r:vendor_default_prop:s0
 persist.radio.dualltecap		u:object_r:radio_prop:s0
+persist.radio.noril                     u:object_r:radio_prop:s0
 ro.connectivity.chiptype		u:object_r:vendor_default_prop:s0
 ro.connectivity.sub_chiptype		u:object_r:vendor_default_prop:s0
+# Fastbootd
+ro.fastbootd.available         		u:object_r:exported_default_prop:s0
 ro.netflix.bsp_rev			u:object_r:vendor_default_prop:s0
 ro.recovery.ui.blank_unblank_on_init	u:object_r:vendor_default_prop:s0
+ro.runmode                              u:object_r:default_prop:s0
+ro.vendor.hisecd.refreshed              u:object_r:vendor_default_prop:s0
+service.bootanim.exit                   u:object_r:bootanim_system_prop:s0
+sys.conn_macs.ready                     u:object_r:system_prop:s0
 sys.conn_macs.ready			u:object_r:vendor_default_prop:s0
+sys.factory_pwr_ctrl                    u:object_r:system_prop:s0
 sys.rilprops_ready			u:object_r:vendor_default_prop:s0
+vendor.sensor.otp.checksum              u:object_r:vendor_default_prop:s0
+vendor.setup_hi110x_modules             u:object_r:vendor_default_prop:s0
