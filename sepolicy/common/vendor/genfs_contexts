@@ -1,199 +1,67 @@
-# genfscon
+###########################################
+# POWER & THERMAL (Battery, Charging, GPU)
+###########################################
 
-genfscon sysfs /bus/platform/drivers/huawei,camcfgdev/guard_thermal						u:object_r:sysfs_pg:s0
+# GPU Frequency and Power Policies (Mali GPU)
+genfscon sysfs /devices/platform/e82c0000.mali/power_policy                u:object_r:sysfs_pg:s0
+genfscon sysfs /devices/platform/e82c0000.mali/devfreq/gpufreq/max_freq    u:object_r:sysfs_pg:s0
+genfscon sysfs /devices/platform/e82c0000.mali/devfreq/gpufreq/min_freq    u:object_r:sysfs_pg:s0
+genfscon sysfs /devices/platform/e82c0000.mali/devfreq/gpufreq/cur_freq    u:object_r:sysfs_pg:s0
+genfscon sysfs /devices/platform/e8970000.mali/devfreq/gpufreq/max_freq    u:object_r:sysfs_pg:s0
 
-genfscon sysfs /devices/platform/0.hisee									u:object_r:sysfs_hisee:s0
-genfscon sysfs /devices/platform/balong_power/state								u:object_r:modem_state_file:s0
-genfscon sysfs /devices/platform/coul_core									u:object_r:sysfs_power:s0
+# Battery and Fuel Gauge (Coulomb Counter)
+genfscon sysfs /devices/platform/balong_power/state                        u:object_r:modem_state_file:s0
+genfscon sysfs /devices/platform/battery/power_supply/Battery/capacity     u:object_r:sysfs_batteryinfo:s0
+genfscon sysfs /devices/platform/coul_core                                 u:object_r:sysfs_power:s0
+genfscon sysfs /devices/virtual/ina231/ina231_0/ina231_value               u:object_r:sysfs_framebuffer:s0
+genfscon sysfs /devices/virtual/ina231/ina231_1/ina231_value               u:object_r:sysfs_framebuffer:s0
 
-genfscon sysfs /devices/platform/e82c0000.mali/power_policy							u:object_r:sysfs_pg:s0
-genfscon sysfs /devices/platform/e82c0000.mali/devfreq/gpufreq/max_freq						u:object_r:sysfs_pg:s0
-genfscon sysfs /devices/platform/e82c0000.mali/devfreq/gpufreq/min_freq						u:object_r:sysfs_pg:s0
-genfscon sysfs /devices/platform/e82c0000.mali/devfreq/gpufreq/cur_freq						u:object_r:sysfs_pg:s0
-genfscon sysfs /devices/platform/e8970000.mali/devfreq/gpufreq/max_freq						u:object_r:sysfs_pg:s0
-genfscon sysfs /devices/platform/e8970000.mali/devfreq/gpufreq/min_freq						u:object_r:sysfs_pg:s0
-genfscon sysfs /devices/platform/e82c0000.mali/devfreq/gpufreq/available_frequencies				u:object_r:sysfs_pg:s0
-genfscon sysfs /devices/platform/e8970000.mali/devfreq/gpufreq/available_frequencies				u:object_r:sysfs_pg:s0
-genfscon sysfs/devices/platform/e82c0000.mali/devfreq/gpufreq/gpu_scene_aware/scene				u:object_r:sysfs_pg:s0
-genfscon sysfs /devices/platform/e82c0000.mali/devfreq/gpufreq/gpu_scene_aware/scene_para			u:object_r:sysfs_pg:s0
+# Thermal / Guard Monitoring
+genfscon sysfs /bus/platform/drivers/huawei,camcfgdev/guard_thermal        u:object_r:sysfs_pg:s0
 
-genfscon sysfs /devices/platform/fffc0000.ddr_devfreq/devfreq/ddrfreq/max_freq					u:object_r:sysfs_pg:s0
-genfscon sysfs /devices/platform/fffc0000.ddr_devfreq/devfreq/ddrfreq/min_freq					u:object_r:sysfs_pg:s0
-genfscon sysfs /devices/platform/fffc0000.ddr_devfreq/devfreq/ddrfreq/cur_freq					u:object_r:sysfs_pg:s0
-genfscon sysfs /devices/platform/fffc0000.ddr_devfreq/devfreq/ddrfreq/available_frequencies			u:object_r:sysfs_pg:s0
-genfscon sysfs /devices/platform/fffc0000.ddr_devfreq_up_threshold/devfreq/ddrfreq_up_threshold/max_freq	u:object_r:sysfs_pg:s0
-genfscon sysfs /devices/platform/fffc0000.ddr_devfreq_up_threshold/devfreq/ddrfreq_up_threshold/min_freq	u:object_r:sysfs_pg:s0
+genfscon sysfs /devices/platform/fffc0000.ddr_devfreq/devfreq/ddrfreq      u:object_r:sysfs_devfreq:s0
+genfscon sysfs /devices/virtual/thermal                                    u:object_r:sysfs_thermal:s0
+genfscon sysfs /devices/platform/huawei_touch                              u:object_r:sysfs_touchscreen:s0
 
-genfscon sysfs /devices/platform/hisi_fb.*/leds/lcd_backlight0/brightness					u:object_r:vendor_sysfs_graphics:s0
-genfscon sysfs /devices/platform/hisi_fb.*/leds/lcd_backlight0/max_brightness					u:object_r:vendor_sysfs_graphics:s0
+###########################################
+# DISPLAY & GRAPHICS (LCD Panel)
+###########################################
 
-genfscon sysfs /devices/platform/huawei_charger(/.*)?								u:object_r:sysfs_power:s0
+# LCD Modes (Color temperature, Voltage, Effect Engines)
+genfscon sysfs /devices/virtual/graphics/fb0/lcd_support_mode              u:object_r:sysfs_pg:s0
+genfscon sysfs /devices/virtual/graphics/fb0/lcd_comform_mode              u:object_r:sysfs_pg:s0
+genfscon sysfs /devices/virtual/graphics/fb0/effect_available              u:object_r:sysfs_pg:s0
+genfscon sysfs /devices/virtual/graphics/fb0/lcd_voltage_enable            u:object_r:sysfs_pg:s0
+genfscon sysfs /devices/virtual/graphics/fb0/lcd_color_temperature         u:object_r:sysfs_pg:s0
+genfscon sysfs /devices/virtual/graphics/fb0/led_rg_lcd_color_temperature  u:object_r:sysfs_pg:s0
 
-genfscon sysfs /devices/platform/huawei,camcfgdev.*/video4linux/v4l-subdev[0-9]/torch/brightness		u:object_r:vendor_sysfs_graphics:s0
-genfscon sysfs /devices/platform/huawei,camcfgdev.*/video4linux/v4l-subdev[0-9]/torch/max_brightness		u:object_r:vendor_sysfs_graphics:s0
-genfscon sysfs /devices/platform/huawei,camcfgdev.*/video4linux/v4l-subdev[0-9]/torch_front/brightness		u:object_r:vendor_sysfs_graphics:s0
-genfscon sysfs /devices/platform/huawei,camcfgdev.*/video4linux/v4l-subdev[0-9]/torch_front/max_brightness	u:object_r:vendor_sysfs_graphics:s0
+###########################################
+# CORE KERNEL & SCHEDULER
+###########################################
 
-genfscon sysfs /devices/platform/huawei_sensor/power								u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/i2c_rw								u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/ps_info								u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/ois_ctrl								u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/i2c_rw16								u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/modalias								u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/sar_data								u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/als_info								u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/acc_info								u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/mag_info								u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/ps_enable							u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/os_enable							u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/key_debug							u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/gyro_info							u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/acc_enable							u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/als_enable							u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/sbl_enable							u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/mag_enable							u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/rvs_enable							u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/pdr_enable							u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/gyro_enable							u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/os_setdelay							u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/gras_enable							u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/ps_setdelay							u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/sensor_test							u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_touch/touch_switch							u:object_r:sysfs_touchscreen:s0
-genfscon sysfs /devices/platform/huawei_sensor/sbl_setdelay							u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/als_setdelay							u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/mag_setdelay							u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/acc_selfTest							u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/mag_selfTest							u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/acc_setdelay							u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/lines_enable							u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/ps_calibrate							u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/rvs_setdelay							u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/pdr_setdelay							u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/iom3_sr_test							u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/ps_read_data							u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/als_read_data							u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/airpress_info							u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/acc_read_data							u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/read_airpress							u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/gyro_setdelay							u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/als_calibrate							u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/acc_calibrate							u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/gras_setdelay							u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/mag_read_data							u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/iom3_recovery							u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/sensor_detect							u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/set_data_type							u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/gyro_selfTest							u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_touch/touch_oem_info							u:object_r:sysfs_touchscreen:s0
-genfscon sysfs /devices/platform/huawei_sensor/gyro_read_data							u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/handpress_info							u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/hifi_supported							u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/gyro_calibrate							u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/lines_setdelay							u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/dt_motion_stup							u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/dt_sensor_stup							u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/iom3_sr_status							u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/ps_switch_mode							u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/driver_override							u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/cap_prox_enable							u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/airpress_enable							u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/ps_support_mode							u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_tp_color/tp_color_info							u:object_r:vendor_sysfs_graphics:s0
-genfscon sysfs /devices/platform/huawei_sensor/handpress_enable							u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/sensor_list_info							u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/acc_set_calidata							u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/read_temperature							u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/sbl_setbacklight							u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/dt_ps_sensor_stup						u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/cap_prox_setdelay						u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/airpress_setdelay						u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/dt_stop_auto_data						u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/gyro_set_calidata						u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/dump_sensor_status						u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/cap_prox_freespace						u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/dt_als_sensor_stup						u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/cap_prox_calibrate						u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/airpress_read_data						u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/handpress_setdelay						u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/orientation_enable						u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/handpress_selfTest						u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/dt_hall_sensor_stup						u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/dt_stepcounter_stup						u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/handpress_read_data						u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/dt_stop_auto_motion						u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/magn_bracket_enable						u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/handpress_calibrate						u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/dt_stop_ps_auto_data						u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/orientation_setdelay						u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/dt_stop_als_auto_data						u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/gps_4774_i2c_selfTest						u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/gsensor_gather_enable						u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/airpress_set_calidata						u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_sensor/magn_bracket_setdelay						u:object_r:sysfs_sensors:s0
-genfscon sysfs /devices/platform/huawei_touch/anti_false_touch_param						u:object_r:sysfs_touchscreen:s0
-genfscon sysfs /devices/platform/huawei_touch/touch_glove        						u:object_r:sysfs_touchscreen:s0
+# Energy Aware Scheduling (EAS) and Watchdogs
+genfscon sysfs /kernel/eas/boost                                           u:object_r:sysfs_eas:s0
+genfscon sysfs /kernel/init_watchdog                                       u:object_r:sysfs_init_watchdog:s0
 
-genfscon sysfs /devices/platform/hisilicon-hisi-led-pmic-spmi-pmic_led/leds/red/trigger				u:object_r:sysfs_leds:s0
-genfscon sysfs /devices/platform/hisilicon-hisi-led-pmic-spmi-pmic_led/leds/red/delay_on			u:object_r:sysfs_leds:s0
-genfscon sysfs /devices/platform/huawei_key_backlight/leds/keyboard-backlight/brightness			u:object_r:sysfs_leds:s0
-genfscon sysfs /devices/platform/hisilicon-hisi-led-pmic-spmi-pmic_led/leds/blue/trigger			u:object_r:sysfs_leds:s0
-genfscon sysfs /devices/platform/hisilicon-hisi-led-pmic-spmi-pmic_led/leds/blue/delay_on			u:object_r:sysfs_leds:s0
-genfscon sysfs /devices/platform/hisilicon-hisi-led-pmic-spmi-pmic_led/leds/red/delay_off			u:object_r:sysfs_leds:s0
-genfscon sysfs /devices/platform/hisilicon-hisi-led-pmic-spmi-pmic_led/leds/green/trigger			u:object_r:sysfs_leds:s0
-genfscon sysfs /devices/platform/hisilicon-hisi-led-pmic-spmi-pmic_led/leds/red/brightness			u:object_r:sysfs_leds:s0
-genfscon sysfs /devices/platform/hisilicon-hisi-led-pmic-spmi-pmic_led/leds/blue/delay_off			u:object_r:sysfs_leds:s0
-genfscon sysfs /devices/platform/huawei_key_backlight/leds/keyboard-backlight/keybacklight			u:object_r:sysfs_leds:s0
-genfscon sysfs /devices/platform/hisilicon-hisi-led-pmic-spmi-pmic_led/leds/green/delay_on			u:object_r:sysfs_leds:s0
-genfscon sysfs /devices/platform/hisilicon-hisi-led-pmic-spmi-pmic_led/leds/blue/brightness			u:object_r:sysfs_leds:s0
-genfscon sysfs /devices/platform/hisilicon-hisi-led-pmic-spmi-pmic_led/leds/green/delay_off			u:object_r:sysfs_leds:s0
-genfscon sysfs /devices/platform/hisilicon-hisi-led-pmic-spmi-pmic_led/leds/green/brightness			u:object_r:sysfs_leds:s0
-genfscon sysfs /devices/platform/hisilicon-hisi-led-pmic-spmi-pmic_led/leds/red/max_brightness			u:object_r:sysfs_leds:s0
-genfscon sysfs /devices/platform/hisilicon-hisi-led-pmic-spmi-pmic_led/leds/blue/max_brightness			u:object_r:sysfs_leds:s0
-genfscon sysfs /devices/platform/hisilicon-hisi-led-pmic-spmi-pmic_led/leds/green/max_brightness		u:object_r:sysfs_leds:s0
+# CPU Governor & Frequency (Generic)
+genfscon sysfs /devices/system/cpu/cpufreq/policy0                         u:object_r:sysfs_cpufreq:s0
+genfscon sysfs /devices/system/cpu/cpufreq/policy4                         u:object_r:sysfs_cpufreq:s0
 
-genfscon sysfs /devices/platform/shell_(.*)									u:object_r:sysfs_pg:s0
-genfscon sysfs /devices/system/cpu/cpufreq/boost								u:object_r:sysfs_cpufreq:s0
+###########################################
+# SENSORS & SPECIAL HARDWARE
+###########################################
 
-genfscon sysfs /devices/virtual/hw_usb(/.*)?									u:object_r:sysfs_power:s0
-genfscon sysfs /devices/virtual/hw_typec(/.*)?									u:object_r:sysfs_power:s0
-genfscon sysfs /devices/virtual/hw_power(/.*)?									u:object_r:sysfs_power:s0
-genfscon sysfs /devices/virtual/thermal/.* 									u:object_r:sysfs_thermal:s0
+# HiSEE (Huawei Secure Element / Integrated SIM)
+genfscon sysfs /devices/platform/0.hisee                                   u:object_r:sysfs_hisee:s0
 
-genfscon sysfs /devices/virtual/hw_thermal/temp(.*)								u:object_r:sysfs_pg:s0
+# SensorHub Debugging and Dumps
+genfscon sysfs /class/sensors/sensorhub_dbg                                u:object_r:sysfs_sensors:s0
+genfscon sysfs /class/sensors/sensorhub_dump                               u:object_r:sysfs_sensors:s0
 
-genfscon sysfs /devices/virtual/thermal										u:object_r:sysfs_thermal:s0
+# Touchscreen Firmware/Status
+genfscon sysfs /devices/platform/huawei_ts_kit/debug_info                  u:object_r:sysfs_touchscreen:s0
 
-genfscon sysfs /devices/virtual/graphics/fb0/amoled_acl								u:object_r:sysfs_framebuffer:s0
-genfscon sysfs /devices/virtual/graphics/fb0/panel_info								u:object_r:sysfs_pg:s0
-genfscon sysfs /devices/virtual/graphics/fb0/lcd_ce_mode							u:object_r:sysfs_pg:s0
-genfscon sysfs /devices/virtual/graphics/fb0/lcd_se_mode							u:object_r:sysfs_pg:s0
-genfscon sysfs /devices/virtual/graphics/fb0/lcd_checksum							u:object_r:sysfs_framebuffer:s0
-genfscon sysfs /devices/virtual/graphics/fb0/lcd_cabc_mode							u:object_r:sysfs_pg:s0
-genfscon sysfs /devices/virtual/graphics/fb0/lcd_ldo_check							u:object_r:sysfs_pg:s0
-genfscon sysfs /devices/virtual/ina231/ina231_0/ina231_set							u:object_r:sysfs_framebuffer:s0
-genfscon sysfs /devices/virtual/ina231/ina231_1/ina231_set							u:object_r:sysfs_framebuffer:s0
-genfscon sysfs /devices/virtual/graphics/fb0/amoled_vr_mode							u:object_r:sysfs_framebuffer:s0
-genfscon sysfs /devices/virtual/graphics/fb0/lcd_fps_scence							u:object_r:sysfs_framebuffer:s0
-genfscon sysfs /devices/virtual/graphics/fb0/lcd_test_config							u:object_r:sysfs_framebuffer:s0
-genfscon sysfs /devices/virtual/graphics/fb0/effect_hdr_mode							u:object_r:sysfs_pg:s0
-genfscon sysfs /devices/virtual/graphics/fb0/effect_metadata							u:object_r:sysfs_pg:s0
-genfscon sysfs /devices/virtual/graphics/fb0/lcd_cinema_mode							u:object_r:sysfs_pg:s0
-genfscon sysfs /devices/virtual/graphics/fb0/lcd_func_switch							u:object_r:sysfs_pg:s0
-genfscon sysfs /devices/virtual/ina231/ina231_0/ina231_value							u:object_r:sysfs_framebuffer:s0
-genfscon sysfs /devices/virtual/ina231/ina231_1/ina231_debug							u:object_r:sysfs_framebuffer:s0
-genfscon sysfs /devices/virtual/ina231/ina231_0/ina231_debug							u:object_r:sysfs_framebuffer:s0
-genfscon sysfs /devices/virtual/ina231/ina231_1/ina231_value							u:object_r:sysfs_framebuffer:s0
-genfscon sysfs /devices/virtual/graphics/fb0/lcd_support_mode							u:object_r:sysfs_pg:s0
-genfscon sysfs /devices/virtual/graphics/fb0/lcd_comform_mode							u:object_r:sysfs_pg:s0
-genfscon sysfs /devices/virtual/graphics/fb0/effect_available							u:object_r:sysfs_pg:s0
-genfscon sysfs /devices/virtual/graphics/fb0/lcd_voltage_enable							u:object_r:sysfs_pg:s0
-genfscon sysfs /devices/virtual/graphics/fb0/lcd_color_temperature						u:object_r:sysfs_pg:s0
-genfscon sysfs /devices/virtual/graphics/fb0/led_rg_lcd_color_temperature					u:object_r:sysfs_pg:s0
+genfscon proc /log-usertype                                                u:object_r:proc_log_usertype:s0
 
-genfscon sysfs /class/sensors/sensorhub_dbg									u:object_r:sysfs_sensors:s0
-genfscon sysfs /class/sensors/sensorhub_dump									u:object_r:sysfs_sensors:s0
+genfscon sysfs /firmware/devicetree/base/hisi,product_name                 u:object_r:sysfs_hisi_product:s0
 
-genfscon sysfs /kernel/eas/boost										u:object_r:sysfs_eas:s0
-genfscon sysfs /kernel/init_watchdog										u:object_r:sysfs_init_watchdog:s0
-genfscon sysfs /kernel/hungtask/vm_heart									u:object_r:sysfs_hungtask_vmheart:s0
