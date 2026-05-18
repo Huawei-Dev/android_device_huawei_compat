@@ -1,0 +1,60 @@
+dontaudit { appdomain -isolated_app } sysfs_cpufreq:dir search;
+dontaudit { appdomain -isolated_app } sysfs_cpufreq:file r_file_perms;
+
+dontaudit gmscore_app vendor_default_prop:file r_file_perms;
+dontaudit gmscore_app vendor_hw_camera_prop:file r_file_perms;
+
+dontaudit hal_camera_default default_prop:file r_file_perms;
+dontaudit hal_audio_default default_prop:file r_file_perms;
+dontaudit hal_audio_default config_prop:file r_file_perms;
+dontaudit hal_wifi_supplicant_default default_prop:file r_file_perms;
+dontaudit hal_wifi_supplicant_default config_prop:file r_file_perms;
+
+dontaudit isolated_app content_capture_service:service_manager find;
+dontaudit isolated_app sysfs_cpufreq:dir search;
+dontaudit isolated_app sysfs_cpufreq:file r_file_perms;
+
+dontaudit network_stack fs_bpf:file { read write getattr map open ioctl lock append watch watch_reads };
+
+dontaudit oeminfo_nvm system_file:file { read getattr open };
+dontaudit oeminfo_nvm default_prop:file r_file_perms;
+
+dontaudit priv_app device:dir open;
+
+dontaudit untrusted_app proc:file r_file_perms;
+dontaudit untrusted_app proc_tty_drivers:file r_file_perms;
+dontaudit untrusted_app qemu_hw_prop:file r_file_perms;
+dontaudit untrusted_app qemu_sf_lcd_density_prop:file r_file_perms;
+dontaudit untrusted_app serialno_prop:file r_file_perms;
+dontaudit untrusted_app untrusted_app:netlink_route_socket bind;
+dontaudit untrusted_app vendor_default_prop:file r_file_perms;
+
+# Core Framework
+dontaudit audioserver vendor_default_prop:file r_file_perms;
+dontaudit bootanim system_data_file:dir search;
+dontaudit cameraserver vendor_default_prop:file r_file_perms;
+dontaudit surfaceflinger vendor_default_prop:file r_file_perms;
+dontaudit system_app vendor_wifi_prop:file r_file_perms;
+dontaudit vold teecd_data_file:dir { read open ioctl };
+
+# Vendor Init
+dontaudit vendor_init system_prop:file read;
+dontaudit vendor_init system_prop:property_service set;
+dontaudit vendor_init init_service_status_prop:property_service set;
+
+dontaudit vendor_hisi_init self:capability { dac_override dac_read_search };
+
+# Vendor HALs
+dontaudit hal_fingerprint_default default_prop:file r_file_perms;
+dontaudit hal_camera_default config_prop:file r_file_perms;
+dontaudit hi110x_daemon default_prop:file r_file_perms;
+
+# Kernel
+dontaudit kernel sysfs_batteryinfo:file { read open };
+
+dontaudit kernel device:chr_file { create setattr };
+dontaudit kernel device:blk_file { create setattr };
+
+dontaudit kernel huawei_data_file:dir { search getattr };
+dontaudit kernel huawei_data_file:file { getattr read append open setattr };
+
