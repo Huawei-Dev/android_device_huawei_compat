@@ -1,0 +1,29 @@
+# ==========================================
+# Connectivity & Radio Properties
+# ==========================================
+is_hisi_connectivity_chip        u:object_r:vendor_wifi_prop:s0
+persist.radio.noril              u:object_r:vendor_radio_prop:s0
+persist.sys.huawei.debug.on      u:object_r:vendor_wifi_prop:s0
+ro.config.connectivity_chip      u:object_r:vendor_wifi_prop:s0
+ro.config.hw_wifi_chip           u:object_r:vendor_wifi_prop:s0
+ro.connectivity.chiptype         u:object_r:vendor_wifi_prop:s0
+ro.connectivity.sub_chiptype     u:object_r:vendor_wifi_prop:s0
+sys.conn_macs.ready              u:object_r:vendor_wifi_prop:s0
+vendor.setup_hi110x_modules      u:object_r:vendor_wifi_prop:s0
+
+# ==========================================
+# Multimedia (Audio, Camera, Power)
+# ==========================================
+ro.camera.                       u:object_r:vendor_hw_camera_prop:s0
+ro.config.hw_audio_              u:object_r:vendor_hw_audio_prop:s0
+vendor.camera.                   u:object_r:vendor_camera_prop:s0
+vendor.powerhal.rendering        u:object_r:vendor_power_prop:s0
+vendor.sensor.otp.checksum       u:object_r:vendor_hw_camera_prop:s0
+persist.kirin.media.             u:object_r:vendor_kirin_media_prop:s0
+
+# ==========================================
+# Biometrics & System State
+# ==========================================
+ro.build.type                    u:object_r:vendor_fingerprint_prop:s0
+ro.runmode                       u:object_r:vendor_fingerprint_prop:s0
+ro.vendor.hisecd.refreshed       u:object_r:vendor_oem_prop:s0

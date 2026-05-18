@@ -1,0 +1,12 @@
+# ==========================================
+# Vendor Property Definitions
+# ==========================================
+vendor_public_prop(vendor_camera_prop)
+vendor_public_prop(vendor_hw_audio_prop)
+vendor_public_prop(vendor_hw_camera_prop)
+vendor_public_prop(vendor_fingerprint_prop)
+vendor_public_prop(vendor_oem_prop)
+vendor_public_prop(vendor_radio_prop)
+vendor_public_prop(vendor_power_prop)
+vendor_public_prop(vendor_wifi_prop)
+vendor_public_prop(vendor_kirin_media_prop)
