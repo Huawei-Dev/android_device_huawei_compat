@@ -1,3 +1,6 @@
+# ==========================================
+# hal_libteec_default.te (Huawei TEE Client)
+# ==========================================
 type hal_libteec_default, domain;
 hal_server_domain(hal_libteec_default, hal_libteec)
 
@@ -7,5 +10,4 @@ init_daemon_domain(hal_libteec_default)
 # HwBinder IPC from client to server
 binder_call(hal_libteec_client, hal_libteec_server)
 binder_call(hal_libteec_server, hal_libteec_client)
-
 hal_attribute_hwservice(hal_libteec, hal_libteec_hwservice)
