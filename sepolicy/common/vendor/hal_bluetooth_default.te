@@ -1,0 +1,21 @@
+# ==========================================
+# hal_bluetooth_default.te - BT Hardware
+# ==========================================
+
+# Allow Bluetooth to access connectivity/hi110x vendor data
+allow hal_bluetooth_default hi110x_data_file:dir search;
+allow hal_bluetooth_default hi110x_data_file:lnk_file read;
+
+# Access to the physical UART/Bluetooth device node
+allow hal_bluetooth_default hi110x_dev:chr_file { open read write };
+
+# Access to Bluetooth-specific vendor data and configs
+allow hal_bluetooth_default vendor_bt_data_file:dir search;
+allow hal_bluetooth_default vendor_bt_data_file:file { open read };
+
+# Access to shared Wi-Fi/BT co-existence data
+allow hal_bluetooth_default wifi_vendor_data_file:dir search;
+allow hal_bluetooth_default wifi_vendor_data_file:lnk_file read;
+
+allow hal_bluetooth_default vendor_data_file:lnk_file read;
+allow hal_bluetooth_default vendor_data_file:file { read open };
