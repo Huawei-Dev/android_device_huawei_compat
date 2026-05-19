@@ -1,0 +1,71 @@
+# ==========================================
+# Directory and File Management
+# ==========================================
+# Broad permissions to construct vendor data environments
+allow vendor_init {
+  device
+  vendor_camera_data_file
+  input_device
+}:dir { create search getattr open read setattr ioctl write add_name remove_name rmdir relabelfrom };
+
+allow vendor_init {
+  device
+  proc_sched
+  vendor_camera_data_file
+  selinuxfs
+  input_device
+}:file { create getattr open read setattr ioctl write relabelfrom map };
+
+allow vendor_init wifi_vendor_data_file:dir { create getattr setattr search };
+allow vendor_init vendor_share_data_file:dir { create_dir_perms relabelfrom };
+allow vendor_init proc:file write;
+allow vendor_init proc_hung_task:file write;
+
+# ==========================================
+# Hardware Nodes & Block Devices
+# ==========================================
+allow vendor_init nve_block_device:blk_file { open read };
+allow vendor_init connectivity_block_device:blk_file getattr;
+allow vendor_init nve_block_device:chr_file getattr;
+allow vendor_init nve_device:chr_file getattr;
+allow vendor_init device:chr_file getattr;
+allow vendor_init socket_device:sock_file setattr;
+
+# ==========================================
+# Properties
+# ==========================================
+# Set vendor-specific initial boot properties
+set_prop(vendor_init, vendor_camera_prop)
+set_prop(vendor_init, vendor_kirin_media_prop)
+set_prop(vendor_init, vendor_radio_prop)
+set_prop(vendor_init, vendor_fingerprint_prop)
+set_prop(vendor_init, vendor_wifi_prop)
+get_prop(vendor_init, config_prop)
+allow vendor_init bootanim_system_prop:file read;
+
+# Allow vendor_init to read the boot block device
+allow vendor_init boot_block_device:blk_file { read open };
+
+# Allow vendor_init to access tee data directory
+allow vendor_init vendor_data_file:dir { read open setattr ioctl };
+
+# Acknowledge this domain violates Treble data separation
+typeattribute vendor_init data_between_core_and_vendor_violators;
+
+# Grant the permissions
+allow vendor_init huawei_data_file:dir { create_dir_perms setattr ioctl };
+allow vendor_init teecd_data_file:file { getattr read ioctl };
+allow vendor_init teecd_data_file:dir getattr;
+allow vendor_init tmpfs:dir { write add_name create};
+allow vendor_init system_data_file:dir { ioctl open read setattr };
+allow vendor_init splash_data_file:filesystem { getattr };
+allow vendor_init pmsg_device:file { create write open };
+
+allow vendor_init vendor_firmware_file:dir { search };
+allow vendor_init vendor_firmware_file:file { open read };
+
+
+
+
+
+
