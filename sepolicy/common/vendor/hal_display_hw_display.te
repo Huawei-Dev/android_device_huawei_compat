@@ -1,0 +1,17 @@
+# ==========================================
+# hal_display_hw_display.te - Display Engine
+# ==========================================
+type hal_huawei_displayengine_hwservice, hwservice_manager_type;
+
+# Define the binary type (as seen in file_contexts)
+type hal_display_hwdisplay_exec, exec_type, vendor_file_type, file_type;
+
+# Define the process domain
+type hal_display_hwdisplay, domain;
+
+# Transitions: Start the process in its own domain and allow it to act as a HAL server
+init_daemon_domain(hal_display_hwdisplay)
+hal_server_domain(hal_display_hwdisplay, hal_graphics_allocator)
+
+add_hwservice(hal_display_hwdisplay, hal_huawei_display_hwservice)
+add_hwservice(hal_display_hwdisplay, hal_huawei_displayengine_hwservice)
