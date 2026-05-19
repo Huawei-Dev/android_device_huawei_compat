@@ -1,0 +1,5 @@
+# ==========================================
+# hal_nfc_default.te
+# ==========================================
+
+allow hal_nfc_default vendor_data_file:file { read write open getattr };
