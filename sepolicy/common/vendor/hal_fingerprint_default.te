@@ -1,0 +1,38 @@
+# ==========================================
+# Hardware & TrustZone Interfacing
+# ==========================================
+allow hal_fingerprint_default dsm_device:chr_file rw_file_perms;
+allow hal_fingerprint_default fps_device:chr_file { ioctl open read write };
+allow hal_fingerprint_default sysfs:file write;
+
+# Direct communication with the TEE device and daemon
+allow hal_fingerprint_default teecd_device:chr_file { ioctl read write };
+allow hal_fingerprint_default tee:fd use;
+allow hal_fingerprint_default tee:unix_stream_socket connectto;
+
+# ==========================================
+# IPC & Properties
+# ==========================================
+get_prop(hal_fingerprint_default, vendor_fingerprint_prop)
+#allow hal_fingerprint_default hal_power_default:binder call;
+
+# ==========================================
+# Logging
+# ==========================================
+allow hal_fingerprint_default vendor_log_file:dir search;
+allow hal_fingerprint_default vendor_log_file:file { open read };
+
+# Allow fingerprint HAL to write stats to the log directory
+allow hal_fingerprint_default vendor_kernel_log_file:dir { search write add_name };
+allow hal_fingerprint_default vendor_kernel_log_file:file { create open read write };
+
+#allow hal_fingerprint_default hal_power_service:service_manager find;
+binder_call(hal_fingerprint_default, hal_power_default)
+
+# Allow fingerprint to read its temp log file
+allow hal_fingerprint_default vendor_data_file:file { read open };
+
+# Legally grant the fingerprint HAL access to the Power HAL
+#typeattribute hal_fingerprint_default hal_power_client;
+
+hal_client_domain(hal_fingerprint_default, hal_power)
