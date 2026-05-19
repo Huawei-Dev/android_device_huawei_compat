@@ -1,0 +1,16 @@
+# ==========================================
+# Huawei Specific Hardware & Binder Fixes
+# ==========================================
+allow system_server extra_input_device:chr_file { ioctl open read getattr write };
+
+# Allow the system server to read Wi-Fi HAL properties
+allow system_server wifi_hal_prop:file { getattr open read };
+
+# Allow the system server to hand buffer references back to the Camera HAL
+allow system_server hal_camera_default:binder transfer;
+
+# Allow BatteryStats (system_server) to read custom Huawei CPU frequency states
+allow system_server sysfs_cpufreq:dir search;
+allow system_server sysfs_cpufreq:file r_file_perms;
+
+allow system_server hal_huawei_displayengine_hwservice:hwservice_manager find;
