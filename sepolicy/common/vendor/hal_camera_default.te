@@ -1,0 +1,66 @@
+# ==========================================
+# Domain and Attributes
+# ==========================================
+# ==========================================
+# Binder & HIDL IPC (Inter-Process Communication)
+# ==========================================
+# Enable required binder drivers
+binder_use(hal_camera_default)      # For /dev/binder (System/SSVC calls)
+vndbinder_use(hal_camera_default)   # For /dev/vndbinder (HAL-to-HAL calls)
+hwbinder_use(hal_camera_default)    # For /dev/hwbinder (Standard HIDL)
+
+# Allow Camera to interact with Graphics Allocator and Composer
+hal_client_domain(hal_camera_default, hal_graphics_allocator) 
+hal_client_domain(hal_camera_default, hal_graphics_composer) 
+binder_call(hal_camera_default, hal_graphics_allocator_default) 
+allow hal_camera_default hal_graphics_composer_default:binder { call transfer }; 
+allow hal_camera_default hal_graphics_composer_default:fd use; 
+allow hal_graphics_composer_default hal_camera_default:binder { transfer }; 
+
+# Legacy System Server Interaction
+binder_call(system_server, hal_camera_default) 
+allow hal_camera_default system_server:binder call; 
+allow hal_camera_default system_server:binder { call transfer }; 
+allow system_server hal_camera_default:binder { call transfer }; 
+
+# ==========================================
+# Hardware Devices & Sockets
+# ==========================================
+allow hal_camera_default cambuf_device:chr_file { ioctl open read }; 
+allow hal_camera_default dsm_device:chr_file rw_file_perms; 
+allow hal_camera_default init:unix_stream_socket connectto; 
+allow hal_camera_default oeminfo_nvm:unix_stream_socket connectto; 
+allow hal_camera_default property_socket:sock_file write; 
+allow hal_camera_default socket_device:sock_file write; 
+
+# ==========================================
+# Files, Directories, and Sysfs
+# ==========================================
+allow hal_camera_default device:dir { remove_name write }; 
+allow hal_camera_default device:file { getattr open read unlink }; 
+allow hal_camera_default proc:file { getattr open read }; 
+allow hal_camera_default proc_meminfo:file { open read }; 
+allow hal_camera_default sysfs:file { getattr open read write }; 
+allow hal_camera_default sysfs_pg:file { getattr open read }; 
+allow hal_camera_default sysfs_thermal:file rw_file_perms; 
+
+allow hal_camera_default vendor_camera_data_file:dir { add_name search write }; 
+allow hal_camera_default vendor_camera_data_file:file { create getattr open setattr write r_file_perms }; 
+
+# ==========================================
+# Properties
+# ==========================================
+get_prop(hal_camera_default, vendor_hw_camera_prop) 
+set_prop(hal_camera_default, vendor_hw_camera_prop) 
+get_prop(hal_camera_default, vendor_fingerprint_prop) 
+
+get_prop(hal_camera_default, vendor_camera_prop)
+allow hal_camera_default device_latency:chr_file rw_file_perms;
+allow hal_camera_default hal_perfgenius_hwservice:hwservice_manager find;
+allow hal_camera_default memtrackproxy_service:service_manager find;
+typeattribute hal_camera_default hal_sensors_client; # Treble-safe way to access sensors
+
+allow hal_camera_default sysfs_cpufreq:dir search;
+allow hal_camera_default sysfs_cpufreq:file { read open getattr };
+allow hal_camera_default sysfs_devfreq:dir search;
+allow hal_camera_default sysfs_devfreq:file { read open getattr };
