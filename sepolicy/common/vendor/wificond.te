@@ -1,0 +1,20 @@
+# ==========================================
+# wificond.te - Wi-Fi Framework Daemon
+# ==========================================
+# This attribute exempts wificond from the neverallow that blocks core-to-vendor data access
+typeattribute wificond data_between_core_and_vendor_violators;
+
+# Now the rules that were previously failing will be allowed
+allow wificond wifi_vendor_data_file:dir search;
+allow wificond wifi_vendor_data_file:file { read open getattr };
+allow wificond wifi_vendor_data_file:lnk_file { read };
+
+allow wificond hi110x_data_file:lnk_file read;
+
+# Allow Android's WiFi daemon to read Huawei's firmware
+allow wificond same_process_hal_file:file { read open };
+
+allow wificond vendor_data_file:lnk_file read;
+
+allow wificond vendor_file:dir search;
+allow wificond same_process_hal_file:file { read open getattr };
