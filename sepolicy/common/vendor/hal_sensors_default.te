@@ -1,0 +1,7 @@
+# ==========================================
+# hal_sensors_default.te
+# ==========================================
+# Allow sensors HAL to communicate with the physical sensor hub and kernel variables
+allow hal_sensors_default sensors_device:chr_file { ioctl open read };
+allow hal_sensors_default sysfs:file { open read };
+allow hal_sensors_default sysfs_sensors:file { open read };
