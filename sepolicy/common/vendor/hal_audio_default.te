@@ -1,0 +1,34 @@
+# ==========================================
+# Hardware Devices & IOCTLs
+# ==========================================
+allow hal_audio_default device:file { getattr open read };
+allow hal_audio_default sysfs:file { getattr open read };
+allow hal_audio_default sysfs_batteryinfo:file r_file_perms;
+
+allow hal_audio_default extra_audio_device:chr_file rw_file_perms;
+allow hal_audio_default smartpakit_device:chr_file { ioctl open read write rw_file_perms };
+allowxperm hal_audio_default smartpakit_device:chr_file ioctl { 0x4d01 0x4d21 0x4d22 };
+
+# ==========================================
+# Sockets & IPC
+# ==========================================
+allow hal_audio_default oeminfo_nvm:unix_stream_socket connectto;
+allow hal_audio_default self:netlink_kobject_uevent_socket { bind create read setopt };
+allow hal_audio_default socket_device:sock_file write;
+
+# ==========================================
+# Properties & Power Management
+# ==========================================
+get_prop(hal_audio_default, vendor_wifi_prop)
+get_prop(hal_audio_default, vendor_hw_audio_prop)
+
+# The standard macro to allow a HAL to use the suspend service (acquiring wakelocks)
+wakelock_use(hal_audio_default)
+
+# The Treble-safe way to allow binder calls to the suspend service
+binder_call(hal_audio_default, system_suspend_server)
+
+get_prop(hal_audio_default, vendor_fingerprint_prop)
+
+# Allow the Audio HAL to read Huawei media properties
+get_prop(hal_audio_default, vendor_kirin_media_prop)
