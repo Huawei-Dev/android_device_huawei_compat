@@ -1,0 +1,45 @@
+# ==========================================
+# Process Capabilities & Memory
+# ==========================================
+allow tee self:capability { chown fowner };
+allow tee self:process execmem;
+
+# ==========================================
+# HAL Interactions (Secure World Services)
+# ==========================================
+allow tee hal_fingerprint_default:dir search;
+allow tee hal_fingerprint_default:file { getattr open read };
+allow tee hal_fingerprint_default:process getattr;
+
+allow tee hal_gatekeeper_default:dir search;
+allow tee hal_gatekeeper_default:file { getattr open read };
+allow tee hal_gatekeeper_default:process getattr;
+
+allow tee hal_keymaster_default:dir search;
+allow tee hal_keymaster_default:file { getattr open read };
+allow tee hal_keymaster_default:process getattr; 
+
+allow tee hisi_touchscreen:dir { search };
+allow tee hisi_touchscreen:file { open read getattr};
+allow tee hisi_touchscreen:process { getattr };
+
+allow tee teecd_data_file_vendor:dir { search };
+
+
+# ==========================================
+# Device Nodes and Secure Data
+# ==========================================
+#allow tee teecd_data_file:dir search;
+#allow tee teecd_data_file:file { getattr read write };
+allow tee teecd_device:chr_file { ioctl open read write };
+
+# Allow the data file label to associate with the filesystem
+allow teecd_data_file self:filesystem associate;
+allow tee teecd_data_file_vendor:file { getattr read open setattr};
+
+# Acknowledge this domain violates Treble data separation
+typeattribute tee data_between_core_and_vendor_violators;
+
+# Grant TEE access to its fingerprint calibration backups
+allow tee teecd_data_file:dir create_dir_perms;
+allow tee teecd_data_file:file create_file_perms;
