@@ -1,0 +1,6 @@
+# ==========================================
+# hal_keymaster_default.te - Hardware Cryptography
+# ==========================================
+allow hal_keymaster_default tee:fd use;
+allow hal_keymaster_default tee:unix_stream_socket connectto;
+allow hal_keymaster_default teecd_device:chr_file { ioctl read write };
