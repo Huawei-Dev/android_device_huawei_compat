@@ -1,0 +1,6 @@
+# ==========================================
+# netd.te - Android Network Daemon
+# ==========================================
+# Allow netd to talk to the Huawei connectivity daemon
+allow netd hi110x_daemon:fd use;
+allow netd hi110x_daemon:tcp_socket { read write };
