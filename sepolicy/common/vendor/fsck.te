@@ -1,0 +1,19 @@
+# ==========================================
+# fsck.te - Internal Partition Repair
+# ==========================================
+
+# Allow fsck to repair the system data partition
+allow fsck system_data_file:blk_file { getattr ioctl open read write };
+
+# Allow fsck to repair connectivity and security partitions
+allow fsck connectivity_block_device:blk_file { read open write ioctl };
+allow fsck sec_storage_block_device:blk_file { rw_file_perms ioctl };
+
+# Allow file system check on userdata
+allow fsck userdata_block_device:blk_file { read open write ioctl };
+allow fsck teecd_block_device:blk_file rw_file_perms;
+
+# Allow file system check on modem dir
+allow fsck modem_file:dir { getattr };
+allow fsck modem_vendor_file:dir { getattr };
+

@@ -1,0 +1,1 @@
+allow fsck_untrusted sysfs_mmc_start:file r_file_perms;
