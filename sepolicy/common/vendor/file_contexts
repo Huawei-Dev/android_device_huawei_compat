@@ -3,6 +3,7 @@
 ###########################################
 
 # Standard HIDL/AIDL Services
+/vendor/bin/hw/android\.hardware\.audio\.service\.hisi                     u:object_r:hal_audio_default_exec:s0
 /vendor/bin/hw/android\.hardware\.drm@1\.[12]-service\.widevine            u:object_r:hal_drm_default_exec:s0
 /vendor/bin/hw/android\.hardware\.drm@1\.[12]-service\.clearkey            u:object_r:hal_drm_default_exec:s0
 /vendor/bin/hw/android\.hardware\.ir-service\.huawei                       u:object_r:hal_ir_default_exec:s0
