@@ -1,0 +1,56 @@
+# ==========================================
+# Capabilities & Block Devices
+# ==========================================
+allow kernel self:capability mknod;
+
+allow kernel block_device:dir search;
+allow kernel block_device:blk_file { open read write };
+allow kernel nve_block_device:blk_file { open read write };
+
+# ==========================================
+# Hardware & Character Devices
+# ==========================================
+# These are allowed because they are not the restricted generic 'device' type
+allow kernel nve_device:chr_file { create setattr rw_file_perms };
+allow kernel extra_input_device:chr_file { create setattr rw_file_perms };
+allow kernel { nve_device extra_input_device kmsg_device }:chr_file { create setattr open write };
+
+# ==========================================
+# Logging Devices & Files
+# ==========================================
+allow kernel hwlog_exception_device:chr_file { open write };
+allow kernel hwlog_device:chr_file rw_file_perms;
+
+allow kernel vendor_kernel_log_file:dir { getattr search };
+allow kernel vendor_kernel_log_file:file { read open setattr };
+
+# ==========================================
+# Directories & Sysfs
+# ==========================================
+allow kernel device:dir { add_name write };
+allow kernel sysfs_devices_system_cpu:file write;
+allow kernel proc_log_usertype:file r_file_perms;
+
+# Allow kernel workers to manage CPU interactive governor and scaling
+allow kernel sysfs_cpufreq:dir search;
+allow kernel sysfs_cpufreq:file { open write };
+
+allow kernel boot_block_device:blk_file rw_file_perms;
+allow kernel huawei_data_file:dir { read open setattr write add_name };
+allow kernel huawei_data_file:file { write create };
+
+allow kernel vendor_firmware_file:dir { search };
+allow kernel vendor_firmware_file:file { open read };
+
+allow kernel block_device:blk_file { ioctl };
+
+# ==========================================
+# Modem
+# ==========================================
+allow kernel modem_file:dir { rmdir remove_name write open read getattr search };
+allow kernel modem_file:file { open read getattr write };
+
+allow kernel modem_vendor_file:file { getattr open read };
+allow kernel modem_vendor_file:dir { search };
+
+
