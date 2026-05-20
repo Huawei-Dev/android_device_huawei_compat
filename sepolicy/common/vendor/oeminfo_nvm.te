@@ -1,6 +1,45 @@
+# ==========================================
+# Domain & Attributes
+# ==========================================
 type oeminfo_nvm, domain;
 type oeminfo_nvm_device, dev_type;
 type oeminfo_nvm_socket, file_type;
-
 type oeminfo_nvm_exec, exec_type, vendor_file_type, file_type;
-init_daemon_domain(oeminfo_nvm)
+
+init_daemon_domain(oeminfo_nvm) 
+
+allow oeminfo_nvm self:capability chown;
+
+# ==========================================
+# Sockets & IPC
+# ==========================================
+allow oeminfo_nvm init:unix_stream_socket connectto;
+allow oeminfo_nvm property_socket:sock_file write;
+allow oeminfo_nvm socket_device:dir { add_name write };
+allow oeminfo_nvm socket_device:sock_file { create setattr write };
+allow oeminfo_nvm self:netlink_kobject_uevent_socket { bind create read setopt };
+allow oeminfo_nvm teecd_block_device:blk_file { ioctl getattr open read write };
+allow oeminfo_nvm pmsg_device:file { open write };
+
+# ==========================================
+# Hardware, Block Devices, and Partitions
+# ==========================================
+allow oeminfo_nvm block_device:dir search;
+allow oeminfo_nvm oeminfo_nvm_block_device:blk_file { getattr ioctl open read write rw_file_perms };
+allowxperm oeminfo_nvm oeminfo_nvm_block_device:blk_file ioctl { 0x1260 };
+allowxperm oeminfo_nvm teecd_block_device:blk_file ioctl { 0x1260 };
+
+allow oeminfo_nvm device:dir { add_name create remove_name setattr write };
+allow oeminfo_nvm device:file { create getattr open read setattr unlink write };
+allow oeminfo_nvm kmsg_device:chr_file { getattr write };
+allow oeminfo_nvm nve_device:chr_file { read write open ioctl };
+
+# ==========================================
+# System Files & Properties
+# ==========================================
+allow oeminfo_nvm vendor_public_hosts_file:file { read open getattr };
+allow oeminfo_nvm proc_cmdline:file { getattr open read };
+allow oeminfo_nvm proc_overcommit_memory:file { open read };
+
+set_prop(oeminfo_nvm, vendor_oem_prop) 
+
