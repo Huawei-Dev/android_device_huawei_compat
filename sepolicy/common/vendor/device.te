@@ -62,3 +62,4 @@ type hwlog_exception_device, dev_type;
 type imw_device, dev_type;
 type ivp_device, dev_type;
 type nve_device, dev_type;
+type thp_device, dev_type;
