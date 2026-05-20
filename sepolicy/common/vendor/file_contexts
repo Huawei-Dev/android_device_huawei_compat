@@ -9,6 +9,7 @@
 /vendor/bin/hw/android\.hardware\.light-service\.huawei                    u:object_r:hal_light_default_exec:s0
 /vendor/bin/hw/android\.hardware\.power-service\.pixel-libperfmgr          u:object_r:hal_power_default_exec:s0
 /vendor/bin/hw/android\.hardware\.secure_element@1\.0-service\.hisi        u:object_r:hal_secure_element_default_exec:s0
+
 /vendor/bin/hw/vendor\.huawei\.hardware\.biometrics\.fingerprint@2\.[12]-service u:object_r:hal_fingerprint_default_exec:s0
 /vendor/bin/hw/vendor\.huawei\.hardware\.dolby\.dms@1\.0-service           u:object_r:hal_audio_default_exec:s0
 /vendor/bin/hw/vendor\.huawei\.hardware\.fm@1\.0-service                   u:object_r:hal_fm_default_exec:s0
@@ -95,6 +96,12 @@
 /dev/mouse0                                                                u:object_r:extra_input_device:s0
 /dev/input/event.* u:object_r:extra_input_device:s0
 /dev/nve0                                                                  u:object_r:nve_device:s0
+
+# Touchscreen
+/dev/thp                                                                   u:object_r:thp_device:s0
+
+# GNSS
+/dev/flp                                                                   u:object_r:flp_device:s0
 
 
 ###########################################
