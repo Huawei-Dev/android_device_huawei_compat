@@ -20,9 +20,8 @@ vendor.huawei.hardware.graphics.displayeffect::IEffect                          
 vendor.huawei.hardware.graphics.displayeffect::IDisplayEffectClient             u:object_r:hal_graphics_composer_hwservice:s0
 vendor.huawei.hardware.graphics.gpucommon::IGpuCommon                           u:object_r:hal_graphics_composer_hwservice:s0
 vendor.huawei.hardware.graphics.mediacomm::IMediaComm                           u:object_r:hal_graphics_composer_hwservice:s0
-vendor.huawei.hardware.tp::ITouchscreen                                         u:object_r:hal_lineage_touch_hwservice:s0
+vendor.huawei.hardware.tp::ITouchscreen                                         u:object_r:hal_touchscreen_hwservice:s0
 vendor.huawei.hardware.hwdisplay.displayengine::IDisplayEngineWrapper           u:object_r:hal_huawei_displayengine_hwservice:s0
-
 vendor.huawei.hardware.sensors::ISensors                                        u:object_r:hal_sensors_hwservice:s0
 
 # ==========================================
