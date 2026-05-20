@@ -1,0 +1,10 @@
+allow rild pmsg_device:file { write open };
+allow rild proc_cmdline:file { getattr open read };
+allow rild sysfs:file { write };
+
+# ==========================================
+# Properties
+# ==========================================
+get_prop(rild, vendor_fingerprint_prop)
+get_prop(rild, vendor_wifi_prop)
+
