@@ -37,6 +37,7 @@ vendor.huawei.hardware.wifi::IHwWifiExt                                         
 vendor.huawei.hardware.wifi.supplicant::ISupplicant                             u:object_r:hal_wifi_supplicant_hwservice:s0
 vendor.huawei.hardware.hisupl::ISuplclienttoserverInterface                     u:object_r:hal_hisupl_hwservice:s0
 vendor.nxp.nxpnfc::INxpNfc                                                      u:object_r:hal_nfc_hwservice:s0
+vendor.nxp.nxpese::INxpEse                                                      u:object_r:hal_nfc_hwservice:s0
 
 # ==========================================
 # Misc Systems (TEE, FM, Perf)
