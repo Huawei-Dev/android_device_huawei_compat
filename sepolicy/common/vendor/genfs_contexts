@@ -11,8 +11,11 @@ genfscon sysfs /devices/platform/e8970000.mali/devfreq/gpufreq/max_freq    u:obj
 
 # Battery and Fuel Gauge (Coulomb Counter)
 genfscon sysfs /devices/platform/balong_power/state                        u:object_r:modem_state_file:s0
-genfscon sysfs /devices/platform/battery/power_supply/Battery/capacity     u:object_r:sysfs_batteryinfo:s0
+
+genfscon sysfs /devices/platform/battery/power_supply                      u:object_r:sysfs_power:s0
+genfscon sysfs /devices/platform/battery/power                             u:object_r:sysfs_power:s0
 genfscon sysfs /devices/platform/coul_core                                 u:object_r:sysfs_power:s0
+
 genfscon sysfs /devices/virtual/ina231/ina231_0/ina231_value               u:object_r:sysfs_framebuffer:s0
 genfscon sysfs /devices/virtual/ina231/ina231_1/ina231_value               u:object_r:sysfs_framebuffer:s0
 
@@ -22,6 +25,26 @@ genfscon sysfs /bus/platform/drivers/huawei,camcfgdev/guard_thermal        u:obj
 genfscon sysfs /devices/platform/fffc0000.ddr_devfreq/devfreq/ddrfreq      u:object_r:sysfs_devfreq:s0
 genfscon sysfs /devices/virtual/thermal                                    u:object_r:sysfs_thermal:s0
 genfscon sysfs /devices/platform/huawei_touch                              u:object_r:sysfs_touchscreen:s0
+
+# Power hw
+genfscon proc /devices/plateform/wireless_charger                          u:object_r:proc_power_hw_config:s0
+genfscon proc /devices/plateform/huawei_charger                            u:object_r:proc_power_hw_config:s0
+
+genfscon sysfs /firmware/devicetree/base/wireless_charger                  u:object_r:proc_power_hw_config:s0
+genfscon sysfs /firmware/devicetree/base/huawei_charger                    u:object_r:proc_power_hw_config:s0
+genfscon sysfs /firmware/devicetree/base/huawei_usb                        u:object_r:proc_power_hw_config:s0
+genfscon sysfs /firmware/devicetree/base/huawei_usbvbus                    u:object_r:proc_power_hw_config:s0
+genfscon sysfs /class/hw_power/charger/charge_data/chargerType             u:object_r:sysfs_power:s0
+
+# proc
+genfscon sysfs /firmware/devicetree/base/audio_hw_config                   u:object_r:proc_audio_hw_config:s0 
+genfscon sysfs /firmware/devicetree/base/gps_power                         u:object_r:proc_gps_type:s0 
+genfscon sysfs /firmware/devicetree/base/hisi,boardid                      u:object_r:proc_hisi_board:s0 
+genfscon sysfs /firmware/devicetree/base/hisi,boardname                    u:object_r:proc_hisi_board:s0 
+genfscon sysfs /firmware/devicetree/base/hisi,modem_id                     u:object_r:proc_hisi_board:s0
+genfscon sysfs /firmware/devicetree/base/hw_soundtrigger_event             u:object_r:proc_hw_soundtrigger_event:s0
+genfscon sysfs /firmware/devicetree/base/smartpakit                        u:object_r:proc_audio_hw_config:s0
+
 
 ###########################################
 # DISPLAY & GRAPHICS (LCD Panel)
@@ -34,6 +57,7 @@ genfscon sysfs /devices/virtual/graphics/fb0/effect_available              u:obj
 genfscon sysfs /devices/virtual/graphics/fb0/lcd_voltage_enable            u:object_r:sysfs_pg:s0
 genfscon sysfs /devices/virtual/graphics/fb0/lcd_color_temperature         u:object_r:sysfs_pg:s0
 genfscon sysfs /devices/virtual/graphics/fb0/led_rg_lcd_color_temperature  u:object_r:sysfs_pg:s0
+
 
 ###########################################
 # CORE KERNEL & SCHEDULER
@@ -50,6 +74,10 @@ genfscon sysfs /devices/system/cpu/cpufreq/policy4                         u:obj
 ###########################################
 # SENSORS & SPECIAL HARDWARE
 ###########################################
+
+# Virtual sensors
+genfscon sysfs /devices/virtual/sensors                                   u:object_r:sysfs_sensors:s0
+genfscon sysfs /class/sensors/libsensor_ver                                u:object_r:sysfs_sensors:s0
 
 # HiSEE (Huawei Secure Element / Integrated SIM)
 genfscon sysfs /devices/platform/0.hisee                                   u:object_r:sysfs_hisee:s0
