@@ -19,3 +19,7 @@ allow hal_bluetooth_default wifi_vendor_data_file:lnk_file read;
 
 allow hal_bluetooth_default vendor_data_file:lnk_file read;
 allow hal_bluetooth_default vendor_data_file:file { read open };
+
+allow hal_bluetooth_default hi110x_cust_data_file:lnk_file read;
+allow hal_bluetooth_default hi110x_cust_data_file:file { read open };
+allow hal_bluetooth_default hi110x_cust_data_file:dir search;
