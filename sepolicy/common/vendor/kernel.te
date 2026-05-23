@@ -24,6 +24,9 @@ allow kernel hwlog_device:chr_file rw_file_perms;
 allow kernel vendor_kernel_log_file:dir { getattr search };
 allow kernel vendor_kernel_log_file:file { read open setattr };
 
+# allow kernel rootfs:file { execute_no_trans };
+
+
 # ==========================================
 # Directories & Sysfs
 # ==========================================

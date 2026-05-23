@@ -91,12 +91,4 @@ dontaudit hal_fingerprint_default default_prop:file r_file_perms;
 dontaudit hal_camera_default config_prop:file r_file_perms;
 dontaudit hi110x_daemon default_prop:file r_file_perms;
 
-# Kernel
-dontaudit kernel sysfs_batteryinfo:file { read open };
-
-dontaudit kernel device:chr_file { create setattr };
-dontaudit kernel device:blk_file { create setattr };
-
-dontaudit kernel huawei_data_file:dir { search getattr };
-dontaudit kernel huawei_data_file:file { getattr read append open setattr };
 
