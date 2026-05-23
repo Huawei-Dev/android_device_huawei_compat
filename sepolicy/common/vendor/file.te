@@ -16,6 +16,14 @@ type sysfs_sensors, sysfs_type, fs_type;
 type sysfs_touchscreen, sysfs_type, fs_type;
 type vendor_sysfs_graphics, sysfs_type, fs_type;
 
+type proc_power_hw_config, proc_type, fs_type;
+type proc_log_usertype, proc_type, fs_type;
+type proc_gps_type, proc_type, fs_type;
+type proc_hisi_board, proc_type, fs_type;
+type proc_hw_soundtrigger_event, proc_type, fs_type;
+type proc_audio_hw_config, proc_type, fs_type;
+
+
 # ==========================================
 # Vendor Data Directories (/data/vendor)
 # ==========================================
@@ -28,6 +36,7 @@ type vendor_hisi_data_file, file_type, data_file_type;
 type vendor_log_file, file_type, data_file_type;
 type vendor_share_data_file, file_type, data_file_type;
 type wifi_vendor_data_file, file_type, data_file_type;
+type hi110x_cust_data_file, file_type, data_file_type;
 
 # ==========================================
 # Vendor Files & Firmware (/vendor)
@@ -46,7 +55,6 @@ type vendor_firmware_file, vendor_file_type, file_type;
 # ==========================================
 type hisee_data_file, file_type;
 type modem_file, file_type;
-type proc_log_usertype, fs_type, proc_type;
 type splash_data_file, file_type;
 type vendor_kernel_log_file, file_type;
 type vendor_public_hosts_file, file_type;
