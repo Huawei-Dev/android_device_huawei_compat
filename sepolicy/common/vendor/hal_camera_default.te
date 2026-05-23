@@ -32,6 +32,7 @@ allow hal_camera_default init:unix_stream_socket connectto;
 allow hal_camera_default oeminfo_nvm:unix_stream_socket connectto; 
 allow hal_camera_default property_socket:sock_file write; 
 allow hal_camera_default socket_device:sock_file write; 
+allow hal_camera_default graphics_device:chr_file { read write open ioctl };
 
 # ==========================================
 # Files, Directories, and Sysfs
@@ -42,7 +43,7 @@ allow hal_camera_default proc:file { getattr open read };
 allow hal_camera_default proc_meminfo:file { open read }; 
 allow hal_camera_default sysfs:file { getattr open read write }; 
 allow hal_camera_default sysfs_pg:file { getattr open read }; 
-allow hal_camera_default sysfs_thermal:file rw_file_perms; 
+allow hal_camera_default sysfs_thermal:file rw_file_perms;
 
 allow hal_camera_default vendor_camera_data_file:dir { add_name search write }; 
 allow hal_camera_default vendor_camera_data_file:file { create getattr open setattr write r_file_perms }; 
