@@ -9,6 +9,16 @@ allow hal_audio_default extra_audio_device:chr_file rw_file_perms;
 allow hal_audio_default smartpakit_device:chr_file { ioctl open read write rw_file_perms };
 allowxperm hal_audio_default smartpakit_device:chr_file ioctl { 0x4d01 0x4d21 0x4d22 };
 
+allow hal_audio_default sysfs_sensors:file { getattr open rw_file_perms };
+allow hal_audio_default sysfs_sensors:dir { search r_dir_perms };
+	
+allow hal_audio_default sysfs_power:file { getattr open rw_file_perms };
+allow hal_audio_default sysfs_power:dir { search r_dir_perms };
+
+allow hal_audio_default proc_audio_hw_config:file { getattr open rw_file_perms };
+allow hal_audio_default proc_audio_hw_config:dir { search r_dir_perms };
+
+
 # ==========================================
 # Sockets & IPC
 # ==========================================
