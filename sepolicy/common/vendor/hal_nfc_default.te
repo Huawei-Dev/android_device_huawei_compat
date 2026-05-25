@@ -3,3 +3,4 @@
 # ==========================================
 
 allow hal_nfc_default vendor_data_file:file { read write open getattr };
+allow hal_nfc_default vendor_data_file:dir { write };
