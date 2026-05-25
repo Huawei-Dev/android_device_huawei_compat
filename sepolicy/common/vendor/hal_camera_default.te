@@ -21,7 +21,8 @@ allow hal_graphics_composer_default hal_camera_default:binder { transfer };
 binder_call(system_server, hal_camera_default) 
 allow hal_camera_default system_server:binder call; 
 allow hal_camera_default system_server:binder { call transfer }; 
-allow system_server hal_camera_default:binder { call transfer }; 
+allow system_server hal_camera_default:binder { call transfer };
+
 
 # ==========================================
 # Hardware Devices & Sockets
@@ -35,7 +36,7 @@ allow hal_camera_default socket_device:sock_file write;
 allow hal_camera_default graphics_device:chr_file { read write open ioctl };
 
 # ==========================================
-# Files, Directories, and Sysfs
+# Files, Directories, and proc and sysfs
 # ==========================================
 allow hal_camera_default device:dir { remove_name write }; 
 allow hal_camera_default device:file { getattr open read unlink }; 
@@ -47,6 +48,8 @@ allow hal_camera_default sysfs_thermal:file rw_file_perms;
 
 allow hal_camera_default vendor_camera_data_file:dir { add_name search write }; 
 allow hal_camera_default vendor_camera_data_file:file { create getattr open setattr write r_file_perms }; 
+
+allow hal_camera_default proc_hisi_board:file { getattr open read };
 
 # ==========================================
 # Properties
