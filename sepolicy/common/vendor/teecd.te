@@ -23,19 +23,21 @@ allow tee hisi_touchscreen:dir { search };
 allow tee hisi_touchscreen:file { open read getattr};
 allow tee hisi_touchscreen:process { getattr };
 
-allow tee teecd_data_file_vendor:dir { search };
-
-
 # ==========================================
 # Device Nodes and Secure Data
 # ==========================================
-#allow tee teecd_data_file:dir search;
-#allow tee teecd_data_file:file { getattr read write };
-allow tee teecd_device:chr_file { ioctl open read write };
+
+allow tee teecd_device:chr_file { open read write };
+allowxperm tee teecd_device:chr_file ioctl { 0x7401 0x7402 0x7403 0x7405 0x7406 0x7407 0x740e 0x7411 0x7412 0x7413 0x7414 0x7415 };
 
 # Allow the data file label to associate with the filesystem
 allow teecd_data_file self:filesystem associate;
-allow tee teecd_data_file_vendor:file { getattr read open setattr};
+
+allow tee teecd_data_file:dir { search read write create getattr add_name open };
+allow tee teecd_data_file:file { read write create getattr open setattr };
+
+allow tee teecd_data_file_vendor:file { read write create getattr open setattr };
+allow tee teecd_data_file_vendor:dir { search read write create getattr add_name open };
 
 # Acknowledge this domain violates Treble data separation
 typeattribute tee data_between_core_and_vendor_violators;
