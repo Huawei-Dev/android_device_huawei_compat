@@ -53,4 +53,8 @@ allowxperm hisi_touchscreen imw_device:chr_file ioctl { 0xb901 0xb902 0xb903 0xb
 # ==========================================
 set_prop(hisi_touchscreen, property_socket)
 get_prop(hisi_touchscreen, vendor_wifi_prop)
+get_prop(hisi_touchscreen, vendor_oem_prop)
+
+set_prop(hisi_touchscreen, vendor_aptouch_prop)
+get_prop(hisi_touchscreen, vendor_aptouch_prop)
 
