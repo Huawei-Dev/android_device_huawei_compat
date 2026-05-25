@@ -26,11 +26,12 @@ allow kernel vendor_kernel_log_file:file { read open setattr };
 
 # allow kernel rootfs:file { execute_no_trans };
 
-
 # ==========================================
-# Directories & Sysfs
+# Directories & sysfs
 # ==========================================
 allow kernel device:dir { add_name write };
+allow kernel device:chr_file { create setattr };
+
 allow kernel sysfs_devices_system_cpu:file write;
 allow kernel proc_log_usertype:file r_file_perms;
 
@@ -44,6 +45,8 @@ allow kernel huawei_data_file:file { write create };
 
 allow kernel vendor_firmware_file:dir { search };
 allow kernel vendor_firmware_file:file { open read };
+
+allow kernel system_data_root_file:file { append create open read write };
 
 allow kernel block_device:blk_file { ioctl };
 
