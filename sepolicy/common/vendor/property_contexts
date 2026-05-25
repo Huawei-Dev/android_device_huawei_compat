@@ -1,15 +1,129 @@
+# ================================================
+# Radio Properties - set hisi_init (phone.prop)
+# ================================================
+persist.radio.noril                 u:object_r:vendor_radio_prop:s0
+ro.config.support_wcdma_modem1      u:object_r:vendor_radio_prop:s0
+ro.config.hw_dsdspowerup            u:object_r:vendor_radio_prop:s0
+ro.config.sup_lte_high_speed        u:object_r:vendor_radio_prop:s0
+ro.config.cl_volte_autoswitch       u:object_r:vendor_radio_prop:s0
+ro.config.dsds_mode                 u:object_r:vendor_radio_prop:s0
+ro.config.full_network_support      u:object_r:vendor_radio_prop:s0
+ro.config.hw_ReduceSAR              u:object_r:vendor_radio_prop:s0
+ro.config.fast_switch_simslot       u:object_r:vendor_radio_prop:s0
+ro.config.del_default_link          u:object_r:vendor_radio_prop:s0
+ro.config.hisi_cdma_supported       u:object_r:vendor_radio_prop:s0
+
+ro.odm.config.def_commril           u:object_r:vendor_radio_prop:s0
+ro.odm.config.rep_cell_list         u:object_r:vendor_radio_prop:s0
+ro.odm.config.hw_dsda               u:object_r:vendor_radio_prop:s0
+
+ro.quick_broadcast_cardstatus       u:object_r:vendor_radio_prop:s0
+
+# To start rild - hisi_init
+sys.rilprops_ready                  u:object_r:vendor_radio_prop:s0
+
+
+# Rild properties stock EMUI 9.1
+persist.odm.radio.overseas            u:object_r:vendor_rild_prop:s0
+persist.odm.radio.sub_state_cfg       u:object_r:vendor_rild_prop:s0
+persist.odm.radio.active_modem        u:object_r:vendor_rild_prop:s0
+persist.odm.radio.cg_standby          u:object_r:vendor_rild_prop:s0
+persist.odm.radio.fast_switch_step    u:object_r:vendor_rild_prop:s0
+persist.odm.radio.airmode_sim         u:object_r:vendor_rild_prop:s0
+persist.odm.radio.lte_rel_ver         u:object_r:vendor_rild_prop:s0
+persist.odm.radio.sim_slot_cfg        u:object_r:vendor_rild_prop:s0
+persist.odm.radio.prefer_nw           u:object_r:vendor_rild_prop:s0
+persist.odm.radio.prefer_nw_modem1    u:object_r:vendor_rild_prop:s0
+persist.odm.radio.standby_mode        u:object_r:vendor_rild_prop:s0
+persist.odm.radio.pre_network         u:object_r:vendor_rild_prop:s0
+persist.odm.radio.modem1_network      u:object_r:vendor_rild_prop:s0
+persist.odm.radio.balong0_iccid       u:object_r:vendor_rild_prop:s0
+persist.odm.radio.balong1_iccid       u:object_r:vendor_rild_prop:s0
+persist.odm.radio.nvcfg_file          u:object_r:vendor_rild_prop:s0
+persist.odm.radio.current_version     u:object_r:vendor_rild_prop:s0
+persist.odm.radio.cota_version        u:object_r:vendor_rild_prop:s0
+persist.odm.radio.force_load_nvcfg    u:object_r:vendor_rild_prop:s0
+persist.odm.radio.pre_sub_state       u:object_r:vendor_rild_prop:s0
+persist.odm.radio.last_mcc            u:object_r:vendor_rild_prop:s0
+persist.odm.radio.via_p               u:object_r:vendor_rild_prop:s0
+persist.odm.radio.via_m               u:object_r:vendor_rild_prop:s0
+persist.odm.radio.m1_ps_allow         u:object_r:vendor_rild_prop:s0
+persist.odm.radio.m2_ps_allow         u:object_r:vendor_rild_prop:s0
+persist.odm.radio.m0_ps_allow         u:object_r:vendor_rild_prop:s0
+persist.odm.radio.ps_reg              u:object_r:vendor_rild_prop:s0
+persist.odm.radio.ps_tech             u:object_r:vendor_rild_prop:s0
+persist.odm.radio.preiccid_0          u:object_r:vendor_rild_prop:s0
+persist.odm.radio.preiccid_1          u:object_r:vendor_rild_prop:s0
+persist.odm.radio.is_attach_apn_0     u:object_r:vendor_rild_prop:s0
+persist.odm.radio.is_attach_apn_1     u:object_r:vendor_rild_prop:s0
+persist.odm.radio.nv_bin_loaded_m0    u:object_r:vendor_rild_prop:s0
+persist.odm.radio.nv_bin_loaded_m1    u:object_r:vendor_rild_prop:s0
+persist.odm.radio.nvcfg_file_1        u:object_r:vendor_rild_prop:s0
+persist.odm.nv.optimization.trigger   u:object_r:vendor_rild_prop:s0
+persist.odm.radio.force_load_nvcfg_1  u:object_r:vendor_rild_prop:s0
+persist.odm.radio.force_nvcfg_plmn    u:object_r:vendor_rild_prop:s0
+persist.odm.radio.force_nvcfg_plmn_1  u:object_r:vendor_rild_prop:s0
+persist.odm.radio.force_nvcfg_file_1  u:object_r:vendor_rild_prop:s0
+persist.odm.cur_attach_apn2           u:object_r:vendor_rild_prop:s0
+persist.odm.cur_attach_pro2           u:object_r:vendor_rild_prop:s0
+persist.odm.old_attach_apn2           u:object_r:vendor_rild_prop:s0
+persist.odm.old_attach_pro2           u:object_r:vendor_rild_prop:s0
+persist.odm.radio.chr.apreset         u:object_r:vendor_rild_prop:s0
+persist.odm.radio.modem2_network      u:object_r:vendor_rild_prop:s0
+persist.odm.cur_attach_apn            u:object_r:vendor_rild_prop:s0
+persist.odm.cur_attach_proto          u:object_r:vendor_rild_prop:s0
+persist.odm.old_attach_apn            u:object_r:vendor_rild_prop:s0
+persist.odm.old_attach_proto          u:object_r:vendor_rild_prop:s0
+persist.odm.user.cat16_switch         u:object_r:vendor_rild_prop:s0
+persist.odm.cur_dend_cause            u:object_r:vendor_rild_prop:s0
+persist.odm.cur_apn_name              u:object_r:vendor_rild_prop:s0
+persist.odm.cur_apn_type              u:object_r:vendor_rild_prop:s0
+persist.odm.radio.comm_ril_mode       u:object_r:vendor_rild_prop:s0
+
+persist.odm.radio.real_current_base_id    u:object_r:vendor_rild_prop:s0
+persist.odm.radio.real_current_cust_id    u:object_r:vendor_rild_prop:s0
+persist.odm.radio.real_current_preload_id u:object_r:vendor_rild_prop:s0
+persist.odm.radio.patch_version           u:object_r:vendor_rild_prop:s0
+persist.odm.radio.test_card_nv            u:object_r:vendor_rild_prop:s0
+persist.odm.radio.c_roam                  u:object_r:vendor_rild_prop:s0
+
+odm.ril.modem.auto_sim_pin          u:object_r:vendor_rild_prop:s0
+odm.ril.modem.modem_recovery        u:object_r:vendor_rild_prop:s0
+odm.ril.modem.balong_nvm_server     u:object_r:vendor_rild_prop:s0
+odm.ril.hw_modem0.rssi              u:object_r:vendor_rild_prop:s0
+odm.ril.hw_modem1.rssi              u:object_r:vendor_rild_prop:s0
+odm.ril.hw_modem2.rssi              u:object_r:vendor_rild_prop:s0
+odm.ril.balong_cid                  u:object_r:vendor_rild_prop:s0
+odm.ril.sim.nvcfg_pre_iccid_0       u:object_r:vendor_rild_prop:s0
+odm.ril.sim.nvcfg_pre_iccid_1       u:object_r:vendor_rild_prop:s0
+odm.ril.sim.matched_dual_imsi_0     u:object_r:vendor_rild_prop:s0
+odm.ril.sim.matched_dual_imsi_1     u:object_r:vendor_rild_prop:s0
+odm.ril.sim.terminal_rsp_need       u:object_r:vendor_rild_prop:s0
+odm.ril.sim.terminal_rsp_need1      u:object_r:vendor_rild_prop:s0
+
+odm.gsm.sim.preiccid_0              u:object_r:vendor_rild_prop:s0
+odm.gsm.sim.preiccid_1              u:object_r:vendor_rild_prop:s0
+
+persist.radio.defdualsimltemenu     u:object_r:vendor_radio_prop:s0
+persist.radio.defdualltecap         u:object_r:vendor_radio_prop:s0
+persist.radio.multisim.config       u:object_r:vendor_radio_prop:s0
+
+persist.radio.modem.cap             u:object_r:vendor_radio_prop:s0
+ro.odm.multi.rild                   u:object_r:vendor_rild_prop:s0
+
 # ==========================================
-# Connectivity & Radio Properties
+# Connectivity Properties
 # ==========================================
-is_hisi_connectivity_chip        u:object_r:vendor_wifi_prop:s0
-persist.radio.noril              u:object_r:vendor_radio_prop:s0
-persist.sys.huawei.debug.on      u:object_r:vendor_wifi_prop:s0
-ro.config.connectivity_chip      u:object_r:vendor_wifi_prop:s0
+persist.sys.huawei.debug.on      u:object_r:vendor_oem_prop:s0
+ro.config.connectivity_chip      u:object_r:vendor_oem_prop:s0
+ro.connectivity.chiptype         u:object_r:vendor_oem_prop:s0
+ro.connectivity.sub_chiptype     u:object_r:vendor_oem_prop:s0
+vendor.setup_hi110x_modules      u:object_r:vendor_oem_prop:s0
+is_hisi_connectivity_chip        u:object_r:vendor_oem_prop:s0
+
 ro.config.hw_wifi_chip           u:object_r:vendor_wifi_prop:s0
-ro.connectivity.chiptype         u:object_r:vendor_wifi_prop:s0
-ro.connectivity.sub_chiptype     u:object_r:vendor_wifi_prop:s0
+ro.odm.config.hw_ipv6_support    u:object_r:vendor_wifi_prop:s0
 sys.conn_macs.ready              u:object_r:vendor_wifi_prop:s0
-vendor.setup_hi110x_modules      u:object_r:vendor_wifi_prop:s0
 
 # ==========================================
 # Multimedia (Audio, Camera, Power)
@@ -27,3 +141,12 @@ persist.kirin.media.             u:object_r:vendor_kirin_media_prop:s0
 ro.build.type                    u:object_r:vendor_fingerprint_prop:s0
 ro.runmode                       u:object_r:vendor_fingerprint_prop:s0
 ro.vendor.hisecd.refreshed       u:object_r:vendor_oem_prop:s0
+
+# ==========================================
+# Screen THP
+# ==========================================
+odm.thp.                         u:object_r:vendor_aptouch_prop:s0
+vendor.thp.                      u:object_r:vendor_aptouch_prop:s0
+persist.odm.thp.                 u:object_r:vendor_aptouch_prop:s0
+persist.vendor.thp.              u:object_r:vendor_aptouch_prop:s0
+
