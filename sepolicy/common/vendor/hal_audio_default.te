@@ -1,7 +1,9 @@
 # ==========================================
 # Hardware Devices & IOCTLs
 # ==========================================
-allow hal_audio_default device:file { getattr open read };
+allow hal_audio_default device:file { getattr open read unlink };
+allow hal_audio_default device:dir { remove_name write unlink };
+
 allow hal_audio_default sysfs:file { getattr open read };
 allow hal_audio_default sysfs_batteryinfo:file r_file_perms;
 
@@ -18,6 +20,8 @@ allow hal_audio_default sysfs_power:dir { search r_dir_perms };
 allow hal_audio_default proc_audio_hw_config:file { getattr open rw_file_perms };
 allow hal_audio_default proc_audio_hw_config:dir { search r_dir_perms };
 
+allow hal_audio_default proc_hw_soundtrigger_event:dir { search };
+allow hal_audio_default proc_hw_soundtrigger_event:file { getattr open read };
 
 # ==========================================
 # Sockets & IPC
@@ -42,3 +46,4 @@ get_prop(hal_audio_default, vendor_fingerprint_prop)
 
 # Allow the Audio HAL to read Huawei media properties
 get_prop(hal_audio_default, vendor_kirin_media_prop)
+get_prop(hal_audio_default, vendor_oem_prop)
