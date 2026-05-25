@@ -8,6 +8,12 @@ allow hal_power_default sysfs_pg:file { open write };
 allow hal_power_default sysfs_devfreq:file rw_file_perms;
 allow hal_power_default sysfs_cpufreq:file rw_file_perms;
 
+allow hal_power_default surfaceflinger:file { read open };
+allow hal_power_default surfaceflinger:dir { search };
+
+allow hal_power_default system_server:file { read open };
+allow hal_power_default system_server:dir { search };
+
 # ==========================================
 # Properties
 # ==========================================
