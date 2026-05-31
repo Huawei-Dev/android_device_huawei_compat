@@ -52,8 +52,7 @@ allow kernel firmware_vendor_file:file { open read };
 allow kernel system_data_root_file:file { append create open read write };
 
 allow kernel hisi_log_file:dir { search write add_name  };
-allow kernel hisi_log_file:file rw_file_perms;
-
+allow kernel hisi_log_file:file { create rw_file_perms };
 
 # ==========================================
 # Modem
