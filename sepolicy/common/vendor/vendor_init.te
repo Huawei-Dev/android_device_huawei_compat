@@ -61,8 +61,8 @@ allow vendor_init system_data_file:dir { ioctl open read setattr };
 allow vendor_init splash_data_file:filesystem { getattr };
 allow vendor_init pmsg_device:file { create write open };
 
-allow vendor_init vendor_firmware_file:dir { search };
-allow vendor_init vendor_firmware_file:file { open read };
+allow vendor_init firmware_vendor_file:dir { search };
+allow vendor_init firmware_vendor_file:file { open read };
 
 
 
