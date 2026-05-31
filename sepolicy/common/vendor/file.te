@@ -58,6 +58,7 @@ type modem_file, file_type;
 type splash_data_file, file_type;
 type vendor_kernel_log_file, file_type;
 type vendor_public_hosts_file, file_type;
+type hisi_log_file, file_type, data_file_type, core_data_file_type;
 
 # ==========================================
 # Sockets
