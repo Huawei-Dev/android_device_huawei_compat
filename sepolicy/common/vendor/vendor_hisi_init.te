@@ -51,4 +51,7 @@ allow vendor_hisi_init pmsg_device:file { open write };
 # ==========================================
 # Hisi init needs to override standard permissions to configure the connectivity chip type
 set_prop(vendor_hisi_init, vendor_wifi_prop)
+set_prop(vendor_hisi_init, vendor_oem_prop)
+set_prop(vendor_hisi_init, vendor_rild_prop)
+set_prop(vendor_hisi_init, vendor_radio_prop)
 
