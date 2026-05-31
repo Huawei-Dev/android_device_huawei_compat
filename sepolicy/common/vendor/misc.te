@@ -1,0 +1,21 @@
+# ==========================================
+# Splash
+# ==========================================
+allow splash_data_file self:filesystem { associate };
+
+# ==========================================
+# Modem
+# ==========================================
+allow modem_file self:filesystem { associate };
+allow modem_vendor_file self:filesystem { associate };
+
+# ==========================================
+# boot animation
+# ==========================================
+allow surfaceflinger bootanim:file { read open };
+
+# ==========================================
+# Various pmsg
+# ==========================================
+allow zygote pmsg_device:file { open write };
+allow installd pmsg_device:file { open write };
