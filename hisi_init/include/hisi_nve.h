@@ -38,4 +38,5 @@ const std::vector<std::string> kNvePaths = {
         "/dev/block/mmcblk0p7",
 };
 
+int LoadNveProperties();
 void load_hisi_nve();
