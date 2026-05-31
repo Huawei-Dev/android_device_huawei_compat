@@ -1,0 +1,2 @@
+allow vendor_install_recovery recovery_device:blk_file { read open write };
+allow vendor_install_recovery pmsg_device:file { open write };
