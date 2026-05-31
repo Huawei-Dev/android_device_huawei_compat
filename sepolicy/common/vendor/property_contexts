@@ -16,7 +16,12 @@ ro.config.hisi_cdma_supported       u:object_r:vendor_radio_prop:s0
 ro.odm.config.def_commril           u:object_r:vendor_radio_prop:s0
 ro.odm.config.rep_cell_list         u:object_r:vendor_radio_prop:s0
 ro.odm.config.hw_dsda               u:object_r:vendor_radio_prop:s0
-
+ro.odm.config.modem_number          u:object_r:vendor_radio_prop:s0
+ro.odm.config.client_number         u:object_r:vendor_radio_prop:s0
+ro.odm.config.support_crrconn       u:object_r:vendor_radio_prop:s0
+ro.odm.disable_m1_gw_ps_attach      u:object_r:vendor_radio_prop:s0
+ro.odm.dual_imsi_hplmn_cust         u:object_r:vendor_radio_prop:s0
+ro.odm.multi.rild                   u:object_r:vendor_rild_prop:s0
 ro.quick_broadcast_cardstatus       u:object_r:vendor_radio_prop:s0
 
 # To start rild - hisi_init
@@ -79,6 +84,7 @@ persist.odm.cur_dend_cause            u:object_r:vendor_rild_prop:s0
 persist.odm.cur_apn_name              u:object_r:vendor_rild_prop:s0
 persist.odm.cur_apn_type              u:object_r:vendor_rild_prop:s0
 persist.odm.radio.comm_ril_mode       u:object_r:vendor_rild_prop:s0
+persist.odm.dsds.enabled              u:object_r:vendor_rild_prop:s0
 
 persist.odm.radio.real_current_base_id    u:object_r:vendor_rild_prop:s0
 persist.odm.radio.real_current_cust_id    u:object_r:vendor_rild_prop:s0
@@ -100,16 +106,16 @@ odm.ril.sim.matched_dual_imsi_0     u:object_r:vendor_rild_prop:s0
 odm.ril.sim.matched_dual_imsi_1     u:object_r:vendor_rild_prop:s0
 odm.ril.sim.terminal_rsp_need       u:object_r:vendor_rild_prop:s0
 odm.ril.sim.terminal_rsp_need1      u:object_r:vendor_rild_prop:s0
+odm.rild.                           u:object_r:vendor_rild_prop:s0
 
 odm.gsm.sim.preiccid_0              u:object_r:vendor_rild_prop:s0
 odm.gsm.sim.preiccid_1              u:object_r:vendor_rild_prop:s0
 
 persist.radio.defdualsimltemenu     u:object_r:vendor_radio_prop:s0
 persist.radio.defdualltecap         u:object_r:vendor_radio_prop:s0
+persist.radio.modem.cap             u:object_r:vendor_radio_prop:s0
 persist.radio.multisim.config       u:object_r:vendor_radio_prop:s0
 
-persist.radio.modem.cap             u:object_r:vendor_radio_prop:s0
-ro.odm.multi.rild                   u:object_r:vendor_rild_prop:s0
 
 # ==========================================
 # Connectivity Properties
