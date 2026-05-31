@@ -47,8 +47,8 @@ type hwemerffu_fw_file, file_type, vendor_file_type;
 type isp_vendor_file, file_type, vendor_file_type;
 type modem_vendor_file, file_type, vendor_file_type;
 type ncfg_nv_file, file_type, vendor_file_type;
-type vendor_hosts_file, file_type, vendor_file_type;
-type vendor_firmware_file, vendor_file_type, file_type;
+type hosts_vendor_file, file_type, vendor_file_type;
+type firmware_vendor_file, vendor_file_type, file_type;
 
 # ==========================================
 # Generic Files & Logging
