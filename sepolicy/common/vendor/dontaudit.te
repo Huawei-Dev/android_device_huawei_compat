@@ -74,17 +74,19 @@ dontaudit system_server untrusted_app_29:process getattr;
 dontaudit system_server untrusted_app_30:process getattr;
 dontaudit system_server bluetooth:process getattr;
 dontaudit system_server keystore:process getattr;
+dontaudit system_server shell:process getattr;
 
 # dontaudit system_server permissioncontroller_app:process getattr;
 # dontaudit system_server updater_app:process getattr;
 # dontaudit system_server isolated_app:process getattr;
+# dontaudit system_server storaged:process getattr;
+# dontaudit system_server folio_daemon:process getattr;
+# dontaudit system_server mediaprovider_app:process getattr;
 
 # Vendor Init
 dontaudit vendor_init system_prop:file read;
 dontaudit vendor_init system_prop:property_service set;
 dontaudit vendor_init init_service_status_prop:property_service set;
-
-dontaudit vendor_hisi_init self:capability { dac_override dac_read_search };
 
 # Vendor HALs
 dontaudit hal_fingerprint_default default_prop:file r_file_perms;
