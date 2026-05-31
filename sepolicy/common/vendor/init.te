@@ -33,7 +33,10 @@ allow init extra_input_device:chr_file { read open ioctl };
 allow init sysfs_hisi_product:file r_file_perms;
 
 allow init sysfs_vibrator:file { open write setattr };
-;
+
+# brightness
+allow init sysfs:file { setattr };
+
 
 allow init tmpfs:blk_file { open read };
 allow init teecd_block_device:blk_file { relabelto };
