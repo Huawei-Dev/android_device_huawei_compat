@@ -26,19 +26,19 @@ allow init socket_device:sock_file { create setattr };
 # Allow init to write to zram0
 allow init ram_device:blk_file write;
 
-allow init sysfs_fs_ext4_features:file w_file_perms;
+allow init sysfs_fs_ext4_features:file rw_file_perms;
 
 allow init extra_input_device:chr_file { read open ioctl };
 
 allow init sysfs_hisi_product:file r_file_perms;
 
 allow init sysfs_vibrator:file { open write setattr };
-allow init sysfs_fs_ext4_features:file { open write };
-allow init sysfs:file { setattr };
+;
 
 allow init tmpfs:blk_file { open read };
 allow init teecd_block_device:blk_file { relabelto };
 allow init oeminfo_nvm_block_device:lnk_file { relabelto };
+allow init oeminfo_nvm_block_device:blk_file { relabelto };
 allow init oeminfo_nvm:unix_stream_socket { connectto };
 
 allow init splash_data_file:dir { mounton };
