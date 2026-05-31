@@ -70,13 +70,14 @@ allow hi110x_daemon sysfs_wake_lock:file { getattr open write };
 allow hi110x_daemon vendor_toolbox_exec:file execute_no_trans;
 
 set_prop(hi110x_daemon, vendor_wifi_prop)
+set_prop(hi110x_daemon, vendor_oem_prop)
 
 # Allow the connectivity daemon to read the fingerprint state and manage its logs
 get_prop(hi110x_daemon, vendor_fingerprint_prop)
+
 allow hi110x_daemon hi110x_cust_data_file:dir create_dir_perms;
 allow hi110x_daemon hi110x_cust_data_file:file create_file_perms;
 allow hi110x_daemon hi110x_cust_data_file:lnk_file create_file_perms;
-
 
 allow hi110x_daemon vendor_data_file:dir create_dir_perms;
 allow hi110x_daemon vendor_data_file:file create_file_perms;
