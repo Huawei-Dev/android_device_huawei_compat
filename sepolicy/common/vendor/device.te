@@ -14,6 +14,11 @@ type splash_block_device, dev_type;
 type teecd_block_device, dev_type;
 
 # ==========================================
+# Recovery Devices 
+# ==========================================
+type recovery_device, dev_type;
+
+# ==========================================
 # Biometrics & TrustZone (TEE)
 # ==========================================
 type dsm_device, dev_type;
