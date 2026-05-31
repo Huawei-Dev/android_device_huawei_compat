@@ -93,7 +93,10 @@
 /dev/ttyAMA3                                                               u:object_r:gps_device:s0
 /dev/ttyAMA4                                                               u:object_r:hci_attach_dev:s0
 /dev/ttyHwGS1                                                              u:object_r:atcmdserver_blkdev:s0
-/dev/ttySPI.* u:object_r:radio_device:s0
+/dev/ttySPI.*                                                              u:object_r:radio_device:s0
+
+
+
 
 # Input & Misc
 /dev/mouse0                                                                u:object_r:extra_input_device:s0
@@ -121,7 +124,7 @@
 ###########################################
 # DATA DIRECTORIES (/data)
 ###########################################
-/data/hisi_logs(/.*)?                                                      u:object_r:huawei_data_file:s0
+/data/hisi_logs(/.*)?                    			           u:object_r:hisi_log_file:s0
 /data/share(/.*)?                                                          u:object_r:huawei_data_file:s0
 /data/vendor/camera(/.*)?                                                  u:object_r:vendor_camera_data_file:s0
 /data/vendor/gnss(/.*)?                                                    u:object_r:hi110x_data_file:s0
@@ -154,13 +157,31 @@
 /dev/block/by-name/nvme                                                    u:object_r:nve_block_device:s0
 /dev/block/by-name/(patch|version)                                         u:object_r:metadata_block_device:s0
 /dev/block/by-name/oeminfo                                                 u:object_r:oeminfo_nvm_block_device:s0
+
 # Label the partitions explicitly so fsck and init can access them
 /dev/block/mmcblk0p8                                                       u:object_r:nve_block_device:s0
-/dev/block/mmcblk0p10                                                      u:object_r:teecd_block_device:s0
-/dev/block/mmcblk0p17                                                      u:object_r:cache_block_device:s0
+/dev/block/mmcblk0p10                                                      u:object_r:oeminfo_nvm_block_device:s0
 /dev/block/mmcblk0p20                                                      u:object_r:misc_block_device:s0
-/dev/block/mmcblk0p39                                                      u:object_r:boot_block_device:s0
-/dev/block/mmcblk0p66                                                      u:object_r:userdata_block_device:s0
+/dev/block/mmcblk0p38                                                      u:object_r:teecd_block_device:s0
+
+/dev/block/mmcblk0p60                                                      u:object_r:cache_block_device:s0
+/dev/block/mmcblk0p66                                                      u:object_r:system_block_device:s0
+/dev/block/mmcblk0p70                                                      u:object_r:userdata_block_device:s0
+
+/dev/block/mmcblk0p13                                                      u:object_r:modemnvm_block_device:s0
+/dev/block/mmcblk0p14                                                      u:object_r:modemnvm_block_device:s0
+/dev/block/mmcblk0p15                                                      u:object_r:modemnvm_block_device:s0
+/dev/block/mmcblk0p57                                                      u:object_r:modemnvm_block_device:s0
+/dev/block/mmcblk0p58                                                      u:object_r:modemnvm_block_device:s0
+
+/dev/block/mmcblk0p7                                                       u:object_r:modem_secure_device:s0
+/dev/block/mmcblk0p50                                                      u:object_r:modem_device:s0
+
+/dev/block/mmcblk0p22                                                      u:object_r:splash_block_device:s0
+
+/dev/block/mmcblk0p45                                                      u:object_r:recovery_device:s0
+
+
 # Block devices (mmc)
 /dev/block/platform/hi_mci\.0/by-name/cust                                 u:object_r:system_block_device:s0
 /dev/block/platform/hi_mci\.0/by-name/odm                                  u:object_r:system_block_device:s0
@@ -169,6 +190,8 @@
 /dev/block/platform/hi_mci\.0/by-name/system                               u:object_r:system_block_device:s0
 /dev/block/platform/hi_mci\.0/by-name/vendor                               u:object_r:system_block_device:s0
 /dev/block/platform/hi_mci\.0/by-name/patch                                u:object_r:metadata_block_device:s0
+/dev/block/platform/hi_mci\.0/by-name/userdata                             u:object_r:userdata_block_device:s0
+
 # Block devices (ufs)
 /dev/block/platform/ff3c0000\.ufs/by-name/cust                             u:object_r:system_block_device:s0
 /dev/block/platform/ff3c0000\.ufs/by-name/odm                              u:object_r:system_block_device:s0
@@ -177,17 +200,23 @@
 /dev/block/platform/ff3c0000\.ufs/by-name/system                           u:object_r:system_block_device:s0
 /dev/block/platform/ff3c0000\.ufs/by-name/vendor                           u:object_r:system_block_device:s0
 /dev/block/platform/ff3c0000\.ufs/by-name/patch                            u:object_r:metadata_block_device:s0
+/dev/block/platform/ff3c0000\.ufs/by-name/userdata                         u:object_r:userdata_block_device:s0
 
 # log devices
 /dev/hwlog_jank                                                            u:object_r:hwlog_device:s0
 /dev/hwlog_dubai                                                           u:object_r:hwlog_device:s0
+
+# splash2 files
+/splash2(/.*)?                                  			   u:object_r:splash_data_file:s0
+
+# modem files
 /3rdmodem(/.*)?                                                            u:object_r:modem_file:s0
 /3rdmodem(nvm|nvmbkp)?(/.*)?                                               u:object_r:modem_file:s0       
 /modem_log(/.*)?                                                           u:object_r:modem_file:s0
 /mnt/modem/mnvm2:0(/.*)?                                                   u:object_r:modem_file:s0
 /mnt/modem/modem_secure(/.*)?                   			   u:object_r:modem_file:s0
 /mnvm2:0(/.*)?								   u:object_r:modem_file:s0
-/splash2(/.*)?                                  			   u:object_r:splash_data_file:s0
+/vendor/modem(/.*)?                                                        u:object_r:modem_vendor_file:s0
 
 # Tee
 /sec_storage(/.*)?                                                         u:object_r:teecd_data_file:s0
@@ -203,6 +232,8 @@
 /data/sec_storage_data(/.*)?                    			   u:object_r:teecd_data_file:s0
 /data/sec_storage_data_users                                               u:object_r:teecd_data_file:s0
 /data/sec_storage_data_users(/.*)?              			   u:object_r:teecd_data_file:s0
+
+
 
 ###########################################
 # LIBRARIES (Same Process HALs)
@@ -222,8 +253,8 @@
 /vendor/firmware(/.*)?                                                     u:object_r:same_process_hal_file:s0
 
 # Firmware files
-/vendor/firmware/ts(/.*)?                                                  u:object_r:vendor_firmware_file:s0
-/system/vendor/firmware/ts(/.*)?                                           u:object_r:vendor_firmware_file:s0
-/odm/etc/firmware/ts/                                                      u:object_r:vendor_firmware_file:s0
+/vendor/firmware/ts(/.*)?                                                  u:object_r:firmware_vendor_file:s0
+/system/vendor/firmware/ts(/.*)?                                           u:object_r:firmware_vendor_file:s0
+/odm/etc/firmware/ts/                                                      u:object_r:firmware_vendor_file:s0
 
 
