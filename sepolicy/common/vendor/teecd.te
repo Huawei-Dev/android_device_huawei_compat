@@ -28,6 +28,7 @@ allow tee hisi_touchscreen:process { getattr };
 # ==========================================
 
 allow tee teecd_device:chr_file { open read write };
+allow tee teecd_device:chr_file { ioctl };
 allowxperm tee teecd_device:chr_file ioctl { 0x7401 0x7402 0x7403 0x7405 0x7406 0x7407 0x740e 0x7411 0x7412 0x7413 0x7414 0x7415 };
 
 # Allow the data file label to associate with the filesystem
