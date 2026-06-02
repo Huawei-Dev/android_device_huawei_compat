@@ -164,6 +164,8 @@
 /dev/block/mmcblk0p20                                                      u:object_r:misc_block_device:s0
 /dev/block/mmcblk0p38                                                      u:object_r:teecd_block_device:s0
 
+/dev/block/mmcblk0p11                                                      u:object_r:teecd_block_device:s0
+
 /dev/block/mmcblk0p60                                                      u:object_r:cache_block_device:s0
 /dev/block/mmcblk0p66                                                      u:object_r:system_block_device:s0
 /dev/block/mmcblk0p70                                                      u:object_r:userdata_block_device:s0
