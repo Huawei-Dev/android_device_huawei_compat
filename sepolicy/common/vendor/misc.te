@@ -19,3 +19,8 @@ allow surfaceflinger bootanim:file { read open };
 # ==========================================
 allow zygote pmsg_device:file { open write };
 allow installd pmsg_device:file { open write };
+
+# ==========================================
+# Network
+# ==========================================
+allow network_stack proc_net:file { read open getattr };
