@@ -9,5 +9,5 @@ allowxperm vold teecd_data_file:dir ioctl { 0x5879 };
 allowxperm vold splash_data_file:dir ioctl { 0x5879 };
 
 allow vold_prepare_subdirs pmsg_device:file { write open };
-
+allow vold pmsg_device:file { write open };
 
