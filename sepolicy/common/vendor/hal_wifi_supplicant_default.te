@@ -22,3 +22,4 @@ allow hal_wifi_supplicant_default wifi_vendor_wpa_socket:sock_file { create seta
 
 allow hal_wifi_supplicant_default pmsg_device:file { open read write };
 
+allow hal_wifi_supplicant_default proc:file { open read };
