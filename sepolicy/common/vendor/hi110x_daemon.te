@@ -43,7 +43,7 @@ allow hi110x_daemon ar_device:chr_file { ioctl open read write };
 # Data Directories & Logs
 # ==========================================
 
-allow hi110x_daemon hi110x_data_file:dir { read open add_name getattr remove_name search setattr write };
+allow hi110x_daemon hi110x_data_file:dir { create read open add_name getattr remove_name search setattr write };
 allow hi110x_daemon hi110x_data_file:file { create getattr open read setattr unlink write };
 allow hi110x_daemon hi110x_data_file:lnk_file { create read rename unlink };
 allow hi110x_daemon hi110x_data_file:sock_file { create setattr unlink write };
