@@ -1,6 +1,7 @@
 allow rild pmsg_device:file { write open };
 allow rild proc_cmdline:file { getattr open read };
 allow rild sysfs:file { write };
+allow rild modem_state_file:file { write };
 
 # ==========================================
 # Properties
