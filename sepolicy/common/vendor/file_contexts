@@ -22,7 +22,7 @@
 /vendor/bin/hw/vendor.huawei.hardware.libteec@3.0-service			u:object_r:hal_libteec_default_exec:s0
 /vendor/bin/hw/vendor.huawei.hardware.motion@1.0-service			u:object_r:hal_motion_default_exec:s0
 /vendor/bin/hw/vendor.huawei.hardware.nfc@1.0-service				u:object_r:hal_nfc_default_exec:s0
-/vendor/bin/hw/vendor.huawei.hardware.vdecoder@1.0-service			u:object_r:hal_vdecoder_default_exec:0
+/vendor/bin/hw/vendor.huawei.hardware.vdecoder@1.0-service			u:object_r:hal_vdecoder_default_exec:s0
 /vendor/bin/hw/vendor.huawei.hardware.tp@1.0-service				u:object_r:hal_lineage_touch_default_exec:s0
 /vendor/bin/hw/vendor.lineage.livedisplay@2.1-service.huawei			u:object_r:hal_lineage_livedisplay_sysfs_exec:s0
 /vendor/bin/hw/vendor.lineage.touch@1.0-service.huawei				u:object_r:hal_lineage_touch_default_exec:s0
