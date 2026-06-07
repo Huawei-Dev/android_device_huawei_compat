@@ -11,11 +11,18 @@
 /vendor/bin/hw/vendor.huawei.hardware.gnss@1.0-service				u:object_r:hal_gnss_default_exec:s0
 /vendor/bin/hw/vendor.huawei.hardware.gnss@1.2-service				u:object_r:hal_gnss_default_exec:s0
 /vendor/bin/hw/vendor.huawei.hardware.gnss@2.0-service				u:object_r:hal_gnss_default_exec:s0
+/vendor/bin/hw/vendor.huawei.hardware.graphics.displayeffect@1.2-service	u:object_r:hal_graphics_composer_default_exec:s0
 /vendor/bin/hw/vendor.huawei.hardware.graphics.mediacomm@2.0-service		u:object_r:hal_graphics_composer_default_exec:s0
 /vendor/bin/hw/vendor.huawei.hardware.graphics.mediacomm@2.1-service		u:object_r:hal_graphics_composer_default_exec:s0
 /vendor/bin/hw/vendor.huawei.hardware.hisupl@1.0-service			u:object_r:hal_hisupl_default_exec:s0
+/vendor/bin/hw/vendor.huawei.hardware.hwdisplay@1.0-service			u:object_r:hal_graphics_composer_default_exec:s0
+/vendor/bin/hw/vendor.huawei.hardware.hwdisplay.displayengine@1.2-service	u:object_r:hal_graphics_composer_default_exec:s0
+/vendor/bin/hw/vendor.huawei.hardware.jpegdec@1.0-service			u:object_r:hal_jpegdec_default_exec:s0
 /vendor/bin/hw/vendor.huawei.hardware.libteec@2.0-service			u:object_r:hal_libteec_default_exec:s0
 /vendor/bin/hw/vendor.huawei.hardware.libteec@3.0-service			u:object_r:hal_libteec_default_exec:s0
+/vendor/bin/hw/vendor.huawei.hardware.motion@1.0-service			u:object_r:hal_motion_default_exec:s0
+/vendor/bin/hw/vendor.huawei.hardware.nfc@1.0-service				u:object_r:hal_nfc_default_exec:s0
+/vendor/bin/hw/vendor.huawei.hardware.vdecoder@1.0-service			u:object_r:hal_vdecoder_default_exec:0
 /vendor/bin/hw/vendor.huawei.hardware.tp@1.0-service				u:object_r:hal_lineage_touch_default_exec:s0
 /vendor/bin/hw/vendor.lineage.livedisplay@2.1-service.huawei			u:object_r:hal_lineage_livedisplay_sysfs_exec:s0
 /vendor/bin/hw/vendor.lineage.touch@1.0-service.huawei				u:object_r:hal_lineage_touch_default_exec:s0
@@ -27,6 +34,7 @@
 /vendor/bin/gnss_supl20clientd_hisi						u:object_r:hi110x_daemon_exec:s0
 /vendor/bin/gnss_watchlssd_thirdparty						u:object_r:hi110x_daemon_exec:s0
 /vendor/bin/gpsdaemon								u:object_r:hal_gnss_default_exec:s0
+/vendor/bin/hiaiserver								u:object_r:hal_hiaiserver_default_exec:s0
 /vendor/bin/hignss_1103								u:object_r:hi110x_daemon_exec:s0
 /vendor/bin/hisecd								u:object_r:oeminfo_nvm_exec:s0
 /vendor/bin/hisi_init                           				u:object_r:vendor_hisi_init_exec:s0
