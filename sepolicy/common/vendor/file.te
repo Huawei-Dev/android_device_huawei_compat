@@ -37,6 +37,8 @@ type vendor_log_file, file_type, data_file_type;
 type vendor_share_data_file, file_type, data_file_type;
 type wifi_vendor_data_file, file_type, data_file_type;
 type hi110x_cust_data_file, file_type, data_file_type;
+# Huawei root data folders
+type huawei_data_file, file_type, data_file_type, core_data_file_type;
 
 # ==========================================
 # Vendor Files & Firmware (/vendor)
@@ -68,6 +70,9 @@ type wifi_vendor_wpa_socket, file_type, data_file_type;
 
 type vendor_connectivity_fw, vendor_file_type, file_type;
 
+# ==========================================
+# TEE
+# ==========================================
 # /sec_storage
 type teecd_data_file, file_type, data_file_type, core_data_file_type;
 
@@ -75,10 +80,15 @@ type teecd_data_file, file_type, data_file_type, core_data_file_type;
 type teecd_data_file_vendor, file_type, data_file_type;
 type teecd_data_file_system, file_type, data_file_type, core_data_file_type;
 
-# Huawei root data folders
-type huawei_data_file, file_type, data_file_type, core_data_file_type;
 
+# ==========================================
+# Other type
+# ==========================================
 # Custom type for the MMC start offset
 type sysfs_mmc_start, sysfs_type, fs_type;
-
 type sysfs_hisi_product, sysfs_type, fs_type;
+
+# Custom type for Huawei charger
+type sysfs_brightness, sysfs_type, fs_type;
+type sysfs_backlight, sysfs_type, fs_type;
+type sysfs_led, sysfs_type, fs_type;

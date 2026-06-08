@@ -45,6 +45,7 @@
 /vendor/bin/teecd                                                          u:object_r:tee_exec:s0
 /vendor/bin/wpa_supplicant_hisi                                            u:object_r:hal_wifi_supplicant_default_exec:s0
 /vendor/bin/aptouch_daemon                                                 u:object_r:hisi_touchscreen_exec:s0
+/vendor/bin/hw_charger                                                     u:object_r:charger_exec:s0
 
 ###########################################
 # DEVICE NODES (/dev)
@@ -97,10 +98,9 @@
 
 
 
-
 # Input & Misc
 /dev/mouse0                                                                u:object_r:extra_input_device:s0
-/dev/input/event.* u:object_r:extra_input_device:s0
+/dev/input/event.*                                                         u:object_r:extra_input_device:s0
 /dev/nve0                                                                  u:object_r:nve_device:s0
 
 # Touchscreen
@@ -115,10 +115,19 @@
 # Sensors sys
 ###########################################
 /sys/devices/virtual/sensors(/.*)?                                         u:object_r:sysfs_sensors:s0
+/sys/devices/virtual/hw_power(/.*)?                                        u:object_r:sysfs_power:s0
+
+/sys/class/leds/torch/brightness		                           u:object_r:sysfs_brightness:s0
+/sys/class/leds/torch_front/brightness		                           u:object_r:sysfs_brightness:s0
+
+/sys/devices/platform/hisi_fb.*/leds/lcd_backlight0/brightness		   u:object_r:sysfs_backlight:s0
+/sys/devices/platform/hisi_fb.*/leds/lcd_backlight0/max_brightness	   u:object_r:sysfs_backlight:s0
+
+/sys/devices/platform/hisilicon-hisi-led-pmic-spmi-pmic_led/leds(/.*)?     u:object_r:sysfs_led:s0
 
 /sys/devices/platform/hi_mci\.0/mmc_host/mmc0/mmc0:0001/block/mmcblk0/queue/discard_max_bytes u:object_r:sysfs_fs_ext4_features:s0
-/sys/devices/platform/hi_mci\.1/mmc_host/mmc1/mmc1:0001/block/mmcblk1/mmcblk1p1/start    u:object_r:sysfs_mmc_start:s0
-/sys/devices/platform/hisi_vibrator@fff34000/leds/vibrator(/.*)?            u:object_r:sysfs_vibrator:s0
+/sys/devices/platform/hi_mci\.1/mmc_host/mmc1/mmc1:0001/block/mmcblk1/mmcblk1p1/start         u:object_r:sysfs_mmc_start:s0
+/sys/devices/platform/hisi_vibrator@fff34000/leds/vibrator(/.*)?           u:object_r:sysfs_vibrator:s0
 
 
 ###########################################
