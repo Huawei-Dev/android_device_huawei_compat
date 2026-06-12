@@ -14,3 +14,4 @@ allow system_server sysfs_cpufreq:dir search;
 allow system_server sysfs_cpufreq:file r_file_perms;
 
 allow system_server hal_huawei_displayengine_hwservice:hwservice_manager find;
+allow system_server hal_huawei_hisupl_hwservice:hwservice_manager find;
