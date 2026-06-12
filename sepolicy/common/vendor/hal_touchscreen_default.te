@@ -32,6 +32,8 @@ allow hisi_touchscreen sysfs:file { open read write getattr};
 allow hisi_touchscreen rootfs:file { entrypoint read execute getattr open };
 allow hisi_touchscreen rootfs:dir { read };
 
+allow hisi_touchscreen default_android_vndservice:service_manager { add };
+
 allow hisi_touchscreen self:capability { sys_nice };
 allow hisi_touchscreen tee:unix_stream_socket { connectto };
 allow hisi_touchscreen vndbinder_device:chr_file { ioctl open write read };
