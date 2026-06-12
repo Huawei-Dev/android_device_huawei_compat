@@ -41,5 +41,8 @@ allow oeminfo_nvm vendor_public_hosts_file:file { read open getattr };
 allow oeminfo_nvm proc_cmdline:file { getattr open read };
 allow oeminfo_nvm proc_overcommit_memory:file { open read };
 
+# rule to access file hosts
+allow oeminfo_nvm system_file:file { getattr open read };
+
 set_prop(oeminfo_nvm, vendor_oem_prop) 
 

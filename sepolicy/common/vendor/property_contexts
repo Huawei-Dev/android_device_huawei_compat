@@ -80,6 +80,7 @@ ro.connectivity.chiptype         u:object_r:vendor_oem_prop:s0
 ro.connectivity.sub_chiptype     u:object_r:vendor_oem_prop:s0
 vendor.setup_hi110x_modules      u:object_r:vendor_oem_prop:s0
 is_hisi_connectivity_chip        u:object_r:vendor_oem_prop:s0
+persist.vendor.hisecd.firstrun   u:object_r:vendor_oem_prop:s0
 
 ro.config.hw_wifi_chip           u:object_r:vendor_wifi_prop:s0
 sys.conn_macs.ready              u:object_r:vendor_wifi_prop:s0
