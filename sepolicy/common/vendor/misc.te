@@ -24,6 +24,7 @@ allow installd pmsg_device:file { open write };
 # Network
 # ==========================================
 allow network_stack proc_net:file { read open getattr };
+allow network_stack fs_bpf:file { read write getattr map open ioctl lock append watch watch_reads };
 
 # ==========================================
 # bootanim
