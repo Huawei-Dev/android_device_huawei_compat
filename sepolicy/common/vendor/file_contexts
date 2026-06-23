@@ -13,6 +13,7 @@
 /vendor/bin/hw/vendor.huawei.hardware.gnss@1.2-service				u:object_r:hal_gnss_default_exec:s0
 /vendor/bin/hw/vendor.huawei.hardware.gnss@2.0-service				u:object_r:hal_gnss_default_exec:s0
 /vendor/bin/hw/vendor.huawei.hardware.graphics.displayeffect@1.2-service	u:object_r:hal_graphics_composer_default_exec:s0
+/vendor/bin/hw/vendor.huawei.hardware.graphics.hwcinterface@1.0-service		u:object_r:hal_graphics_composer_default_exec:s0
 /vendor/bin/hw/vendor.huawei.hardware.graphics.mediacomm@2.0-service		u:object_r:hal_graphics_composer_default_exec:s0
 /vendor/bin/hw/vendor.huawei.hardware.graphics.mediacomm@2.1-service		u:object_r:hal_graphics_composer_default_exec:s0
 /vendor/bin/hw/vendor.huawei.hardware.hisupl@1.0-service			u:object_r:hal_hisupl_default_exec:s0
