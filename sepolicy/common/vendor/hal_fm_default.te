@@ -1,11 +1,6 @@
 type hal_fm_default, domain;
-hal_server_domain(hal_fm_default, hal_fm)
-
 type hal_fm_default_exec, exec_type, vendor_file_type, file_type;
+
 init_daemon_domain(hal_fm_default)
 
-# HwBinder IPC from client to server
-binder_call(hal_fm_client, hal_fm_server)
-binder_call(hal_fm_server, hal_fm_client)
-
-hal_attribute_hwservice(hal_fm, hal_fm_hwservice)
+hal_server_domain(hal_fm_default, hal_fm)

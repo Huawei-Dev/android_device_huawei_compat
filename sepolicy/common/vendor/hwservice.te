@@ -1,6 +1,23 @@
 type hal_fm_hwservice, hwservice_manager_type, protected_hwservice;
+hal_attribute_hwservice(hal_fm, hal_fm_hwservice)
+
+type hal_hiaiserver_hwservice, hwservice_manager_type, protected_hwservice;
+hal_attribute_hwservice(hal_hiaiserver, hal_hiaiserver_hwservice)
+
 type hal_hisupl_hwservice, hwservice_manager_type, protected_hwservice;
-type hal_hwfactoryinterface_hwservice, hwservice_manager_type, protected_hwservice;
+hal_attribute_hwservice(hal_hisupl, hal_hisupl_hwservice)
+
+type hal_jpegdec_hwservice, hwservice_manager_type, protected_hwservice;
+hal_attribute_hwservice(hal_jpegdec, hal_jpegdec_hwservice)
+
 type hal_libteec_hwservice, hwservice_manager_type, protected_hwservice;
-type hal_perfgenius_hwservice, hwservice_manager_type, protected_hwservice;
+hal_attribute_hwservice(hal_libteec, hal_libteec_hwservice)
+
+type hal_motion_hwservice, hwservice_manager_type, protected_hwservice;
+hal_attribute_hwservice(hal_motion, hal_motion_hwservice)
+
 type hal_touchscreen_hwservice, hwservice_manager_type, protected_hwservice;
+hal_attribute_hwservice(hal_touchscreen, hal_touchscreen_hwservice)
+
+type hal_vdecoder_hwservice, hwservice_manager_type, protected_hwservice;
+hal_attribute_hwservice(hal_vdecoder, hal_vdecoder_hwservice)
