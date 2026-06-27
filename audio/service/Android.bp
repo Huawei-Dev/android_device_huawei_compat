@@ -1,13 +1,3 @@
-package {
-    default_team: "trendy_team_android_media_audio_framework",
-    // See: http://go/android-license-faq
-    // A large-scale-change added 'default_applicable_licenses' to import
-    // all of the 'license_kinds' from "hardware_interfaces_license"
-    // to get the below license kinds:
-    //   SPDX-license-identifier-Apache-2.0
-    default_applicable_licenses: ["hardware_interfaces_license"],
-}
-
 soong_config_module_type {
     name: "android_hardware_audio_config_default",
     module_type: "cc_defaults",
@@ -19,7 +9,7 @@ soong_config_module_type {
 }
 
 android_hardware_audio_config_default {
-    name: "android_hardware_audio_config_defaults",
+    name: "android_hardware_audio_config-hisi_defaults",
 
     soong_config_variables: {
         run_64bit: {
@@ -36,14 +26,14 @@ android_hardware_audio_config_default {
 }
 
 cc_binary {
-    name: "android.hardware.audio.service",
+    name: "android.hardware.audio.service-hisi",
 
-    init_rc: ["android.hardware.audio.service.rc"],
+    init_rc: ["android.hardware.audio.service-hisi.rc"],
     relative_install_path: "hw",
     vendor: true,
 
     defaults: [
-        "android_hardware_audio_config_defaults",
+        "android_hardware_audio_config-hisi_defaults",
     ],
 
     srcs: ["service.cpp"],
@@ -63,10 +53,4 @@ cc_binary {
         "libutils",
         "libhardware",
     ],
-}
-
-// Legacy service name, use android.hardware.audio.service instead
-phony {
-    name: "android.hardware.audio@2.0-service",
-    required: ["android.hardware.audio.service"],
 }

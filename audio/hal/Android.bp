@@ -1,15 +1,5 @@
-package {
-    default_team: "trendy_team_android_media_audio_framework",
-    // See: http://go/android-license-faq
-    // A large-scale-change added 'default_applicable_licenses' to import
-    // all of the 'license_kinds' from "hardware_interfaces_license"
-    // to get the below license kinds:
-    //   SPDX-license-identifier-Apache-2.0
-    default_applicable_licenses: ["hardware_interfaces_license"],
-}
-
 filegroup {
-    name: "android.hardware.audio-impl_srcs",
+    name: "android.hardware.audio-impl-hisi_srcs",
     srcs: [
         "Device.cpp",
         "DevicesFactory.cpp",
@@ -18,22 +8,23 @@ filegroup {
         "Stream.cpp",
         "StreamIn.cpp",
         "StreamOut.cpp",
+        "HisiRegister.cpp",
     ],
 }
 
 cc_library_headers {
-    name: "android.hardware.audio-impl_headers",
+    name: "android.hardware.audio-impl-hisi_headers",
     proprietary: true,
     vendor: true,
     export_include_dirs: ["include"],
 }
 
 cc_defaults {
-    name: "android.hardware.audio-impl_default",
+    name: "android.hardware.audio-impl-hisi_default",
     relative_install_path: "hw",
     proprietary: true,
     vendor: true,
-    srcs: [":android.hardware.audio-impl_srcs"],
+    srcs: [":android.hardware.audio-impl-hisi_srcs"],
 
     defaults: ["hidl_defaults"],
 
@@ -56,7 +47,7 @@ cc_defaults {
     ],
 
     header_libs: [
-        "android.hardware.audio-impl_headers",
+        "android.hardware.audio-impl-hisi_headers",
         "android.hardware.audio.common.util@all-versions",
         "libaudioutils_headers",
         "libaudio_system_headers",
@@ -66,7 +57,7 @@ cc_defaults {
     ],
 
     export_header_lib_headers: [
-        "android.hardware.audio-impl_headers",
+        "android.hardware.audio-impl-hisi_headers",
     ],
 
     cflags: select(soong_config_variable("android_hardware_audio", "skip_speaker_layout_channel_mask_field"), {
@@ -75,58 +66,9 @@ cc_defaults {
     }),
 }
 
-cc_library_shared {
-    name: "android.hardware.audio@2.0-impl",
-    defaults: ["android.hardware.audio-impl_default"],
-    shared_libs: [
-        "android.hardware.audio@2.0",
-        "android.hardware.audio@2.0-util",
-        "android.hardware.audio.common@2.0",
-        "android.hardware.audio.common@2.0-util",
-    ],
-    cflags: [
-        "-DMAJOR_VERSION=2",
-        "-DMINOR_VERSION=0",
-        "-include common/all-versions/VersionMacro.h",
-    ],
-}
-
-cc_library_shared {
-    name: "android.hardware.audio@4.0-impl",
-    defaults: ["android.hardware.audio-impl_default"],
-
-    shared_libs: [
-        "android.hardware.audio@4.0",
-        "android.hardware.audio@4.0-util",
-        "android.hardware.audio.common@4.0",
-        "android.hardware.audio.common@4.0-util",
-    ],
-    cflags: [
-        "-DMAJOR_VERSION=4",
-        "-DMINOR_VERSION=0",
-        "-include common/all-versions/VersionMacro.h",
-    ],
-}
-
-cc_library_shared {
-    name: "android.hardware.audio@5.0-impl",
-    defaults: ["android.hardware.audio-impl_default"],
-    shared_libs: [
-        "android.hardware.audio@5.0",
-        "android.hardware.audio@5.0-util",
-        "android.hardware.audio.common@5.0",
-        "android.hardware.audio.common@5.0-util",
-    ],
-    cflags: [
-        "-DMAJOR_VERSION=5",
-        "-DMINOR_VERSION=0",
-        "-include common/all-versions/VersionMacro.h",
-    ],
-}
-
 cc_defaults {
-    name: "android.hardware.audio@6.0-impl_default",
-    defaults: ["android.hardware.audio-impl_default"],
+    name: "android.hardware.audio@6.0-impl-hisi_default",
+    defaults: ["android.hardware.audio-impl-hisi_default"],
     shared_libs: [
         "android.hardware.audio@6.0",
         "android.hardware.audio@6.0-util",
@@ -141,55 +83,6 @@ cc_defaults {
 }
 
 cc_library_shared {
-    name: "android.hardware.audio@6.0-impl",
-    defaults: ["android.hardware.audio@6.0-impl_default"],
-}
-
-cc_defaults {
-    name: "android.hardware.audio@7.0-impl_default",
-    defaults: ["android.hardware.audio-impl_default"],
-    shared_libs: [
-        "android.hardware.audio@7.0",
-        "android.hardware.audio@7.0-util",
-        "android.hardware.audio.common@7.0",
-        "android.hardware.audio.common@7.0-enums",
-        "android.hardware.audio.common@7.0-util",
-        "libbase",
-    ],
-    cflags: [
-        "-DMAJOR_VERSION=7",
-        "-DMINOR_VERSION=0",
-        "-include common/all-versions/VersionMacro.h",
-    ],
-}
-
-cc_library_shared {
-    name: "android.hardware.audio@7.0-impl",
-    defaults: ["android.hardware.audio@7.0-impl_default"],
-}
-
-cc_defaults {
-    name: "android.hardware.audio@7.1-impl_default",
-    defaults: ["android.hardware.audio-impl_default"],
-    shared_libs: [
-        "android.hardware.audio@7.0",
-        "android.hardware.audio@7.1",
-        "android.hardware.audio@7.1-util",
-        "android.hardware.audio.common@7.0",
-        "android.hardware.audio.common@7.1-enums",
-        "android.hardware.audio.common@7.1-util",
-        "libbase",
-    ],
-    cflags: [
-        "-DMAJOR_VERSION=7",
-        "-DMINOR_VERSION=1",
-        "-DCOMMON_TYPES_MINOR_VERSION=0",
-        "-DCORE_TYPES_MINOR_VERSION=0",
-        "-include common/all-versions/VersionMacro.h",
-    ],
-}
-
-cc_library_shared {
-    name: "android.hardware.audio@7.1-impl",
-    defaults: ["android.hardware.audio@7.1-impl_default"],
+    name: "android.hardware.audio@6.0-impl-hisi",
+    defaults: ["android.hardware.audio@6.0-impl-hisi_default"],
 }

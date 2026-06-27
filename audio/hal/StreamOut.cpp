@@ -728,13 +728,17 @@ Return<Result> StreamOut::setPlaybackRateParameters(const PlaybackRate& playback
                    : Result::NOT_SUPPORTED;
 }
 
-Return<Result> StreamOut::setEventCallback(const sp<IStreamOutEventCallback>& callback) {
-    if (mStream->set_event_callback == nullptr) return Result::NOT_SUPPORTED;
-    int result = mStream->set_event_callback(mStream, StreamOut::asyncEventCallback, this);
-    if (result == 0) {
-        mEventCallback = callback;
-    }
-    return Stream::analyzeStatus("set_stream_out_callback", result, {ENOSYS} /*ignore*/);
+Return<Result> StreamOut::setEventCallback(const sp<IStreamOutEventCallback>&) {
+    ALOGW("Huawei legacy audio HAL: ignoring StreamOut::setEventCallback");
+
+    /*
+     * Huawei audio.primary.hisi.so is legacy and its audio_stream_out
+     * layout does not safely provide set_event_callback as expected by
+     * the default HIDL 6.0 wrapper.
+     *
+     * Do NOT call mStream->set_event_callback here.
+     */
+    return Result::OK;
 }
 
 // static

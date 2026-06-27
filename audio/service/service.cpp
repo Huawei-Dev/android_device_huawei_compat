@@ -72,6 +72,34 @@ static bool registerExternalServiceImplementation(const std::string& libName,
     return ((*factoryFunction)() == STATUS_OK);
 }
 
+static bool registerHisiServiceImplementation(const std::string& libName,
+                                              const std::string& funcName) {
+    constexpr int dlMode = RTLD_LAZY;
+    dlerror();
+
+    auto libPath = libName + ".so";
+    void* handle = dlopen(libPath.c_str(), dlMode);
+    if (handle == nullptr) {
+        const char* error = dlerror();
+        ALOGE("Failed to dlopen %s: %s", libPath.c_str(),
+              error != nullptr ? error : "unknown error");
+        return false;
+    }
+
+    int (*factoryFunction)();
+    *(void**)(&factoryFunction) = dlsym(handle, funcName.c_str());
+    if (!factoryFunction) {
+        const char* error = dlerror();
+        ALOGE("Factory function %s not found in libName %s: %s",
+              funcName.c_str(), libPath.c_str(),
+              error != nullptr ? error : "unknown error");
+        dlclose(handle);
+        return false;
+    }
+
+    return ((*factoryFunction)() == 0);
+}
+
 int main(int /* argc */, char* /* argv */ []) {
     signal(SIGPIPE, SIG_IGN);
 
@@ -92,24 +120,19 @@ int main(int /* argc */, char* /* argv */ []) {
     }
     configureRpcThreadpool(16, true /*callerWillJoin*/);
 
+    LOG_ALWAYS_FATAL_IF(
+        !registerHisiServiceImplementation(
+                "/vendor/lib64/hw/android.hardware.audio@6.0-impl-hisi",
+                "registerHisiAudioFactory"),
+        "Could not register Huawei Audio Core API");
+
     // Automatic formatting tries to compact the lines, making them less readable
     // clang-format off
     const std::vector<InterfacesList> mandatoryInterfaces = {
         {
-            "Audio Core API",
-            "android.hardware.audio@7.1::IDevicesFactory",
-            "android.hardware.audio@7.0::IDevicesFactory",
-            "android.hardware.audio@6.0::IDevicesFactory",
-            "android.hardware.audio@5.0::IDevicesFactory",
-            "android.hardware.audio@4.0::IDevicesFactory",
-        },
-        {
             "Audio Effect API",
-            "android.hardware.audio.effect@7.0::IEffectsFactory",
             "android.hardware.audio.effect@6.0::IEffectsFactory",
-            "android.hardware.audio.effect@5.0::IEffectsFactory",
-            "android.hardware.audio.effect@4.0::IEffectsFactory",
-        }
+        },
     };
 
     const std::vector<InterfacesList> optionalInterfaces = {
