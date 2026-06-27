@@ -11,20 +11,6 @@ cc_library_shared {
 }
 
 cc_library_shared {
-    name: "libimonitor",
-    proprietary: true,
-    recovery_available: true,
-    defaults: ["hidl_defaults"],
-    srcs: [
-        "cjson.cpp",
-        "imonitor.cpp",
-    ],
-    shared_libs: [
-        "liblog",
-    ],
-}
-
-cc_library_shared {
     name: "libxcollie",
     proprietary: true,
     defaults: ["hidl_defaults"],
