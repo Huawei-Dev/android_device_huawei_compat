@@ -1,0 +1,17 @@
+/*
+ * Copyright (C) 2024 The LineageOS Project
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+package android.hardware.vibrator@1.0;
+
+interface IVibrator {
+    on(uint32_t timeoutMs) generates (Status status);
+
+    off() generates (Status status);
+
+    supportsAmplitudeControl() generates (bool supports);
+
+    setAmplitude(uint8_t amplitude) generates (Status status);
+};

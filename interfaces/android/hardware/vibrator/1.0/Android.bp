@@ -1,0 +1,16 @@
+// Local compatibility copy of the removed HIDL vibrator 1.0 interface.
+// Needed by vendor.huawei.hardware.hwvibrator@1.0.
+
+hidl_interface {
+    name: "android.hardware.vibrator@1.0",
+    root: "android.hardware",
+    system_ext_specific: true,
+    srcs: [
+        "types.hal",
+        "IVibrator.hal",
+    ],
+    interfaces: [
+        "android.hidl.base@1.0",
+    ],
+    gen_java: true,
+}

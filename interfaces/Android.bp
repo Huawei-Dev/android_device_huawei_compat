@@ -2,3 +2,8 @@ hidl_package_root {
     name: "vendor.huawei",
     path: "device/huawei/compat/interfaces/huawei",
 }
+
+hidl_package_root {
+    name: "android.hardware",
+    path: "device/huawei/compat/interfaces/android/hardware",
+}
