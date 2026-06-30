@@ -27,7 +27,28 @@
 #include <unistd.h>
 
 // Hall-effect sensor type
-#define SENSOR_TYPE 65538
+#define SENSOR_HALL_TYPE 65538
+/*
+On kirin710 - kernel 4.14.357
+06-30 00:25:12.659   586   586 E folio_daemon: Found 16 sensors
+06-30 00:25:12.659   586   586 E folio_daemon: Found rohm-kx023 - 1 
+06-30 00:25:12.659   586   586 E folio_daemon: Found mag-akm09918 - 2 
+06-30 00:25:12.659   586   586 E folio_daemon: Found orientation - 3 
+06-30 00:25:12.659   586   586 E folio_daemon: Found als-B - 5 
+06-30 00:25:12.659   586   586 E folio_daemon: Found proximity-tmd3702 - 8 
+06-30 00:25:12.659   586   586 E folio_daemon: Found gyroscope - 4 
+06-30 00:25:12.659   586   586 E folio_daemon: Found gravity - 9 
+06-30 00:25:12.659   586   586 E folio_daemon: Found linear Acceleration - 10 
+06-30 00:25:12.659   586   586 E folio_daemon: Found rotation Vector - 11 
+06-30 00:25:12.659   586   586 E folio_daemon: Found HALL sensor - 65538 
+06-30 00:25:12.659   586   586 E folio_daemon: Found uncalibrated Magnetic Field - 14 
+06-30 00:25:12.659   586   586 E folio_daemon: Found significant Motion - 17 
+06-30 00:25:12.659   586   586 E folio_daemon: Found step counter - 19 
+06-30 00:25:12.659   586   586 E folio_daemon: Found geomagnetic Rotation Vector - 20 
+06-30 00:25:12.659   586   586 E folio_daemon: Found RPC sensor - 65552 
+06-30 00:25:12.659   586   586 E folio_daemon: Found Game Rotation Vector Sensor - 15 
+06-30 00:25:12.662   586   586 I folio_daemon: Starting polling loop
+*/
 
 #define RETRY_LIMIT 120
 #define RETRY_PERIOD 30          // 30 seconds
@@ -49,6 +70,8 @@ int main(void) {
     int32_t hallMinDelay = 0;
     time_t lastWarn = 0;
     int attemptCount = 0;
+    ASensorList sensor_list;
+    int sensor_count = 0;
 
     ALOGI("Started");
 
@@ -94,8 +117,16 @@ int main(void) {
         looper = ALooper_prepare(ALOOPER_PREPARE_ALLOW_NON_CALLBACKS);
     }
 
-    eventQueue = ASensorManager_createEventQueue(sensorManager, looper, 0, NULL, NULL);
+    eventQueue = ASensorManager_createEventQueue(sensorManager, looper, 0, NULL,
+                                                 NULL);
 
+    sensor_count = ASensorManager_getSensorList(sensorManager, &sensor_list);
+    ALOGI("Found %d sensors\n", sensor_count);
+    for (int i = 0; i < sensor_count; i++) {
+        ALOGI("Found %s - %d \n", ASensor_getName(sensor_list[i]), ASensor_getType(sensor_list[i]));
+    }
+
+  
     /*
      * As long as we are unable to get the sensor handle, periodically retry
      * and emit an error message at a low frequency to prevent high CPU usage
@@ -105,9 +136,11 @@ int main(void) {
     while (true) {
         time_t now = time(NULL);
         hallSensor = ASensorManager_getDefaultSensorEx(sensorManager,
-                                                     SENSOR_TYPE,
-                                                     true);
+                                                     SENSOR_HALL_TYPE,
+                                                     false);
+
         if (hallSensor != nullptr) {
+            ALOGI("Huawei found hall sensor !!");
             hallMinDelay = ASensor_getMinDelay(hallSensor);
             break;
         }
