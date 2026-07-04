@@ -282,7 +282,7 @@ void load_variants() {
 	//env CUST_POLICY_DIRS not set
 	if (getenv("CUST_POLICY_DIRS") == nullptr) {
 	    std::string s = "/vendor/etc:/odm/etc:/product/etc:/data/cota:/odm/hw_odm/";
-            std::string policy = s + product_info.model;
+            std::string policy = s + product_info.board;
             setenv("CUST_POLICY_DIRS", policy.c_str(), 0 /*override*/);
             LOG(INFO) << "New CUST_POLICY_DIRS=" << getenv("CUST_POLICY_DIRS");
         }
