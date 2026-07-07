@@ -81,3 +81,11 @@ cc_library_shared {
         "liblog",
     ],
 }
+
+cc_library_shared {
+    name: "libshim_utils",
+    srcs: ["libshim_utils.cpp"],
+    shared_libs: ["libutils"],
+    vendor: true,
+}
+
