@@ -89,3 +89,23 @@ cc_library_shared {
     vendor: true,
 }
 
+cc_library_shared {
+    name: "hwcomposer.kirin",
+    vendor: true,
+    relative_install_path: "hw",
+
+    srcs: ["hwcomposer_kirin.cpp"],
+
+    shared_libs: [
+        "libcutils",
+        "libdl",
+        "libhardware",
+        "liblog",
+    ],
+
+    cflags: [
+        "-Wall",
+        "-Wextra",
+        "-Wno-unused-parameter",
+    ],
+}
