@@ -1,0 +1,3 @@
+# file contexts kirin710
+
+/vendor/bin/bms_event								u:object_r:bms_exec:s0
