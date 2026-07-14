@@ -24,6 +24,5 @@ allow fsck teecd_block_device:blk_file rw_file_perms;
 
 # Allow file system check on modem dir
 allow fsck modem_file:dir { getattr };
-allow fsck modem_vendor_file:dir { getattr };
-
+allow fsck modem_vendor_file:dir { search getattr };
 
