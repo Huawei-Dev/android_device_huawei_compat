@@ -41,6 +41,7 @@ set_prop(vendor_init, vendor_radio_prop)
 set_prop(vendor_init, vendor_fingerprint_prop)
 set_prop(vendor_init, vendor_wifi_prop)
 get_prop(vendor_init, config_prop)
+
 allow vendor_init bootanim_system_prop:file read;
 
 # Allow vendor_init to read the boot block device
@@ -55,7 +56,8 @@ typeattribute vendor_init data_between_core_and_vendor_violators;
 # Grant the permissions
 allow vendor_init huawei_data_file:dir { create_dir_perms setattr ioctl };
 allow vendor_init teecd_data_file:file { getattr read ioctl };
-allow vendor_init teecd_data_file:dir { create create getattr };
+allow vendor_init teecd_data_file:dir { create create getattr setattr };
+
 allow vendor_init tmpfs:dir { write add_name create};
 allow vendor_init system_data_file:dir { ioctl open read setattr };
 allow vendor_init splash_data_file:filesystem { getattr };
