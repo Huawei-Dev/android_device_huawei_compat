@@ -13,6 +13,28 @@ ro.config.fast_switch_simslot       u:object_r:vendor_radio_prop:s0
 ro.config.del_default_link          u:object_r:vendor_radio_prop:s0
 ro.config.hisi_cdma_supported       u:object_r:vendor_radio_prop:s0
 
+ro.config.hw_4.5gplus               u:object_r:vendor_radio_prop:s0
+ro.config.hw_updateCA_bycell        u:object_r:vendor_radio_prop:s0
+ro.config.hw_abs_enable             u:object_r:vendor_radio_prop:s0
+ro.config.hw_ismcoex                u:object_r:vendor_radio_prop:s0
+ro.config.hw_fake_ecc_list          u:object_r:vendor_radio_prop:s0
+ro.config.hw_laaplus                u:object_r:vendor_radio_prop:s0
+ro.config.hw_opta                   u:object_r:vendor_radio_prop:s0
+ro.config.hw_optb                   u:object_r:vendor_radio_prop:s0
+ro.config.power                     u:object_r:vendor_radio_prop:s0
+ro.config.gsm_nonsupport            u:object_r:vendor_radio_prop:s0
+ro.config.hw_clearcode_pdp          u:object_r:vendor_radio_prop:s0
+ro.config.hw_globalEcc              u:object_r:vendor_radio_prop:s0
+ro.config.hw_ecclist_withcard       u:object_r:vendor_radio_prop:s0
+ro.config.hw_allow_pdp_auth         u:object_r:vendor_radio_prop:s0
+ro.config.delay_attach_enabled      u:object_r:vendor_radio_prop:s0
+ro.config.hw_volte_on               u:object_r:vendor_radio_prop:s0
+ro.config.is_sup_cnap               u:object_r:vendor_radio_prop:s0
+ro.config.hw_gcf                    u:object_r:vendor_radio_prop:s0
+
+ro.product.imeisv                   u:object_r:vendor_radio_prop:s0
+ro.radio.vsim_support               u:object_r:vendor_radio_prop:s0
+
 ro.odm.config.sup_six_at_chan       u:object_r:vendor_radio_prop:s0
 ro.odm.config.def_commril           u:object_r:vendor_radio_prop:s0
 ro.odm.config.rep_cell_list         u:object_r:vendor_radio_prop:s0
@@ -70,7 +92,6 @@ odm.gsm.sim.preiccid_0              u:object_r:vendor_rild_prop:s0
 odm.gsm.sim.preiccid_1              u:object_r:vendor_rild_prop:s0
 
 
-
 # ==========================================
 # Connectivity Properties
 # ==========================================
@@ -80,6 +101,9 @@ ro.connectivity.chiptype         u:object_r:vendor_oem_prop:s0
 ro.connectivity.sub_chiptype     u:object_r:vendor_oem_prop:s0
 vendor.setup_hi110x_modules      u:object_r:vendor_oem_prop:s0
 is_hisi_connectivity_chip        u:object_r:vendor_oem_prop:s0
+
+persist.kirin.media.lowlatency.enable	u:object_r:vendor_hw_audio_prop:s0
+persist.kirin.media.usbvoice.enable	u:object_r:vendor_hw_audio_prop:s0
 
 ro.config.hw_wifi_chip           u:object_r:vendor_wifi_prop:s0
 sys.conn_macs.ready              u:object_r:vendor_wifi_prop:s0
@@ -109,3 +133,11 @@ vendor.thp.                      u:object_r:vendor_aptouch_prop:s0
 persist.odm.thp.                 u:object_r:vendor_aptouch_prop:s0
 persist.vendor.thp.              u:object_r:vendor_aptouch_prop:s0
 
+# ==========================================
+# Misc
+# ==========================================
+hwlog.remotedebug                u:object_r:vendor_oem_prop:s0
+
+# Huawei specific
+ro.userlock                      u:object_r:vendor_oem_prop:s0
+ro.enter_erecovery               u:object_r:vendor_oem_prop:s0
