@@ -1,0 +1,16 @@
+type vendor_fm_hisi_app, domain;
+
+typeattribute vendor_fm_hisi_app coredomain;
+app_domain(vendor_fm_hisi_app)
+
+hal_client_domain(vendor_fm_hisi_app, hal_fm);
+
+#binder_call(vendor_fm_hisi_app, gpuservice)
+allow vendor_fm_hisi_app radio_service:service_manager find;
+allow vendor_fm_hisi_app audioserver_service:service_manager find;
+allow vendor_fm_hisi_app mediaserver_service:service_manager find;
+allow vendor_fm_hisi_app app_api_service:service_manager find;
+
+get_prop(vendor_fm_hisi_app, vendor_oem_prop)
+get_prop(vendor_fm_hisi_app, vendor_fm_radio_app_prop)
+

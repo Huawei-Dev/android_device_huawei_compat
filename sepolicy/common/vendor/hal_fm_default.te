@@ -11,3 +11,6 @@ init_daemon_domain(hal_fm_default)
 binder_call(hal_fm_client, hal_fm_server)
 binder_call(hal_fm_server, hal_fm_client)
 hal_attribute_hwservice(hal_fm, hal_fm_hwservice)
+
+allow hal_fm_default hi110x_dev:chr_file { open read write };
+allow hal_fm_default sysfs:file { read open getattr };
