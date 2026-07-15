@@ -3,8 +3,8 @@
 # ==========================================
 # This is allowed because 'vendor_wifi_prop' is a vendor-domain property
 get_prop(hal_wifi_supplicant_default, vendor_wifi_prop)
+get_prop(hal_wifi_supplicant_default, vendor_radio_prop)
 # get_prop(hal_wifi_supplicant_default, system_prop)
-
 
 # ==========================================
 # Vendor Data & Sockets
