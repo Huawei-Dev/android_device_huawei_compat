@@ -46,6 +46,7 @@
 /vendor/bin/wpa_supplicant_hisi                                            u:object_r:hal_wifi_supplicant_default_exec:s0
 /vendor/bin/aptouch_daemon                                                 u:object_r:hisi_touchscreen_exec:s0
 /vendor/bin/hw_charger                                                     u:object_r:charger_exec:s0
+/vendor/bin/hiaiserver                                                     u:object_r:hiaiserver_exec:s0
 
 ###########################################
 # DEVICE NODES (/dev)
