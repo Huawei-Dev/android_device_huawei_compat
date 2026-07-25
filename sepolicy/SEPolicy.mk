@@ -19,8 +19,3 @@ endif
 ifneq ($(filter kirin970,$(TARGET_BOARD_PLATFORM)),)
 include device/huawei/compat/sepolicy/kirin970/sepolicy.mk
 endif
-
-# kirin980
-ifneq ($(filter kirin980,$(TARGET_BOARD_PLATFORM)),)
-include device/huawei/compat/sepolicy/kirin980/sepolicy.mk
-endif
