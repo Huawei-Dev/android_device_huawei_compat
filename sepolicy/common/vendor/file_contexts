@@ -1,7 +1,7 @@
 # file contexts
 
-/vendor/bin/hw/android.hardware.drm@1.1-service.widevine			u:object_r:hal_drm_default_exec:s0
-/vendor/bin/hw/android.hardware.drm@1.2-service.widevine			u:object_r:hal_drm_default_exec:s0
+/vendor/bin/hw/android.hardware.drm@1.1-service.widevine			u:object_r:hal_drm_widevine_exec:s0
+/vendor/bin/hw/android.hardware.drm@1.2-service.widevine			u:object_r:hal_drm_widevine_exec:s0
 /vendor/bin/hw/android.hardware.ir-service.huawei				u:object_r:hal_ir_default_exec:s0
 /vendor/bin/hw/android.hardware.light-service.huawei				u:object_r:hal_light_default_exec:s0
 /vendor/bin/hw/android.hardware.power-service.pixel-libperfmgr			u:object_r:hal_power_default_exec:s0
