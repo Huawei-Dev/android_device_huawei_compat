@@ -45,11 +45,17 @@ allow hal_camera_default proc_meminfo:file { open read };
 allow hal_camera_default sysfs:file { getattr open read write }; 
 allow hal_camera_default sysfs_pg:file { getattr open read }; 
 allow hal_camera_default sysfs_thermal:file rw_file_perms;
+allow hal_camera_default sysfs_thermal:dir { search };
 
 allow hal_camera_default vendor_camera_data_file:dir { add_name search write }; 
 allow hal_camera_default vendor_camera_data_file:file { create getattr open setattr write r_file_perms }; 
 
 allow hal_camera_default proc_hisi_board:file { getattr open read };
+
+# ==========================================
+# IA
+# ==========================================
+allow hal_camera_default hiaiserver:fd { use };
 
 # ==========================================
 # Properties

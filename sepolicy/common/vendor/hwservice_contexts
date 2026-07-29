@@ -6,11 +6,14 @@ vendor.huawei.hardware.biometrics.hwfacerecognize::IBiometricsFaceRecognize     
 vendor.huawei.hardware.biometrics.hwsecurefacerecognize::ISecureBiometricsFaceRecognize u:object_r:hal_face_hwservice:s0
 
 # ==========================================
-# Camera
+# Camera & AI
 # ==========================================
 vendor.huawei.hardware.camera.camResource::IHwCameraResourceService             u:object_r:hal_camera_hwservice:s0
 vendor.huawei.hardware.camera.cfgsvr::IHwCamCfgSvr                              u:object_r:hal_camera_hwservice:s0
 vendor.huawei.hardware.camera.factory::ICameraFactory                           u:object_r:hal_camera_hwservice:s0
+vendor.huawei.hardware.ai::IAiEngineService                                     u:object_r:hal_ai_hwservice:s0
+vendor.huawei.hardware.ai::IAIService_hidl                                      u:object_r:hal_ai_hwservice:s0
+vendor.huawei.hardware.ai::IModelManagerService_hidl                            u:object_r:hal_ai_hwservice:s0
 
 # ==========================================
 # Graphics & Display
