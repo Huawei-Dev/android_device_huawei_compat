@@ -13,6 +13,8 @@
 /vendor/bin/hw/android\.hardware\.hwdisplay\.displayengine@1\.2-service    u:object_r:hal_display_hwdisplay_exec:s0
 /vendor/bin/hw/android\.hardware\.authsecret@1\.0-service                  u:object_r:hal_authsecret_default_exec:s0
 
+/vendor/preavs/bin/hw/android\.hardware\.drm@1\.[12]-service\.widevine     u:object_r:hal_drm_default_exec:s0
+
 /vendor/bin/hw/vendor\.huawei\.hardware\.biometrics\.fingerprint@2\.[12]-service u:object_r:hal_fingerprint_default_exec:s0
 /vendor/bin/hw/vendor\.huawei\.hardware\.dolby\.dms@1\.0-service           u:object_r:hal_audio_default_exec:s0
 /vendor/bin/hw/vendor\.huawei\.hardware\.fm@1\.0-service                   u:object_r:hal_fm_default_exec:s0
@@ -47,6 +49,9 @@
 /vendor/bin/aptouch_daemon                                                 u:object_r:hisi_touchscreen_exec:s0
 /vendor/bin/hw_charger                                                     u:object_r:charger_exec:s0
 /vendor/bin/hiaiserver                                                     u:object_r:hiaiserver_exec:s0
+
+# Teecd
+/system/bin/tee_auth_daemon                                                u:object_r:system_teecd_exec:s0
 
 ###########################################
 # DEVICE NODES (/dev)
@@ -220,6 +225,9 @@
 
 # splash2 files
 /splash2(/.*)?                                  			   u:object_r:splash_data_file:s0
+
+# preavs files
+/preavs(/.*)?                                  			           u:object_r:preavs_data_file:s0
 
 # modem files
 /3rdmodem(/.*)?                                                            u:object_r:modem_file:s0

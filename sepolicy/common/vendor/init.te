@@ -61,3 +61,4 @@ allow init audio_device:chr_file { ioctl open read write };
 allow init audioserver:fd { use };
 allow init audioserver:fifo_file { write };
 
+allow init preavs_data_file:lnk_file { read };
