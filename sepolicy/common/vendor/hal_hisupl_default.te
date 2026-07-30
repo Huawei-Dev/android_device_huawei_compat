@@ -1,11 +1,23 @@
+# ==========================================
+# hal_hisupl_default.te - Huawei Assisted-GPS (SUPL)
+# ==========================================
+# Domain and Server Setup
 type hal_hisupl_default, domain;
-hal_server_domain(hal_hisupl_default, hal_hisupl)
-
 type hal_hisupl_default_exec, exec_type, vendor_file_type, file_type;
 init_daemon_domain(hal_hisupl_default)
+
+hal_server_domain(hal_hisupl_default, hal_hisupl)
+hal_attribute_hwservice(hal_hisupl, hal_hisupl_hwservice)
 
 # HwBinder IPC from client to server
 binder_call(hal_hisupl_client, hal_hisupl_server)
 binder_call(hal_hisupl_server, hal_hisupl_client)
 
-hal_attribute_hwservice(hal_hisupl, hal_hisupl_hwservice)
+# Allow GPS to talk to the Huawei connectivity daemon and Android system
+allow hal_hisupl_default hi110x_data_file:dir search;
+allow hal_hisupl_default hi110x_data_file:sock_file write;
+allow hal_hisupl_default hi110x_daemon:unix_stream_socket connectto;
+
+# System App Interactions
+allow system_app hal_hisupl_default:binder { call transfer };
+allow hal_hisupl_default system_app:binder call;

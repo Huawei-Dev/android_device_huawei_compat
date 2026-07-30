@@ -1,0 +1,9 @@
+# ====================================================
+# hal_secure_element_default.te - NFC secure element
+# ====================================================
+# Allow the secure_element HAL to write to sysfs nodes
+allow hal_secure_element_default sysfs:file { getattr open read write };
+allow hal_secure_element_default modem_device:chr_file { open read write };
+
+get_prop(hal_secure_element_default, vendor_rild_prop)
+get_prop(hal_secure_element_default, vendor_radio_prop)

@@ -1,0 +1,38 @@
+# ==========================================
+# charger.te
+# ==========================================
+# Huawei charger
+# Base daemon for Huawei's hw_charger animation
+
+allow charger rootfs:file { ioctl read getattr lock map execute entrypoint open };
+allow charger self:capability2 { wake_alarm };
+
+# Allow charger to read and write to sysfs_power
+allow charger sysfs_power:file rw_file_perms;
+allow charger sysfs_power:dir r_dir_perms;
+allow charger sysfs_power:lnk_file { read getattr };
+
+allow charger sysfs_backlight:file { read write open };
+allow charger sysfs_brightness:file { getattr read open };
+allow charger sysfs_led:file { write getattr open};
+allow charger sysfs_led:dir { search };
+
+allow charger proc_overcommit_memory:file { open read };
+allow charger proc_power_hw_config:dir { search };
+
+# device
+allow charger device:dir { read open };
+allow charger input_device:dir { read open };
+allow charger extra_input_device:chr_file { read open };
+allow charger extra_input_device:chr_file { ioctl };
+allowxperm charger extra_input_device:chr_file ioctl {  0x4518 0x4520 };
+
+
+# The system charger can write  powerctl properties
+set_prop(charger, powerctl_prop)
+
+allow charger kmsg_device:chr_file { open write };
+allow charger self:netlink_kobject_uevent_socket { read setopt create bind };
+
+allow charger graphics_device:chr_file { read write open ioctl };
+

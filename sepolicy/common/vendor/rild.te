@@ -1,0 +1,15 @@
+allow rild pmsg_device:file { write open };
+allow rild proc_cmdline:file { getattr open read };
+allow rild sysfs:file { write };
+allow rild modem_state_file:file { write };
+
+# ==========================================
+# Properties
+# ==========================================
+set_prop(rild, vendor_rild_prop)
+get_prop(rild, vendor_rild_prop)
+
+get_prop(rild, vendor_fingerprint_prop)
+get_prop(rild, vendor_wifi_prop)
+get_prop(rild, vendor_radio_prop)
+get_prop(rild, vendor_oem_prop)

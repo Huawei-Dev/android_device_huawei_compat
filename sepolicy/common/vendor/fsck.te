@@ -1,0 +1,28 @@
+# ==========================================
+# fsck.te - Internal Partition Repair
+# ==========================================
+
+# Allow fsck to repair the system data partition
+allow fsck system_data_file:blk_file rw_file_perms;
+
+# Allow fsck to repair connectivity and security partitions
+allow fsck connectivity_block_device:blk_file rw_file_perms;
+allow fsck sec_storage_block_device:blk_file rw_file_perms;
+
+# Modem
+allow fsck modem_secure_device:blk_file rw_file_perms;
+allow fsck modem_device:blk_file rw_file_perms;
+allow fsck modemnvm_block_device:blk_file rw_file_perms;
+
+# Splash
+allow fsck splash_block_device:blk_file rw_file_perms;
+
+
+# Allow file system check on userdata
+allow fsck userdata_block_device:blk_file rw_file_perms;
+allow fsck teecd_block_device:blk_file rw_file_perms;
+
+# Allow file system check on modem dir
+allow fsck modem_file:dir { getattr };
+allow fsck modem_vendor_file:dir { search getattr };
+

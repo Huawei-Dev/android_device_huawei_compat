@@ -1,0 +1,12 @@
+# ==========================================
+# installd.te - Package Installation
+# ==========================================
+# Allow installd to query quotas on the TEE (Secure Storage) partition
+allow installd teecd_data_file:filesystem quotaget;
+
+allow installd system_server:file { open read };
+allow installd system_server:dir { search };
+
+allow installd splash_data_file:filesystem { quotaget };
+allow installd modem_file:filesystem { quotaget };
+allow installd modem_vendor_file:filesystem { quotaget };

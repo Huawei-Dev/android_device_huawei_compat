@@ -1,0 +1,9 @@
+# ==========================================
+# hal_light_default.te - Notification LEDs
+# ==========================================
+# Allow the light HAL to write to sysfs nodes to toggle LEDs and brightness
+allow hal_light_default sysfs_backlight:file { getattr open read write };
+
+allow hal_light_default sysfs_led:dir { search };
+allow hal_light_default sysfs_led:file { read open write getattr };
+

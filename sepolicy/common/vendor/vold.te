@@ -1,0 +1,13 @@
+# ==========================================
+# Vold and vold prepare dir
+# ==========================================
+
+allow vold teecd_data_file:dir { read open ioctl };
+allow vold splash_data_file:dir { read open ioctl };
+
+allowxperm vold teecd_data_file:dir ioctl { 0x5879 };
+allowxperm vold splash_data_file:dir ioctl { 0x5879 };
+
+allow vold_prepare_subdirs pmsg_device:file { write open };
+allow vold pmsg_device:file { write open };
+

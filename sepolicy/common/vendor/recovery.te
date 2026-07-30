@@ -1,0 +1,5 @@
+allow recovery sysfs_power:dir { search };
+allow recovery sysfs_power:file { read open getattr };
+
+allowxperm recovery rootfs:dir ioctl { 0x1272 0x1260 };
+

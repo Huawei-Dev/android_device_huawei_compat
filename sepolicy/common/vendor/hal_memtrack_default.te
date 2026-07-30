@@ -1,0 +1,5 @@
+# ==========================================
+# hal_memtrack_default.te - Memory Usage Tracking
+# ==========================================
+# Allow memtrack to read process information from /proc to calculate usage
+allow hal_memtrack_default proc:file { getattr open read };

@@ -1,13 +1,2 @@
-# Fastbootd
-ro.fastbootd.available         		u:object_r:exported_default_prop:s0
+ro.netflix.bsp_rev                      u:object_r:netflix_bsp_rev_prop:s0
 
-is_hisi_connectivity_chip		u:object_r:vendor_default_prop:s0
-persist.kirin.media.usbvoice.enable	u:object_r:vendor_default_prop:s0
-persist.kirin.media.lowlatency.enable	u:object_r:vendor_default_prop:s0
-persist.radio.dualltecap		u:object_r:radio_prop:s0
-ro.connectivity.chiptype		u:object_r:vendor_default_prop:s0
-ro.connectivity.sub_chiptype		u:object_r:vendor_default_prop:s0
-ro.netflix.bsp_rev			u:object_r:vendor_default_prop:s0
-ro.recovery.ui.blank_unblank_on_init	u:object_r:vendor_default_prop:s0
-sys.conn_macs.ready			u:object_r:vendor_default_prop:s0
-sys.rilprops_ready			u:object_r:vendor_default_prop:s0

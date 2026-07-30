@@ -1,0 +1,143 @@
+# ================================================
+# Radio Properties - set hisi_init (phone.prop)
+# ================================================
+persist.radio.noril                 u:object_r:vendor_radio_prop:s0
+ro.config.support_wcdma_modem1      u:object_r:vendor_radio_prop:s0
+ro.config.hw_dsdspowerup            u:object_r:vendor_radio_prop:s0
+ro.config.sup_lte_high_speed        u:object_r:vendor_radio_prop:s0
+ro.config.cl_volte_autoswitch       u:object_r:vendor_radio_prop:s0
+ro.config.dsds_mode                 u:object_r:vendor_radio_prop:s0
+ro.config.full_network_support      u:object_r:vendor_radio_prop:s0
+ro.config.hw_ReduceSAR              u:object_r:vendor_radio_prop:s0
+ro.config.fast_switch_simslot       u:object_r:vendor_radio_prop:s0
+ro.config.del_default_link          u:object_r:vendor_radio_prop:s0
+ro.config.hisi_cdma_supported       u:object_r:vendor_radio_prop:s0
+
+ro.config.hw_4.5gplus               u:object_r:vendor_radio_prop:s0
+ro.config.hw_updateCA_bycell        u:object_r:vendor_radio_prop:s0
+ro.config.hw_abs_enable             u:object_r:vendor_radio_prop:s0
+ro.config.hw_ismcoex                u:object_r:vendor_radio_prop:s0
+ro.config.hw_fake_ecc_list          u:object_r:vendor_radio_prop:s0
+ro.config.hw_laaplus                u:object_r:vendor_radio_prop:s0
+ro.config.hw_opta                   u:object_r:vendor_radio_prop:s0
+ro.config.hw_optb                   u:object_r:vendor_radio_prop:s0
+ro.config.power                     u:object_r:vendor_radio_prop:s0
+ro.config.gsm_nonsupport            u:object_r:vendor_radio_prop:s0
+ro.config.hw_clearcode_pdp          u:object_r:vendor_radio_prop:s0
+ro.config.hw_globalEcc              u:object_r:vendor_radio_prop:s0
+ro.config.hw_ecclist_withcard       u:object_r:vendor_radio_prop:s0
+ro.config.hw_allow_pdp_auth         u:object_r:vendor_radio_prop:s0
+ro.config.delay_attach_enabled      u:object_r:vendor_radio_prop:s0
+ro.config.hw_volte_on               u:object_r:vendor_radio_prop:s0
+ro.config.is_sup_cnap               u:object_r:vendor_radio_prop:s0
+ro.config.hw_gcf                    u:object_r:vendor_radio_prop:s0
+
+ro.product.imeisv                   u:object_r:vendor_radio_prop:s0
+ro.radio.vsim_support               u:object_r:vendor_radio_prop:s0
+
+ro.odm.config.sup_six_at_chan       u:object_r:vendor_radio_prop:s0
+ro.odm.config.def_commril           u:object_r:vendor_radio_prop:s0
+ro.odm.config.rep_cell_list         u:object_r:vendor_radio_prop:s0
+ro.odm.config.hw_dsda               u:object_r:vendor_radio_prop:s0
+ro.odm.config.modem_number          u:object_r:vendor_radio_prop:s0
+ro.odm.config.client_number         u:object_r:vendor_radio_prop:s0
+ro.odm.config.support_crrconn       u:object_r:vendor_radio_prop:s0
+ro.odm.config.is_start_commril      u:object_r:vendor_radio_prop:s0
+ro.odm.config.hw_save_pin           u:object_r:vendor_radio_prop:s0
+ro.odm.config.hw_ipv6_support       u:object_r:vendor_radio_prop:s0
+ro.odm.config.m1csimlteflwims       u:object_r:vendor_radio_prop:s0
+ro.odm.config.cdma.ecclist          u:object_r:vendor_radio_prop:s0
+
+ro.odm.pwroff_card_if_tray_out      u:object_r:vendor_radio_prop:s0
+ro.odm.disable_m1_gw_ps_attach      u:object_r:vendor_radio_prop:s0
+ro.odm.dual_imsi_hplmn_cust         u:object_r:vendor_radio_prop:s0
+ro.odm.multi.rild                   u:object_r:vendor_rild_prop:s0
+ro.quick_broadcast_cardstatus       u:object_r:vendor_radio_prop:s0
+
+ro.odm.radio.                       u:object_r:vendor_radio_prop:s0
+
+# To start rild - hisi_init
+sys.rilprops_ready                  u:object_r:vendor_radio_prop:s0
+
+
+# Rild properties stock EMUI 9.1
+persist.odm.radio.                    u:object_r:vendor_rild_prop:s0
+
+persist.odm.nv.optimization.trigger   u:object_r:vendor_rild_prop:s0
+persist.odm.cur_attach_apn2           u:object_r:vendor_rild_prop:s0
+persist.odm.cur_attach_pro2           u:object_r:vendor_rild_prop:s0
+persist.odm.old_attach_apn2           u:object_r:vendor_rild_prop:s0
+persist.odm.old_attach_pro2           u:object_r:vendor_rild_prop:s0
+persist.odm.cur_attach_apn            u:object_r:vendor_rild_prop:s0
+persist.odm.cur_attach_proto          u:object_r:vendor_rild_prop:s0
+persist.odm.old_attach_apn            u:object_r:vendor_rild_prop:s0
+persist.odm.old_attach_proto          u:object_r:vendor_rild_prop:s0
+persist.odm.user.cat16_switch         u:object_r:vendor_rild_prop:s0
+persist.odm.cur_dend_cause            u:object_r:vendor_rild_prop:s0
+persist.odm.cur_apn_name              u:object_r:vendor_rild_prop:s0
+persist.odm.cur_apn_type              u:object_r:vendor_rild_prop:s0
+
+
+persist.radio.defdualsimltemenu     u:object_r:vendor_radio_prop:s0
+persist.radio.defdualltecap         u:object_r:vendor_radio_prop:s0
+persist.radio.modem.cap             u:object_r:vendor_radio_prop:s0
+
+persist.odm.support_lte_modem1      u:object_r:vendor_rild_prop:s0
+persist.odm.dsds.enabled            u:object_r:vendor_rild_prop:s0
+
+odm.ril.                            u:object_r:vendor_rild_prop:s0
+odm.rild.                           u:object_r:vendor_rild_prop:s0
+
+odm.gsm.sim.preiccid_0              u:object_r:vendor_rild_prop:s0
+odm.gsm.sim.preiccid_1              u:object_r:vendor_rild_prop:s0
+
+
+# ==========================================
+# Connectivity Properties
+# ==========================================
+persist.sys.huawei.debug.on      u:object_r:vendor_oem_prop:s0
+ro.config.connectivity_chip      u:object_r:vendor_oem_prop:s0
+ro.connectivity.chiptype         u:object_r:vendor_oem_prop:s0
+ro.connectivity.sub_chiptype     u:object_r:vendor_oem_prop:s0
+vendor.setup_hi110x_modules      u:object_r:vendor_oem_prop:s0
+is_hisi_connectivity_chip        u:object_r:vendor_oem_prop:s0
+
+persist.kirin.media.lowlatency.enable	u:object_r:vendor_hw_audio_prop:s0
+persist.kirin.media.usbvoice.enable	u:object_r:vendor_hw_audio_prop:s0
+
+ro.config.hw_wifi_chip           u:object_r:vendor_wifi_prop:s0
+sys.conn_macs.ready              u:object_r:vendor_wifi_prop:s0
+
+# ==========================================
+# Multimedia (Audio, Camera, Power)
+# ==========================================
+ro.camera.                       u:object_r:vendor_hw_camera_prop:s0
+ro.config.hw_audio_              u:object_r:vendor_hw_audio_prop:s0
+vendor.camera.                   u:object_r:vendor_camera_prop:s0
+vendor.powerhal.rendering        u:object_r:vendor_power_prop:s0
+vendor.sensor.otp.checksum       u:object_r:vendor_hw_camera_prop:s0
+persist.kirin.media.             u:object_r:vendor_kirin_media_prop:s0
+
+# ==========================================
+# Biometrics & System State
+# ==========================================
+ro.build.type                    u:object_r:vendor_fingerprint_prop:s0
+ro.runmode                       u:object_r:vendor_fingerprint_prop:s0
+ro.vendor.hisecd.refreshed       u:object_r:vendor_oem_prop:s0
+
+# ==========================================
+# Screen THP
+# ==========================================
+odm.thp.                         u:object_r:vendor_aptouch_prop:s0
+vendor.thp.                      u:object_r:vendor_aptouch_prop:s0
+persist.odm.thp.                 u:object_r:vendor_aptouch_prop:s0
+persist.vendor.thp.              u:object_r:vendor_aptouch_prop:s0
+
+# ==========================================
+# Misc
+# ==========================================
+hwlog.remotedebug                u:object_r:vendor_oem_prop:s0
+
+# Huawei specific
+ro.userlock                      u:object_r:vendor_oem_prop:s0
+ro.enter_erecovery               u:object_r:vendor_oem_prop:s0

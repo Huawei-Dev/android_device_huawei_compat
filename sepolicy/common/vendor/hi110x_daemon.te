@@ -1,4 +1,106 @@
+# ==========================================
+# Domain Setup & Capabilities
+# ==========================================
 type hi110x_daemon, domain;
 type hi110x_daemon_exec, exec_type, vendor_file_type, file_type;
-
 init_daemon_domain(hi110x_daemon)
+
+allow hi110x_daemon self:capability { chown fowner fsetid sys_nice };
+allow hi110x_daemon kernel:process setsched;
+
+# ==========================================
+# Networking & Sockets
+# ==========================================
+typeattribute hi110x_daemon netdomain;
+allow hi110x_daemon dnsproxyd_socket:sock_file write;
+allow hi110x_daemon fwmarkd_socket:sock_file write;
+allow hi110x_daemon port:tcp_socket name_connect;
+allow hi110x_daemon self:tcp_socket { create getopt ioctl setopt create_stream_socket_perms };
+allow hi110x_daemon self:netlink_socket { bind create read write };
+allow hi110x_daemon self:netlink_generic_socket { read create setopt bind write };
+
+# Allow netd to manage the daemon's sockets
+allow netd hi110x_daemon:tcp_socket { getopt setopt read write };
+
+# ==========================================
+# IPC & Hardware Devices
+# ==========================================
+allow hi110x_daemon servicemanager:binder call;
+allow hi110x_daemon init:unix_stream_socket connectto;
+allow hi110x_daemon netd:unix_stream_socket connectto;
+allow hi110x_daemon property_socket:sock_file write;
+
+allow hi110x_daemon hci_attach_dev:chr_file { ioctl open read write };
+allow hi110x_daemon hi110x_dev:chr_file { getattr ioctl open read setattr write };
+allow hi110x_daemon kmsg_device:chr_file { getattr open write setattr };
+
+allow hi110x_daemon radio_device:chr_file { open read write };
+allow hi110x_daemon flp_device:chr_file { ioctl open read write };
+
+allow hi110x_daemon ar_device:chr_file { ioctl open read write };
+
+# ==========================================
+# Data Directories & Logs
+# ==========================================
+
+allow hi110x_daemon hi110x_data_file:dir { create read open add_name getattr remove_name search setattr write };
+allow hi110x_daemon hi110x_data_file:file { create getattr open read setattr unlink write };
+allow hi110x_daemon hi110x_data_file:lnk_file { create read rename unlink };
+allow hi110x_daemon hi110x_data_file:sock_file { create setattr unlink write };
+
+allow hi110x_daemon wifi_vendor_data_file:dir { search write add_name remove_name getattr setattr };
+allow hi110x_daemon wifi_vendor_data_file:file { getattr open read setattr create write unlink };
+allow hi110x_daemon wifi_vendor_data_file:lnk_file { read create rename unlink };
+
+allow hi110x_daemon wpa_data_file:dir search;
+allow hi110x_daemon wpa_data_file:file { getattr setattr };
+
+allow hi110x_daemon vendor_log_file:dir { add_name getattr open read remove_name search setattr write };
+allow hi110x_daemon vendor_log_file:file { append create getattr open read rename setattr unlink };
+allow hi110x_daemon vendor_kernel_log_file:dir { rw_dir_perms setattr };
+allow hi110x_daemon vendor_kernel_log_file:file create_file_perms;
+
+
+# ==========================================
+# Files, Sysfs & Properties
+# ==========================================
+allow hi110x_daemon proc_misc:file { open read };
+allow hi110x_daemon sysfs:file { getattr open read setattr write };
+allow hi110x_daemon sysfs_wake_lock:file { getattr open write };
+allow hi110x_daemon vendor_toolbox_exec:file execute_no_trans;
+
+set_prop(hi110x_daemon, vendor_wifi_prop)
+set_prop(hi110x_daemon, vendor_oem_prop)
+
+# Allow the connectivity daemon to read the fingerprint state and manage its logs
+get_prop(hi110x_daemon, vendor_fingerprint_prop)
+
+allow hi110x_daemon hi110x_cust_data_file:dir create_dir_perms;
+allow hi110x_daemon hi110x_cust_data_file:file create_file_perms;
+allow hi110x_daemon hi110x_cust_data_file:lnk_file create_file_perms;
+
+allow hi110x_daemon vendor_data_file:dir create_dir_perms;
+allow hi110x_daemon vendor_data_file:file create_file_perms;
+allow hi110x_daemon vendor_data_file:lnk_file create_file_perms;
+allow hi110x_daemon kmsg_device:chr_file rw_file_perms;
+
+# Allow the vendor daemon to read the spoofed connectivity firmware
+allow hi110x_daemon vendor_connectivity_fw:file { read open getattr };
+
+# Allow daemon to search CPU freq directories
+allow hi110x_daemon sysfs_cpufreq:dir search;
+allow hi110x_daemon sysfs_cpufreq:file { read open };
+
+allow hi110x_daemon hal_system_suspend_service:service_manager find;
+binder_call(hi110x_daemon, system_suspend_server)
+
+# Allow daemon to use binder and hwbinder
+binder_use(hi110x_daemon)
+hwbinder_use(hi110x_daemon)
+
+# Allow daemon to register with hwservicemanager
+allow hi110x_daemon hwservicemanager_prop:file { read getattr map open };
+
+# Allow two-way binder communication with system_server
+binder_call(hi110x_daemon, system_server)
+binder_call(system_server, hi110x_daemon)
