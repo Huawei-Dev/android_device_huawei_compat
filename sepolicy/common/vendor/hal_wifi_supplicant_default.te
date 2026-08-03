@@ -1,0 +1,25 @@
+# ==========================================
+# Properties
+# ==========================================
+# This is allowed because 'vendor_wifi_prop' is a vendor-domain property
+get_prop(hal_wifi_supplicant_default, vendor_wifi_prop)
+get_prop(hal_wifi_supplicant_default, vendor_radio_prop)
+# get_prop(hal_wifi_supplicant_default, system_prop)
+
+# ==========================================
+# Vendor Data & Sockets
+# ==========================================
+
+# Allow Wi-Fi to read ini cfg (/data/vendor/cust_conn)
+allow hal_wifi_supplicant_default hi110x_cust_data_file:lnk_file { read };
+allow hal_wifi_supplicant_default hi110x_cust_data_file:dir { search };
+	
+allow hal_wifi_supplicant_default wifi_vendor_data_file:dir search;
+
+# Allow Wi-Fi HAL to manage its vendor sockets for WPA communication
+allow hal_wifi_supplicant_default wifi_vendor_wpa_socket:dir { search add_name setattr write w_dir_perms };
+allow hal_wifi_supplicant_default wifi_vendor_wpa_socket:sock_file { create setattr write unlink };
+
+allow hal_wifi_supplicant_default pmsg_device:file { open read write };
+
+allow hal_wifi_supplicant_default proc:file { open read };

@@ -1,0 +1,31 @@
+# ==========================================
+# Domain & Attributes
+# ==========================================
+type hiaiserver, domain;
+type hiaiserver_exec, exec_type, vendor_file_type, file_type;
+
+init_daemon_domain(hiaiserver)
+
+allow hiaiserver hal_system_suspend_service:service_manager find;
+binder_call(hiaiserver, system_suspend_server)
+
+# Allow daemon to use binder and hwbinder
+binder_use(hiaiserver)              # For /dev/binder (System/SSVC calls)
+hwbinder_use(hiaiserver)            # For /dev/hwbinder (Standard HIDL)
+vndbinder_use(hiaiserver)           # For /dev/vndbinder (HAL-to-HAL calls)
+
+# Wake lock access
+wakelock_use(hiaiserver)
+
+allow hiaiserver hal_system_suspend_service:service_manager find;
+
+allow hiaiserver hidl_base_hwservice:hwservice_manager { add };
+allow hiaiserver hal_ai_hwservice:hwservice_manager { add };
+allow hal_camera_default hal_ai_hwservice:hwservice_manager { find };
+
+
+# AI vs Camera
+binder_call(hal_camera_default, hiaiserver)
+binder_call(hiaiserver, hal_camera_default)
+allow hiaiserver hal_camera_default:fd { use };
+

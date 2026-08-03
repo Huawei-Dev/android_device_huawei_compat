@@ -1,0 +1,15 @@
+# ==========================================
+# hal_iawareperf_hwdisplay.te - IA Ware Perf Engine
+# ==========================================
+
+# Define the process domain
+type hal_iawareperf_default, domain;
+
+# Define the binary type (as seen in file_contexts)
+type hal_iawareperf_default_exec, exec_type, vendor_file_type, file_type;
+
+init_daemon_domain(hal_iawareperf_default)
+
+#hal_server_domain(hal_iawareperf_default, hal_iawareperf)
+#hal_attribute_hwservice(hal_iawareperf, hal_iawareperf_hwservice)
+

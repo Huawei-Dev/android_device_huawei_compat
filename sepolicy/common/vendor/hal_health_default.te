@@ -1,0 +1,5 @@
+# ==========================================
+# hal_health_default.te - Battery & Health
+# ==========================================
+allow hal_health_default sysfs_power:dir { search };
+allow hal_health_default sysfs_power:file { getattr open read };

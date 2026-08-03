@@ -1,0 +1,10 @@
+#============= system_app ==============
+allow system_app hal_hisupl_default:binder { call transfer };
+
+allow system_app proc_pagetypeinfo:file { read };
+allow system_app sysfs_zram:dir { search };
+allow system_app proc_vmallocinfo:file { read };
+
+# Properties
+get_prop(platform_app, vendor_camera_prop)
+get_prop(system_app, vendor_oem_prop)

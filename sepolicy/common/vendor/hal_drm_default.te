@@ -1,0 +1,7 @@
+# ==========================================
+# hal_drm_default.te - DRM/Widevine
+# ==========================================
+
+# Allow the DRM HAL to communicate with the Vendor Binder (vndbinder) 
+# to talk to other hardware-specific services (like TEE/Trustzone)
+allow hal_drm_default vndbinder_device:chr_file { ioctl open read write };

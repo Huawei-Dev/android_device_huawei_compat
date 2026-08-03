@@ -1,0 +1,15 @@
+# ==========================================
+# hal_perfgenius_default.te - Huawei Perf Engine
+# ==========================================
+
+# Define the process domain
+type hal_perfgenius_default, domain;
+
+# Define the binary type (as seen in file_contexts)
+type hal_perfgenius_default_exec, exec_type, vendor_file_type, file_type;
+
+init_daemon_domain(hal_perfgenius_default)
+
+#hal_server_domain(hal_perfgenius_default, hal_perfgenius)
+#hal_attribute_hwservice(hal_perfgenius, hal_perfgenius_hwservice)
+

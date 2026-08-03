@@ -1,0 +1,29 @@
+# ==========================================
+# Hardware and Sysfs Access
+# ==========================================
+# Allow power HAL to write to CPU scheduling and power gating sysfs nodes
+allow hal_power_default sysfs_devices_system_cpu:file write;
+allow hal_power_default sysfs_pg:file { open write };
+
+allow hal_power_default sysfs_devfreq:file rw_file_perms;
+allow hal_power_default sysfs_cpufreq:file rw_file_perms;
+
+allow hal_power_default surfaceflinger:file { read open };
+allow hal_power_default surfaceflinger:dir { search };
+
+allow hal_power_default system_server:file { read open };
+allow hal_power_default system_server:dir { search };
+
+allow hal_power_default hal_fingerprint_default:dir { search };
+allow hal_power_default hal_fingerprint_default:file { open read };
+allow hal_power_default hal_fingerprint_default:process { getattr };
+
+# ==========================================
+# Properties
+# ==========================================
+# This macro legally grants the property_socket write access to set rendering properties
+set_prop(hal_power_default, vendor_power_prop)
+
+allow hal_power_default sysfs_cpufreq:dir search;
+allow hal_power_default sysfs_devfreq:dir search;
+

@@ -1,0 +1,2 @@
+# Add new domain for FM app
+user=_app seinfo=platform name=com.android.hisifmradio domain=vendor_fm_hisi_app type=app_data_file levelFrom=all

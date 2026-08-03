@@ -1,33 +1,70 @@
+# ==========================================
+# Block Devices (Partitions and Storage)
+# ==========================================
 typeattribute system_block_device super_block_device_type;
-
-type ar_device, dev_type;
 type atcmdserver_blkdev, dev_type;
-type cambuf_device, dev_type;
-type device_latency, dev_type;
-type eas_dev, dev_type;
+type connectivity_block_device, dev_type;
 type efuse_blkdev, dev_type;
-type flp_device, dev_type;
-type fps_device, dev_type;
-type fpshub_device, dev_type;
-type governor_device, dev_type;
-type gps_device, dev_type;
-type hi110x_dev, dev_type;
-type hisi_perf_ctrl_device, dev_type;
-type hwsched_device, dev_type;
-type imw_device, dev_type;
-type ivp_device, dev_type;
-type madapt_device, dev_type;
-type modem_device, dev_type;
-type modem_secure_device, dev_type;
 type modemnvm_block_device, dev_type;
-type nmctrlvcom_device, dev_type;
 type nve_block_device, dev_type;
 type oeminfo_nvm_block_device, dev_type;
 type sd_device, dev_type;
+type sec_storage_block_device, dev_type;
 type splash_block_device, dev_type;
-type teecd_blkdev, dev_type;
+type teecd_block_device, dev_type;
+
+# ==========================================
+# Recovery Devices 
+# ==========================================
+type recovery_device, dev_type;
+
+# ==========================================
+# Biometrics & TrustZone (TEE)
+# ==========================================
+type dsm_device, dev_type;
+type fps_device, dev_type;
+type fpshub_device, dev_type;
 type teecd_device, dev_type;
-type vdec_device, dev_type;
-type venc_device, dev_type;
+
+# ==========================================
+# Modem, Radio, and Connectivity
+# ==========================================
+type modem_device, dev_type;
+type modem_secure_device, dev_type;
+type flp_device, dev_type;
+type gps_device, dev_type;
+type hi110x_dev, dev_type;
+type nmctrlvcom_device, dev_type;
 type vowifi_proxy_device, dev_type;
 type wlanfty_device, dev_type;
+
+# ==========================================
+# Multimedia (Camera, Audio, Video, Graphics)
+# ==========================================
+type cambuf_device, dev_type;
+type extra_audio_device, dev_type;
+type madapt_device, dev_type;
+type vdec_device, dev_type;
+type venc_device, dev_type;
+
+# ==========================================
+# System Performance & Scheduling
+# ==========================================
+type device_latency, dev_type;
+type eas_dev, dev_type;
+type governor_device, dev_type;
+type hisi_perf_ctrl_device, dev_type;
+type hwsched_device, dev_type;
+type smartpakit_device, dev_type;
+
+# ==========================================
+# Debugging, Logging & Misc Hardware
+# ==========================================
+type ar_device, dev_type;
+type extra_input_device, dev_type;
+type hwlog_device, dev_type;
+type hwlog_exception_device, dev_type;
+type imw_device, dev_type;
+type ivp_device, dev_type;
+type nve_device, dev_type;
+type thp_device, dev_type;

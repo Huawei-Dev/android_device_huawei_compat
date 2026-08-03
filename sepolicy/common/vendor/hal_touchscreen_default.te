@@ -1,3 +1,12 @@
+# ==========================================
+# hal_touchscreen_default.te & hisi_touchscreen.te
+# ==========================================
+# Base daemon for Huawei's specific touch features (e.g., aptouch)
+type hisi_touchscreen, domain;
+type hisi_touchscreen_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(hisi_touchscreen)
+
+# The standard HIDL interface for the touchscreen HAL
 type hal_touchscreen_default, domain;
 hal_server_domain(hal_touchscreen_default, hal_touchscreen)
 
@@ -7,5 +16,46 @@ init_daemon_domain(hal_touchscreen_default)
 # HwBinder IPC from client to server, and callbacks
 binder_call(hal_touchscreen_client, hal_touchscreen_server)
 binder_call(hal_touchscreen_server, hal_touchscreen_client)
-
+binder_call(hisi_touchscreen, vndservicemanager)
 hal_attribute_hwservice(hal_touchscreen, hal_touchscreen_hwservice)
+
+# ==========================================
+# Files, Directories, and Sysfs
+# ==========================================
+allow hal_touchscreen_default vendor_configs_file:file { open read };
+
+allow hisi_touchscreen init:unix_stream_socket { connectto };
+allow hisi_touchscreen pmsg_device:file { write open };
+allow hisi_touchscreen proc_cmdline:file { open read getattr};
+allow hisi_touchscreen sysfs:file { open read write getattr};
+
+allow hisi_touchscreen rootfs:file { entrypoint read execute getattr open };
+allow hisi_touchscreen rootfs:dir { read };
+
+allow hisi_touchscreen self:capability { sys_nice };
+allow hisi_touchscreen tee:unix_stream_socket { connectto };
+allow hisi_touchscreen vndbinder_device:chr_file { ioctl open write read };
+
+allow hisi_touchscreen dsm_device:chr_file {  ioctl open write read  };
+
+allow hisi_touchscreen pmsg_device:file { write open };
+
+# ==========================================
+# ioctl
+# ==========================================
+allow hisi_touchscreen thp_device:chr_file { ioctl open write read };
+allowxperm hisi_touchscreen thp_device:chr_file ioctl { 0xb801 0xb802 0xb803 0xb804 0xb805 0xb806 };
+
+allow hisi_touchscreen imw_device:chr_file { ioctl open write read };
+allowxperm hisi_touchscreen imw_device:chr_file ioctl { 0xb901 0xb902 0xb903 0xb904 0xb905 0xb906 };
+
+# ==========================================
+# Properties
+# ==========================================
+set_prop(hisi_touchscreen, property_socket)
+get_prop(hisi_touchscreen, vendor_wifi_prop)
+get_prop(hisi_touchscreen, vendor_oem_prop)
+
+set_prop(hisi_touchscreen, vendor_aptouch_prop)
+get_prop(hisi_touchscreen, vendor_aptouch_prop)
+
