@@ -1,5 +1,6 @@
 # NFC
 vendor.nxp.nxpnfc::INxpNfc                                          				u:object_r:hal_nfc_hwservice:s0
+vendor.huawei.hardware.nfc@1.0::IHWNfc 								u:object_r:hal_nfc_hwservice:s0
 
 # Huawei
 vendor.huawei.hardware.biometrics.fingerprint::IExtBiometricsFingerprint    			u:object_r:hal_fingerprint_hwservice:s0
