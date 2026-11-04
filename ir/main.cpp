@@ -58,6 +58,11 @@ ConsumerIr::ConsumerIr() {
 }
 
 ::ndk::ScopedAStatus ConsumerIr::getCarrierFreqs(std::vector<ConsumerIrFreqRange>* _aidl_return) {
+    if (mDevice == nullptr) {
+        ALOGE("Consumer IR HAL is not initialized");
+        return ::ndk::ScopedAStatus::fromExceptionCode(EX_ILLEGAL_STATE);
+    }
+
     int32_t len = mDevice->get_num_carrier_freqs(mDevice);
     if (len < 0) {
         (*_aidl_return).clear();
@@ -81,6 +86,11 @@ ConsumerIr::ConsumerIr() {
 
 ::ndk::ScopedAStatus ConsumerIr::transmit(int32_t in_carrierFreqHz,
                                           const std::vector<int32_t>& in_pattern) {
+    if (mDevice == nullptr) {
+        ALOGE("Consumer IR HAL is not initialized");
+        return ::ndk::ScopedAStatus::fromExceptionCode(EX_ILLEGAL_STATE);
+    }
+
     if (in_carrierFreqHz > 0) {
         mAudioService.setTransmitParameter(true);
         mDevice->transmit(mDevice, in_carrierFreqHz, in_pattern.data(), in_pattern.size());
