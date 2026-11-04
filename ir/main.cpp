@@ -15,6 +15,7 @@
 #include <android/binder_process.h>
 #include <hardware/consumerir.h>
 #include <numeric>
+#include <vector>
 
 #include <log/log.h>
 
@@ -63,8 +64,8 @@ ConsumerIr::ConsumerIr() {
         return ::ndk::ScopedAStatus::ok();
     }
 
-    consumerir_freq_range_t *rangeAr = new consumerir_freq_range_t[len];
-    bool success = (mDevice->get_carrier_freqs(mDevice, len, rangeAr) >= 0);
+    std::vector<consumerir_freq_range_t> rangeAr(len);
+    bool success = (mDevice->get_carrier_freqs(mDevice, len, rangeAr.data()) >= 0);
     if (!success) {
         (*_aidl_return).clear();
         return ::ndk::ScopedAStatus::ok();
